@@ -13,7 +13,7 @@ class Database{
     // genera la conexión a la base de datos, solo se llama a través de getInstancia()
     private function __construct(){
         $config = parse_ini_file('../config.ini');
-        $this->conexion = new mysqli($config['server'],$config['username'],$config['password'],$config['dbname']);
+        $this->conexion = new mysqli($config['servidor'],$config['usuario'],$config['password'],$config['nombre_bd']);
         $this->conexion->set_charset("utf8"); // para mostrar los caracteres latinos correctamente
 
         if(mysqli_connect_error()) {

@@ -1,0 +1,361 @@
+/***********************************************************************/
+/*                          ATRIBUTOS GENERALES                        */
+
+/*Borramos los margenes predeterminados de los navegadores web*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* define cómo se calcula el ancho y alto de cada elemento */
+}
+
+h1 {
+  font-size: 40px;
+  padding: 2px;
+}
+
+/*Estilo del body por defecto*/
+body {
+  color: #222;
+  font-family: 'Roboto';
+  background-color: rgb(245, 245, 245);
+  transition: 0.5s;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                                CABECERA                             */
+/*Estilo de la cabecera de la pagina web*/
+#cabecera  {
+  color:white;
+  background-color: #ffaa56;
+}
+
+.titulo-barra {
+  padding: 40px;
+  width: 90%;
+  text-align: center;
+}
+
+.logo{
+  float:left;
+  padding:5px;
+  margin-right: 24px;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                                MENÚ                                 */
+
+/*Estilo de la barra de navegacion / Menu*/
+.barra-navegacion {
+  list-style-type: none;   /*Borra los puntos de la lista*/
+  overflow: hidden;
+  background-color: #ff9933;
+}
+
+.barra-navegacion a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;  /*Quita el subrayado*/
+}
+
+/*Cuando pasa el raton por alguna seccion del la barra de navegacion
+  cambia el color de fondo y el color de la fuente*/
+.barra-navegacion a:hover {
+  background-color: #ffaa56;
+  color: #222;
+}
+/***********************************************************************/
+
+
+/***********************************************************************/
+/*                            BARRA LATERAL                           */
+
+/*Estilo de la columna izquierda (informacion adicional)*/
+.barra-lateral {
+  flex: 19%;
+  padding: 20px;
+  background-color: white;
+  border-right: 1px solid lightgray;
+}
+
+.barra-lateral p {
+  font-size: 16px;
+  padding: 1px;
+}
+
+p.titulo-lateral{
+  font-weight: bold;
+  padding: 2px;
+  margin-bottom: 4px;
+}
+
+.barra-lateral a{
+  text-decoration: none;
+  color: #222;
+}
+
+.barra-lateral a:hover{
+  color: #ff9933;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                           BLOQUE PRINCIPAL                          */
+/*Estilo del contenido principal de un evento*/
+.bloque-principal {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.bloque-principal p {
+  font-size: 18px;
+  padding: 1px;
+  line-height: 160%;
+}
+
+.informacion h2 {
+  font-size: 35px;
+  padding: 2px;
+}
+
+p.organizador {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+p.fecha{
+  padding: 2px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/*Estilo del contenido principal de un evento*/
+.informacion {
+  flex: 79%;
+  padding: 20px;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                           IMAGENES EVENTOS                         */
+/*Estilo de las imagenes de los eventos*/
+.imagenes-evento {
+  float: right;
+  width: 30%;
+}
+
+.img-evento {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+.texto-imagen {
+  text-align: center;
+}
+
+.texto-imagen p{
+  font-size: 12px;
+}
+
+/***********************************************************************/
+
+/***********************************************************************/
+/*                           IMAGENES PRINCIPAL                       */
+/*Estilo de cada foto con el nombre de su evento*/
+.polaroid {
+  float: left;
+  width: 30%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.polaroid:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.texto-polaroid {
+  text-align: center;
+  padding: 10px 20px;
+  white-space: nowrap; /* Evitar que se añada una nueva linea con zoom */
+}
+
+.polaroid img {
+  width: 100%;
+}
+
+.polaroid a {
+  text-decoration: none;
+  color: #222;
+}
+
+.polaroid p {
+  font-size: 1.4vw;
+}
+
+/***********************************************************************/
+
+/***********************************************************************/
+/*                           BOTONES SOCIAL                            */
+
+/*Estilo de los icones para las redes sociales*/
+.social a{
+  float: left;
+  padding: 10px;
+  margin:10px;
+  text-decoration: none;
+  text-align: center;
+  color: #222;
+}
+
+/*Estilo del icono imprimir*/
+.imprimir{
+  float: right;
+  padding: 10px;
+  margin: 10px;
+}
+
+.imprimir:hover, .social a:hover {
+  background-color: darkgray;
+}
+/***********************************************************************/
+
+
+/***********************************************************************/
+/*                            PIE DE PÁGINA                            */
+/*Estilo del pie de pagina*/
+footer {
+  padding: 20px;
+  background-color: #ffdc85;
+  color: black;
+  text-align: center;
+}
+
+footer p{
+  font-size: 14px;
+  padding: 1px;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                           PANEL DE COMENTARIOS                     */
+#abrir-comentarios {
+  float: right;
+  cursor: pointer;
+}
+
+.comentarios-eventos {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.comentarios-eventos h2 {
+  text-align: center;
+  margin-bottom: 5%;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                        COMENTARIOS DE USUARIOS                     */
+.imagen-comentario{
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right:10px;
+}
+
+.comentario{
+  padding: 20px;
+  border-bottom: 1px solid rgb(175, 170, 170);
+}
+
+.correo-usuario{
+  padding: 1px;
+}
+
+.fecha-usuario{
+  padding: 5px;
+}
+    
+.formulario{
+  padding: 20px;
+}
+
+.formulario .grupo-formulario{
+  padding-bottom: 15px;
+}
+
+.formulario label{
+  display:block;
+}
+
+.formulario input[type="text"], .formulario textarea{
+  padding: 8px;
+  width: 100%;
+}
+
+.formulario textarea{
+  resize: none;
+  height: 100px;
+}
+
+.formulario input[type="submit"]{
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                                 ETIQUETAS                           */
+/*Etiquetas por tipo de evento*/
+.etiquetas {
+  display: flex;
+  margin-bottom: 2%;
+}
+.etiqueta {
+  background-color: #ffaa56;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.etiqueta:hover {
+  background-color: #ff9933;
+}
+/***********************************************************************/
+
+/***********************************************************************/
+/*                                VIDEOS                               */
+
+iframe {
+  margin: 5%;
+}
+

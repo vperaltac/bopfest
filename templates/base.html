@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+    <head>
+        {% block head %}
+            <base href="http://localhost:8080" />
+            <meta charset="UTF-8">
+            <meta name="descripcion" content="Promoción de eventos musicales">
+            <!--Hoja de estilo-->
+            <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+            <!--Fuente Roboto de Google-->
+            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <!--Favicon-->
+            <link rel="icon" href="../imgs/favicon.png" type="imgs">
+            <title>Bop Fest</title>
+        {% endblock %}
+    </head>
+
+    <body>
+        <header id='cabecera'>
+            <div class='titulo-barra'>
+                <a href='principal'>
+                    <img class='logo' src='../../imgs/logo.png' alt='logo'>
+                </a>
+                <h1>Bop Fest</h1>
+            </div>
+        </header>
+        
+        <!--Barra de menu-->
+        <nav class='barra-navegacion'>
+            {% block menu %}
+                <a href='principal'>Eventos</a>
+                <a href='#Blog'>Blog</a>
+                <a href='#contacto'>Contacto</a>
+            {% endblock %}
+        </nav>
+
+        <main class="bloque-principal">
+            <!--Columna lateral izquierda (Informacion adicional)-->
+            <aside class="barra-lateral">
+                {% block sidebar%}
+                {% endblock %}
+            </aside>
+
+            {% block comentarios %}
+            {% endblock %}
+
+            <!--Parte principal de la pagina donde salen 9 eventos (600x400)-->
+            <section class="informacion">
+                {% block etiquetas %}
+                {% endblock %}
+                {% block content %}
+                {% endblock %}
+            </section>
+    </main>
+    
+    <div class="clr"></div>
+
+        <!--Pie de pagina-->
+        <footer>
+            {% block footer %}
+                <p>Pie de página</p>
+                <p>&copy; 2019 - Víctor Peralta y Diego García</p>
+            {% endblock %}
+        </footer>
+    </body>
+</html>

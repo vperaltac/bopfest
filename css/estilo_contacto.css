@@ -1,0 +1,197 @@
+/***********************************************************************/
+/*                          ATRIBUTOS GENERALES                        */
+
+/*Borramos los margenes predeterminados de los navegadores web*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* define cómo se calcula el ancho y alto de cada elemento */
+  }
+
+h1 {
+  font-size: 40px;
+  padding: 2px;
+}
+
+/*Estilo del body por defecto*/
+body {
+  color: #222;
+  font-family: 'Roboto';
+  background-color: rgb(245, 245, 245);
+}
+
+/***********************************************************************/
+/*                                CABECERA                             */
+/*Estilo de la cabecera de la pagina web*/
+#cabecera  {
+  color:white;
+  background-color: #ffaa56;
+}
+
+.titulo-barra {
+  padding: 40px;
+  width: 90%;
+  text-align: center;
+}
+
+.logo{
+  float:left;
+  padding:5px;
+  margin-right: 24px;
+}
+/***********************************************************************/
+  
+/***********************************************************************/
+/*                                MENÚ                                 */
+
+/*Estilo de la barra de navegacion / Menu*/
+.barra-navegacion {
+  list-style-type: none;   /*Borra los puntos de la lista*/
+  overflow: hidden;
+  background-color: #ff9933;
+}
+
+.barra-navegacion a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;  /*Quita el subrayado*/
+}
+
+/*Cuando pasa el raton por alguna seccion del la barra de navegacion
+  cambia el color de fondo y el color de la fuente*/
+.barra-navegacion a:hover {
+  background-color: #ffaa56;
+  color: #222;
+}
+/***********************************************************************/
+  
+/***********************************************************************/
+/*                            BARRA LATERAL                           */
+
+/*Estilo de la columna izquierda (informacion adicional)*/
+.barra-lateral {
+  flex: 49%;
+  padding: 20px;
+  background-color: white;
+  border-right: 1px solid lightgray;
+  text-align: center;
+}
+
+.barra-lateral p {
+  font-size: 20px;
+  padding: 1px;
+}
+
+.barra-lateral h1 {
+  padding: 2px;
+  margin-bottom: 20px;
+}
+
+p.titulo-lateral{
+  font-weight: bold;
+  padding: 2px;
+  margin-bottom: 4px;
+}
+
+.texto-lateral{
+  margin: 0 auto;
+  margin-top: 55px;
+  width: 60%;
+}
+
+.barra-lateral a{
+  text-decoration: none;
+  color: #222;
+}
+
+.barra-lateral a:hover{
+  color: #ff9933;
+}
+/***********************************************************************/
+  
+/***********************************************************************/
+/*                           BLOQUE PRINCIPAL                          */
+
+/*Estilo del contenido principal de un evento*/
+.bloque-principal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bloque-principal p {
+  font-size: 18px;
+  padding: 1px;
+  line-height: 160%;
+}
+
+.informacion h2 {
+  font-size: 35px;
+  padding: 2px;
+}
+
+p.organizador {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+p.fecha{
+  padding: 2px;
+  font-weight: bold;
+}
+
+/*Estilo del contenido principal de un evento*/
+.informacion {
+  flex: 49%;
+  padding: 20px;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.formulario{
+  padding: 20px;
+}
+
+.formulario .grupo-formulario{
+  padding-bottom: 15px;
+}
+
+.formulario label{
+  display:block;
+}
+
+.formulario input[type="text"], .formulario textarea{
+  padding: 8px;
+  width:60%;
+}
+
+.formulario textarea{
+  resize: none;
+  height: 280px;
+}
+
+.formulario input[type="submit"]{
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+}
+/***********************************************************************/
+  
+/***********************************************************************/
+/*                            PIE DE PÁGINA                            */
+/*Estilo del pie de pagina*/
+footer {
+  padding: 20px;
+  background-color: #ffdc85;
+  color: black;
+  text-align: center;
+}
+
+footer p{
+  font-size: 14px;
+  padding: 1px;
+}
+/***********************************************************************/

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <a href='principal'>Eventos</a>
+    <a href='#Blog'>Blog</a>
+    <a href='#contacto'>Contacto</a>
+    <a id="abrir-comentarios" class="btn-comentarios">Comentarios</a>
+{% endblock %}
+
+{% block comentarios %}
+    <!--Panel de comentarios-->
+    <aside id="zona-comentarios" class="comentarios-eventos">
+        <h2>Comentarios</h2>
+        <section id="lista-comentarios">
+            <!--Comentario 1 (predefinido) -->
+            {% for comentario in comentarios %}
+                <div class="comentario">
+                    <div class="cuadro-usuario">
+                        <img class="imagen-comentario" src="imgs/user.png" alt="usuario1">
+                        <div class="datos-usuario">
+                            <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
+                            <p class="fecha-usuario">{{comentario.fecha}}</p>
+                            <p class="comentario-usuario">{{comentario.texto}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!--Comentarios dinamicos-->
+            <div id="comentarios-dyn"></div>
+        </section>
+
+        <!--Formulario para añadir un comentario-->
+        <form class="formulario">
+            <div class="grupo-formulario">
+                <label>Nombre: </label>
+                <input type="text" name="nombre" id="nombre-form">
+            </div>
+            <div class="grupo-formulario">
+                <label>Email: </label>
+                <input type="text" name="email" id="email-form">
+            </div>
+            <div class="grupo-formulario">
+                <label>Mensaje: </label>
+                <textarea name="mensaje" id="mensaje-form"></textarea>
+            </div>
+
+            <input id="boton-comentario" type="submit" value="Enviar">
+        </form>
+    </aside>
+{% endblock %}
+
+{% block content %}
+    <div class="imagenes-evento">
+        {% for imagen in imagenes %}
+            <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
+            <div class="texto-imagen">
+                <p>{{imagen.titulo}}</p>
+                <p>{{imagen.creditos}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>{{evento.titulo}}</h2>
+    <p class="organizador">{{evento.organizador}}</p>
+    <p class="fecha">{{evento.fecha}}</p>
+    <p>{{evento.texto}}</p>
+
+    <!--Botones Sociales-->
+    <div class="social">
+        <a href={{evento.twitter}} target="_blank">
+            <img src="imgs/twitter.png" alt="Twitter">   
+        </a>
+        <a href={{evento.facebook}} target="_blank">
+            <img src="imgs/facebook.png" alt="Facebook">
+        </a>
+    </div>
+
+    <a href="evento1_imprimir.html">
+        <img class="imprimir" src="imgs/baseline-local_printshop-24px.svg" alt="Print">
+    </a>
+
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+    </iframe>
+
+    <script type="text/javascript" src="js/comentarios.js"></script>
+{% endblock %}
+
+{% block sidebar %}
+    <p class="titulo-lateral">Información adicional</p>
+    <p>{{evento.info_adicional}}</p>
+{% endblock %}

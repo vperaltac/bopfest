@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+    <p class="titulo-lateral">Patrocinadores</p>
+    <p><a href="https://www.eurostarshotels.com/">Eurostars Hotels</a></p>
+    <p><a href="https://www.lavanguardia.com/">La Vanguardia</a></p>
+
+    <p class="titulo-lateral">Colaboradores</p>
+    <p><a href="http://www.renfe.com/">Renfe</a></p>
+    <p><a href="https://www.mitaxi.net/">MyTaxi</a></p>
+{% endblock %}
+
+{% block etiquetas %}
+    <div class="etiquetas">
+        <button class="etiqueta">Etiqueta 1</button>
+        <button class="etiqueta">Etiqueta 2</button>
+        <button class="etiqueta">Etiqueta 3</button>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% for polaroid in polaroids %}
+        <div class="polaroid">
+            <a href="evento/{{polaroid.id_evento}}">
+                <img src={{polaroid.imagen}} alt="">
+                <div class="texto-polaroid">
+                    <p>{{polaroid.titulo}}</p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

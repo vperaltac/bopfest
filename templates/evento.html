@@ -48,6 +48,8 @@
             <input id="boton-comentario" type="submit" value="Enviar">
         </form>
     </aside>
+
+    <script type="text/javascript" src="js/comentarios.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -59,6 +61,8 @@
                 <p>{{imagen.creditos}}</p>
             </div>
         {% endfor %}
+
+        <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
     </div>
 
     <h2>{{evento.titulo}}</h2>
@@ -82,11 +86,40 @@
 
     <iframe width="640" height="360" src="https://www.youtube.com/embed/tgbNymZ7vqY">
     </iframe>
-
-    <script type="text/javascript" src="js/comentarios.js"></script>
 {% endblock %}
 
 {% block sidebar %}
     <p class="titulo-lateral">Información adicional</p>
     <p>{{evento.info_adicional}}</p>
+{% endblock %}
+
+{% block galeria %}
+<div id="galeriaEvento" class="galeria">
+    <span id="cerrar-galeria" class="cerrar-galeria">&times;</span>
+    <div class="contenido-galeria">
+  
+      <div class="imagen-galeria">
+        <img src="imgs/bely-basarte.jpg">
+      </div>
+  
+      <div class="imagen-galeria">
+        <img src="imgs/miriam.jpg">
+      </div>
+  
+      <div class="imagen-galeria">
+        <img src="imgs/ruthlorenzo.jpg">
+      </div>
+  
+      <div class="imagen-galeria">
+        <img src="imgs/sfdk1-evento.jpeg">
+      </div>
+  
+      <!-- Next/previous controls -->
+      <a id="anterior" class="prev">&#10094;</a>
+      <a id="siguiente" class="next">&#10095;</a>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/galeria.js"></script>
 {% endblock %}

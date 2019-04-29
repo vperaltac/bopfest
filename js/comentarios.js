@@ -5,7 +5,7 @@ const formulario  = document.getElementsByClassName("grupo-formulario");
 const nombreForm = document.getElementById("nombre-form");
 const emailForm  = document.getElementById("email-form");
 const mensajeForm = document.getElementById("mensaje-form");
-const prohibidas = ["casa", "furgoneta","caballo"];
+var prohibidas;
 
 let botonComentariosActivo = false;
 
@@ -84,15 +84,28 @@ function validarEmail(email) {
 }
 
 //Comprueba si en un texto hay una palabra prohibida
-function comprobarMensaje(mensaje) {
-    let p = mensaje.value;
+function comprobarMensaje(texto){
+    // solo realizar peticion AJAX al servidor si la variable prohibidas aún no está definida
+    if(!prohibidas){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET','../index.php?dir=palabras',true);
+        xhr.send();
 
-    prohibidas.forEach(function(elemento){
-        if(p.includes(elemento))
-            p = p.replace(elemento, marcarPalabraProhibida(elemento.length));
-    });
-    
-    return p;
+        xhr.onload = function(){
+            prohibidas = JSON.parse(xhr.response);
+            
+            for(i in prohibidas){
+                if(texto.value.includes(prohibidas[i]))
+                    texto.value = texto.value.replace(prohibidas[i], marcarPalabraProhibida(prohibidas[i].length));
+            }
+        }
+    }
+    else{
+        for(i in prohibidas){
+            if(texto.value.includes(prohibidas[i]))
+                texto.value = texto.value.replace(prohibidas[i], marcarPalabraProhibida(prohibidas[i].length));
+        }
+    }
 }
 
 //Añade los asteriscos segun la longitud de la palabra
@@ -120,15 +133,15 @@ function incluirFecha() {
     return fechaCompleta;
 }
 
-//Se comprueba cada vez que levantas una tecla en el formulario si ha una palabra prohibida
+//Se comprueba cada vez que levantas una tecla en el formulario si hay una palabra prohibida
 mensajeForm.onkeyup = function () {
-    mensajeForm.value = comprobarMensaje(mensajeForm);
+    comprobarMensaje(mensajeForm);
 }
 
 nombreForm.onkeyup = function () {
-    nombreForm.value = comprobarMensaje(nombreForm);
+    comprobarMensaje(nombreForm);
 }
 
 emailForm.onkeyup = function () {
-    emailForm.value = comprobarMensaje(emailForm);
+    comprobarMensaje(emailForm);
 }

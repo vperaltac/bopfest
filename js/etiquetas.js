@@ -12,9 +12,8 @@ function filtrar_por_etiqueta(filtro){
     let etiquetas = document.getElementsByClassName('etiqueta');
     let etiqueta_actual = document.getElementById(filtro);
 
+    // si la etiqueta ya está activa, modificar sólo esa y actualizar la página sin filtros
     if(etiqueta_actual == etiqueta_activa){
-        console.log("etiqueta actual seleccionada");    
-
         etiqueta_actual.style.backgroundColor = "#ffaa56";
         etiqueta_actual.style.color = "white";
         etiqueta_activa = null;
@@ -22,6 +21,7 @@ function filtrar_por_etiqueta(filtro){
         filtro = 'all';
     }
     else{
+        // recorrer todas las etiquetas para modificar la apariencia 
         Array.prototype.forEach.call(etiquetas, function(etiqueta){
             if(etiqueta.id == filtro){
                 etiqueta.style.backgroundColor = "white";
@@ -35,11 +35,12 @@ function filtrar_por_etiqueta(filtro){
         });    
     }
 
-
+    // petición AJAX asíncrona 
     let xhr = new XMLHttpRequest();
     xhr.open('GET','../index.php?dir=filtro&etiqueta=' + filtro,true);
     xhr.send();  
 
+    // cuando se reciba la respuesta, modificar polaroids con el filtro
     xhr.onload = function(){
         document.getElementById('polaroids').innerHTML = xhr.response;
     }

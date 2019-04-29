@@ -38,6 +38,10 @@ function imagenes($id_evento){
     return pedirImagenesEvento($id_evento);
 }
 
+function palabras(){
+    return pedirPalabrasProhibidas();
+}
+
 $template = $twig->load('principal.html');
 
 
@@ -57,5 +61,8 @@ switch($dir){
         break;
     case 'contacto':
         echo $twig->render('contacto.html');    
+        break;
+    case 'palabras':
+        echo palabras();
         break;
 }

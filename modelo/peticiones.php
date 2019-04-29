@@ -42,12 +42,13 @@ function pedirPolaroids($etiqueta){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    if($etiqueta != 0){
-        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE etiqueta='rap';");
-    }
-    else{
+    if(is_int($etiqueta)){
         $peticion = $mysqli->query("SELECT * FROM polaroids;");
     }
+    else{
+        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE etiqueta='$etiqueta';");
+    }
+
     $polaroids = array();
     $i=0;
     while($fila = $peticion->fetch_assoc()){

@@ -1,8 +1,10 @@
-document.getElementById('etiqueta_rap').addEventListener('click',filtrar_por_etiqueta);
+document.getElementById('etiqueta_rap').addEventListener('click',function(){filtrar_por_etiqueta('rap')});
+document.getElementById('etiqueta_pop').addEventListener('click',function(){filtrar_por_etiqueta('pop')});
+document.getElementById('etiqueta_fest').addEventListener('click',function(){filtrar_por_etiqueta('festival')});
 
-function filtrar_por_etiqueta(){
+function filtrar_por_etiqueta(filtro){
     let xhr = new XMLHttpRequest();
-    xhr.open('POST','../index.php?dir=etiqueta',true);
+    xhr.open('GET','../index.php?dir=filtro&etiqueta=' + filtro,true);
     xhr.send();
 
     xhr.onload = function(){

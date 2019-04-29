@@ -51,8 +51,8 @@ switch($dir){
         }
         echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);    
         break;
-    case 'etiqueta':
-        $etiqueta = 1;
+    case 'filtro':
+        $etiqueta = $_GET['etiqueta'];
         echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
         break;
 }

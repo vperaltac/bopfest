@@ -42,7 +42,7 @@ function pedirPolaroids($etiqueta){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    if(is_int($etiqueta)){
+    if($etiqueta == 'all'){
         $peticion = $mysqli->query("SELECT * FROM polaroids;");
     }
     else{

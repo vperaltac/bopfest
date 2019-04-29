@@ -43,7 +43,7 @@ $template = $twig->load('principal.html');
 
 switch($dir){
     case 'principal':
-        echo $template->render(['polaroids' => polaroids(0)]);
+        echo $template->render(['polaroids' => polaroids('all')]);
         break;
     case 'evento':
         if(isset($_GET['evento'])){

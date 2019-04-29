@@ -38,11 +38,16 @@ function pedirEventos($id_evento){
 }
 
 // devuelve los polaroids de la base de datos en formato JSON
-function pedirPolaroids(){
+function pedirPolaroids($etiqueta){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    $peticion = $mysqli->query("SELECT * FROM polaroids;");
+    if($etiqueta != 0){
+        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE etiqueta='rap';");
+    }
+    else{
+        $peticion = $mysqli->query("SELECT * FROM polaroids;");
+    }
     $polaroids = array();
     $i=0;
     while($fila = $peticion->fetch_assoc()){

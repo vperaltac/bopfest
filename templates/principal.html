@@ -12,9 +12,9 @@
 
 {% block etiquetas %}
     <div class="etiquetas">
-        <button class="etiqueta">Etiqueta 1</button>
-        <button class="etiqueta">Etiqueta 2</button>
-        <button class="etiqueta">Etiqueta 3</button>
+        <button id="etiqueta_pop"  class = "etiqueta">#Pop</button>
+        <button id="etiqueta_rap"  class = "etiqueta">#Rap</button>
+        <button id="etiqueta_fest" class = "etiqueta">#Festivales</button>
     </div>
 {% endblock %}
 
@@ -29,4 +29,6 @@
             </a>
         </div>
     {% endfor %}
+
+<script type="text/javascript" src="js/etiquetas.js"></script>
 {% endblock %}

@@ -55,4 +55,7 @@ switch($dir){
         $etiqueta = $_GET['etiqueta'];
         echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
         break;
+    case 'contacto':
+        echo $twig->render('contacto.html');    
+        break;
 }

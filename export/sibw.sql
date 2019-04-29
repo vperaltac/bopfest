@@ -105,6 +105,29 @@ INSERT INTO `imagenes_eventos` VALUES (1,'imgs/sfdk1.jpeg','Zatu y Acción Sanch
 UNLOCK TABLES;
 
 --
+-- Table structure for table `palabras_prohibidas`
+--
+
+DROP TABLE IF EXISTS `palabras_prohibidas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `palabras_prohibidas` (
+  `palabra` varchar(30) NOT NULL,
+  PRIMARY KEY (`palabra`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `palabras_prohibidas`
+--
+
+LOCK TABLES `palabras_prohibidas` WRITE;
+/*!40000 ALTER TABLE `palabras_prohibidas` DISABLE KEYS */;
+INSERT INTO `palabras_prohibidas` VALUES ('caballo'),('casa'),('furgoneta');
+/*!40000 ALTER TABLE `palabras_prohibidas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `polaroids`
 --
 
@@ -127,7 +150,7 @@ CREATE TABLE `polaroids` (
 
 LOCK TABLES `polaroids` WRITE;
 /*!40000 ALTER TABLE `polaroids` DISABLE KEYS */;
-INSERT INTO `polaroids` VALUES ('imgs/sfdk1-evento.jpeg','SFDK',1,'rap'),('imgs/ruthlorenzo.jpg','Ruth Lorenzo',2,'pop'),('imgs/plastic-festival.jpg','Plastic Festival',NULL,'festival'),('imgs/miriam.jpg','Miriam Rodríguez',NULL,'pop'),('imgs/manuel-carrasco.jpg','Manuel Carrasco',NULL,'pop'),('imgs/bely-basarte.jpg','Bely Basarte',NULL,'pop'),('imgs/luz-casal.jpg','Luz Casal',NULL,'pop'),('imgs/shotta.jpg','Shotta',NULL,'rap'),('imgs/madrid-salvaje.png','Festival Madrid Salvaje',NULL,'festival');
+INSERT INTO `polaroids` VALUES ('imgs/sfdk1-evento.jpeg','SFDK',1,'rap'),('imgs/ruthlorenzo.jpg','Ruth Lorenzo',2,'pop'),('imgs/plastic-festival.jpg','Plastic Festival',NULL,'fest'),('imgs/miriam.jpg','Miriam Rodríguez',NULL,'pop'),('imgs/manuel-carrasco.jpg','Manuel Carrasco',NULL,'pop'),('imgs/bely-basarte.jpg','Bely Basarte',NULL,'pop'),('imgs/luz-casal.jpg','Luz Casal',NULL,'pop'),('imgs/shotta.jpg','Shotta',NULL,'rap'),('imgs/madrid-salvaje.png','Festival Madrid Salvaje',NULL,'fest');
 /*!40000 ALTER TABLE `polaroids` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -140,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-29  0:40:56
+-- Dump completed on 2019-04-29 19:22:30

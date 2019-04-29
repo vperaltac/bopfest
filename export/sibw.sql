@@ -127,7 +127,7 @@ CREATE TABLE `polaroids` (
 
 LOCK TABLES `polaroids` WRITE;
 /*!40000 ALTER TABLE `polaroids` DISABLE KEYS */;
-INSERT INTO `polaroids` VALUES ('imgs/sfdk1-evento.jpeg','SFDK',1,'rap'),('imgs/ruthlorenzo.jpg','Ruth Lorenzo',2,'pop'),('imgs/plastic-festival.jpg','Plastic Festival',NULL,NULL),('imgs/miriam.jpg','Miriam Rodríguez',NULL,NULL),('imgs/manuel-carrasco.jpg','Manuel Carrasco',NULL,NULL),('imgs/bely-basarte.jpg','Bely Basarte',NULL,NULL),('imgs/luz-casal.jpg','Luz Casal',NULL,NULL),('imgs/shotta.jpg','Shotta',NULL,NULL),('imgs/madrid-salvaje.png','Festival Madrid Salvaje',NULL,NULL);
+INSERT INTO `polaroids` VALUES ('imgs/sfdk1-evento.jpeg','SFDK',1,'rap'),('imgs/ruthlorenzo.jpg','Ruth Lorenzo',2,'pop'),('imgs/plastic-festival.jpg','Plastic Festival',NULL,'festival'),('imgs/miriam.jpg','Miriam Rodríguez',NULL,'pop'),('imgs/manuel-carrasco.jpg','Manuel Carrasco',NULL,'pop'),('imgs/bely-basarte.jpg','Bely Basarte',NULL,'pop'),('imgs/luz-casal.jpg','Luz Casal',NULL,'pop'),('imgs/shotta.jpg','Shotta',NULL,'rap'),('imgs/madrid-salvaje.png','Festival Madrid Salvaje',NULL,'festival');
 /*!40000 ALTER TABLE `polaroids` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -140,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-27 17:08:32
+-- Dump completed on 2019-04-29  0:40:56

@@ -74,6 +74,11 @@ botonComentario.addEventListener("click", (e) =>{
         let correoEnvio = emailForm.value;
         let mensajeEnvio = mensajeForm.value;
 
+        if (typeof(Storage) !== "undefined") {
+            sessionStorage.setItem('usuario',nombreEnvio);
+            sessionStorage.setItem('correo',correoEnvio);
+        }
+
         // petición AJAX asíncrona 
         let xhr = new XMLHttpRequest();
         xhr.open('GET','https://ipapi.co/json/');
@@ -93,8 +98,6 @@ botonComentario.addEventListener("click", (e) =>{
                                     }));
         }
 
-        nombreForm.value = "";
-        emailForm.value  = "";
         mensajeForm.value = "";
     }
 });
@@ -166,4 +169,13 @@ nombreForm.onkeyup = function () {
 
 emailForm.onkeyup = function () {
     comprobarMensaje(emailForm);
+}
+
+// uso de Sesiones/Storage HTML5
+if (sessionStorage.getItem("usuario") != null) {
+    nombreForm.value = sessionStorage.getItem("usuario");
+}
+  
+if (sessionStorage.getItem("correo") != null) {
+    emailForm.value = sessionStorage.getItem("correo");
 }

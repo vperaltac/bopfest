@@ -43,10 +43,10 @@ function pedirPolaroids($etiqueta){
     $mysqli = $db->getConexion();
 
     if($etiqueta == 'all'){
-        $peticion = $mysqli->query("SELECT * FROM polaroids;");
+        $peticion = $mysqli->query("SELECT * FROM polaroids ORDER BY -id_evento DESC;");
     }
     else{
-        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE etiqueta='$etiqueta';");
+        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE etiqueta='$etiqueta' ORDER BY -id_evento DESC;");
     }
 
     $polaroids = array();

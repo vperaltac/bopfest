@@ -24,3 +24,16 @@ Su último disco 'Loveaholic' es una mezcla en inglés y castellano de música r
 La artista se caracteriza por tener un potente directo, un show lleno de “Power” y con una capacidad vocal extraordinaria que no deja a nadie indiferente cuando la escuchan en directo. La describimos como la diva millennial “old school” que no te puedes perder. En esta ocasión nos presenta en directo “Loveaholic” acompañado además de temas inéditos y versiones que han marcado su carrera hasta convertirse en la artista que es en la actualidad. Un derroche de amor por la música y una fiera escénica y vocal",
 "Concierto 29/03/2019"
 );
+
+INSERT INTO eventos VALUES (
+    3,
+    "Plastic Festival 2019",
+    "Organizado por Diego García Aurelio",
+    NOW(),
+    "Tercera edición de Plastic Festival, se celebrará el próximo Sábado 27 de Abril de 2019 en El Ejido (Almería). Festival pensado y organizado con el único fin de que pases toda una tarde noche sin parar de bailar",
+    NULL,
+    "https://twitter.com/plasticfestival",
+    "https://www.facebook.com/plasticfestival/",
+    NOW(),
+    NOW()
+);

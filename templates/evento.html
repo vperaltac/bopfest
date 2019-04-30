@@ -2,7 +2,7 @@
 
 {% block menu %}
     <a href='principal'>Eventos</a>
-    <a href='#contacto'>Contacto</a>
+    <a href='contacto'>Contacto</a>
     <a id="abrir-comentarios" class="btn-comentarios">Comentarios</a>
 {% endblock %}
 
@@ -71,10 +71,10 @@
     <p class="fecha">{{evento.fecha}}</p>
     <p class="texto">{{evento.texto}}</p>
 
-    {% block fechas %}
-    <h4>Fecha de publicación: {{evento.fecha_creacion}}</h4>
-    <h4>Fecha de última modificación: {{evento.fecha_modif}}</h4>
-    {% endblock %}
+    <div id="fechas">
+        <h4>Fecha de publicación: {{evento.fecha_creacion}}</h4>
+        <h4>Fecha de última modificación: {{evento.fecha_modif}}</h4>
+    </div>
 
     {% block social %}
     {% set rrss = ['Twitter', 'Facebook'] %}
@@ -121,21 +121,11 @@
     <span id="cerrar-galeria" class="cerrar-galeria">&times;</span>
     <div class="contenido-galeria">
   
-      <div class="imagen-galeria">
-        <img src="imgs/bely-basarte.jpg">
-      </div>
-  
-      <div class="imagen-galeria">
-        <img src="imgs/miriam.jpg">
-      </div>
-  
-      <div class="imagen-galeria">
-        <img src="imgs/ruthlorenzo.jpg">
-      </div>
-  
-      <div class="imagen-galeria">
-        <img src="imgs/sfdk1-evento.jpeg">
-      </div>
+        {% for imagen in imagenes %}
+        <div class="imagen-galeria">
+            <img src={{imagen.imagen}}>
+        </div>
+        {% endfor %}
   
       <!-- Next/previous controls -->
       <a id="anterior" class="prev">&#10094;</a>

@@ -33,11 +33,11 @@
   }
 
   #titulo-barra {
-    padding: 45px;
+    padding: 3%;
   }
   
   .logo{
-    padding:5px;
+    padding-bottom: 3%;
     float: left;
   }
 
@@ -92,7 +92,6 @@
   }
   /***********************************************************************/
 
-
   /***********************************************************************/
   /*                            PIE DE PÁGINA                            */
   /*Estilo del pie de pagina*/
@@ -106,4 +105,18 @@
     padding: 1px;
   }
   /***********************************************************************/
+
+  /***********************************************************************/
+  /*                        ELIMINACION DE ELEMENTOS                     */
+  #galeriaEvento, 
+  #zona-comentarios,
+  #fechas,
+  #modalTwitter,
+  #modalFacebook,
+  .barra-navegacion,
+  .barra-lateral,
+  .imagenes-evento,
+  .social {
+    display: none;
+  }
   

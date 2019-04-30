@@ -46,7 +46,8 @@ function pedirPolaroids($etiqueta){
         $peticion = $mysqli->query("SELECT * FROM polaroids ORDER BY -id_evento DESC;");
     }
     else{
-        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE etiqueta='$etiqueta' ORDER BY -id_evento DESC;");
+        $peticion = $mysqli->query("SELECT * FROM polaroids WHERE id_evento IN (SELECT id_evento FROM etiquetas_eventos WHERE etiqueta='$etiqueta')
+                                    ORDER BY -id_evento DESC;");
     }
 
     $polaroids = array();

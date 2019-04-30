@@ -71,16 +71,27 @@
     <p>{{evento.texto}}</p>
     <h4>Fecha de publicación: {{evento.fecha_creacion}}</h4>
     <h4>Fecha de última modificación: {{evento.fecha_modif}}</h4>
-
+    {% block social %}
+    {% set rrss = ['Twitter', 'Facebook'] %}
     <!--Botones Sociales-->
     <div class="social">
-        <a href={{evento.twitter}} target="_blank">
-            <img src="imgs/twitter.png" alt="Twitter">   
-        </a>
-        <a href={{evento.facebook}} target="_blank">
-            <img src="imgs/facebook.png" alt="Facebook">
-        </a>
+        <img id={{rrss[0]}} src="imgs/twitter.png" alt="Twitter">   
+        <img id={{rrss[1]}} src="imgs/facebook.png" alt="Facebook">
     </div>
+    {% for rs in rrss %}
+    <!-- Ventana emergente -->
+    <div id=modal{{rs}} class="modal">
+        <!-- Contenido -->
+        <div class="modal-content">
+            <p>Se publicará en {{rs}} el siguiente mensaje:</p>
+            <p>{{evento.titulo}} vía @bopfest</p>
+            <img class="img-evento" src={{imagenes[0].imagen}} alt="">
+            <button id=modal-cerrar{{rs}} class="boton-imagenes">Aceptar</button>
+        </div>
+    </div>
+    {% endfor %}
+    <script type="text/javascript" src="js/popup.js"></script>
+    {% endblock %}
 
     <a href="evento1_imprimir.html">
         <img class="imprimir" src="imgs/baseline-local_printshop-24px.svg" alt="Print">

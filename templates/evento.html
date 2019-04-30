@@ -12,7 +12,7 @@
     <aside id="zona-comentarios" class="comentarios-eventos">
         <h2>Comentarios</h2>
         <section id="lista-comentarios">
-            <!--Comentario 1 (predefinido) -->
+            <!--Comentarios -->
             {% for comentario in comentarios %}
                 <div class="comentario">
                     <div class="cuadro-usuario">
@@ -69,6 +69,8 @@
     <p class="organizador">{{evento.organizador}}</p>
     <p class="fecha">{{evento.fecha}}</p>
     <p>{{evento.texto}}</p>
+    <h4>Fecha de publicación: {{evento.fecha_creacion}}</h4>
+    <h4>Fecha de última modificación: {{evento.fecha_modif}}</h4>
 
     <!--Botones Sociales-->
     <div class="social">

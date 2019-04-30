@@ -44,7 +44,7 @@ function palabras(){
 
 function enviarComentario($datos){
     $valores = json_decode($datos);
-    addComentario($valores->id_evento,$valores->nombre,$valores->correo,$valores->mensaje);
+    addComentario($valores->id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
 }
 
 $template = $twig->load('principal.html');
@@ -72,6 +72,7 @@ switch($dir){
         break;
     case 'addComentario':
         $datos = file_get_contents('php://input');
+        echo $datos;
         enviarComentario($datos);
         break;
 }

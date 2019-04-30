@@ -17,7 +17,7 @@
   body {
     font-family: 'Arial';
     font-size: 100%;
-    width: 80%;
+    width: 100%;
     /* centrar pagina en la pantalla */
     margin-left: auto;
     margin-right: auto;
@@ -44,7 +44,7 @@
   img.img-evento {
     float: left;
     width: 100%;
-    margin:0;
+    margin-bottom: 5%;
   }
   /***********************************************************************/
   
@@ -75,8 +75,7 @@
   /*Estilo del contenido principal de un evento*/
   .informacion {
     padding: 20px;
-    margin-left: 2%;
-    margin-top: 2%;
+    margin: 15%;
   }
 
   .texto  {

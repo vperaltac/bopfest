@@ -5,8 +5,10 @@
             <base href="http://localhost:8080" />
             <meta charset="UTF-8">
             <meta name="descripcion" content="Promoción de eventos musicales">
+            {% block estilo %}
             <!--Hoja de estilo-->
             <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+            {% endblock %}
             <!--Fuente Roboto de Google-->
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             <!--Favicon-->
@@ -30,14 +32,14 @@
             {% block menu %}
                 <a href='principal'>Eventos</a>
                 <a href='#Blog'>Blog</a>
-                <a href='#contacto'>Contacto</a>
+                <a href='contacto'>Contacto</a>
             {% endblock %}
         </nav>
 
         <main class="bloque-principal">
             <!--Columna lateral izquierda (Informacion adicional)-->
             <aside class="barra-lateral">
-                {% block sidebar%}
+                {% block sidebar %}
                 {% endblock %}
             </aside>
 

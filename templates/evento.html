@@ -80,20 +80,20 @@
     </div>
     {% for rs in rrss %}
     <!-- Ventana emergente -->
-    <div id=modal{{rs}} class="modal">
+    <div id="modal{{rs}}" class="modal">
         <!-- Contenido -->
         <div class="modal-content">
             <p>Se publicará en {{rs}} el siguiente mensaje:</p>
             <p>{{evento.titulo}} vía @bopfest</p>
             <img class="img-evento" src={{imagenes[0].imagen}} alt="">
-            <button id=modal-cerrar{{rs}} class="boton-imagenes">Aceptar</button>
+            <button id="modal-cerrar{{rs}}" class="boton-imagenes">Aceptar</button>
         </div>
     </div>
     {% endfor %}
     <script type="text/javascript" src="js/popup.js"></script>
     {% endblock %}
 
-    <a href="evento1_imprimir.html">
+    <a href="evento/{{evento.id_evento}}/imprimir">
         <img class="imprimir" src="imgs/baseline-local_printshop-24px.svg" alt="Print">
     </a>
 

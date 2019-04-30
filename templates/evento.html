@@ -104,8 +104,10 @@
     </a>
 
     {% block video %}
+    {% if evento.url_video != '' %}
     <iframe width="640" height="360" src={{evento.url_video}}>
     </iframe>
+    {% endif %}
     {% endblock %}
     
 {% endblock %}

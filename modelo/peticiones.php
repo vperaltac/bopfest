@@ -93,12 +93,13 @@ function pedirPalabrasProhibidas(){
 }
 
 // añade a la base de datos un nuevo comentario
-function addComentario($id_evento,$nombre,$correo,$texto){
+function addComentario($id_evento,$ip_usuario,$nombre,$correo,$texto){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
     // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
     $id_evento = $mysqli->real_escape_string($id_evento);
+    $ip_usuario = $mysqli->real_escape_string($ip_usuario);
     $nombre = $mysqli->real_escape_string($nombre);
     $correo = $mysqli->real_escape_string($correo);
     $texto = $mysqli->real_escape_string($texto);
@@ -107,8 +108,8 @@ function addComentario($id_evento,$nombre,$correo,$texto){
     // evita el uso de inyección de SQL y mejora la eficiencia de las sentencias
     // Compila, optimiza la sentencia y la guarda en caché antes de ejecutarla
     // los valores ? son tratados como puros datos y la sentencia nunca se compila de nuevo
-    $sentencia = $mysqli->prepare("INSERT INTO comentarios (id_evento,nombre,correo,fecha,texto) VALUES(?,?,?,NOW(),?)");
-    $sentencia->bind_param("isss",$id_evento,$nombre,$correo,$texto);
+    $sentencia = $mysqli->prepare("INSERT INTO comentarios (id_evento,ip_usuario,nombre,correo,fecha,texto) VALUES(?,?,?,?,NOW(),?)");
+    $sentencia->bind_param("issss",$id_evento,$ip_usuario,$nombre,$correo,$texto);
     $sentencia->execute();
 }
 

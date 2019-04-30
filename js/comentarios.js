@@ -5,6 +5,8 @@ const formulario  = document.getElementsByClassName("grupo-formulario");
 const nombreForm = document.getElementById("nombre-form");
 const emailForm  = document.getElementById("email-form");
 const mensajeForm = document.getElementById("mensaje-form");
+const idEvento = document.getElementsByClassName("titulo");
+
 var prohibidas;
 
 let botonComentariosActivo = false;
@@ -48,13 +50,11 @@ botonComentario.addEventListener("click", (e) =>{
     else{
         // añadir contenido
         nombre.appendChild(document.createTextNode(`${nombreForm.value}`));
-        correo.appendChild(document.createTextNode(`${emailForm.value}`));
         fecha.appendChild(document.createTextNode(incluirFecha()));
         mensaje.appendChild(document.createTextNode(`${mensajeForm.value}`));
 
         // añadir clases
         nombre.classList.add("nombre-usuario");
-        correo.classList.add("correo-usuario");
         fecha.classList.add("fecha-usuario");
         mensaje.classList.add("comentario-usuario");
 
@@ -65,11 +65,33 @@ botonComentario.addEventListener("click", (e) =>{
         comentario.classList.add("comentario");
         comentario.appendChild(imagen);
         comentario.appendChild(nombre);
-        comentario.appendChild(correo);
         comentario.appendChild(fecha);
         comentario.appendChild(mensaje);
 
         comentarios_dinamicos.appendChild(comentario);
+
+        let nombreEnvio = nombreForm.value;
+        let correoEnvio = emailForm.value;
+        let mensajeEnvio = mensajeForm.value;
+
+        // petición AJAX asíncrona 
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET','https://ipapi.co/json/');
+        xhr.send();
+        xhr.onload = function(){
+            let jsonip = JSON.parse(xhr.response);
+
+            let request = new XMLHttpRequest();
+            request.open('POST',"../index.php?dir=addComentario");
+            request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+            request.send(JSON.stringify({
+                                        "id_evento" : idEvento[0].id,
+                                        "ip_usuario": jsonip.ip,
+                                        "nombre"    : nombreEnvio,
+                                        "correo"    : correoEnvio,
+                                        "mensaje"   : mensajeEnvio
+                                    }));
+        }
 
         nombreForm.value = "";
         emailForm.value  = "";

@@ -38,6 +38,13 @@
   
   .logo{
     padding:5px;
+    float: left;
+  }
+
+  img.img-evento {
+    float: left;
+    width: 100%;
+    margin:0;
   }
   /***********************************************************************/
   
@@ -70,6 +77,19 @@
     padding: 20px;
     margin-left: 2%;
     margin-top: 2%;
+  }
+
+  .texto  {
+    margin-top: 5%;
+    column-count: 2;
+  }
+
+  p.url_video{
+    margin-top: 5%;
+  }
+
+  #btn-imprimir {
+    display: none;
   }
   /***********************************************************************/
 

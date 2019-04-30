@@ -58,7 +58,13 @@ switch($dir){
         if(isset($_GET['evento'])){
             $evento = (int)$_GET['evento'];
         }
-        echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);    
+        
+        if(isset($_GET['imprimir'])){
+            echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);
+        }
+        else{
+            echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);    
+        }
         break;
     case 'filtro':
         $etiqueta = $_GET['etiqueta'];

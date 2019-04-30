@@ -53,6 +53,7 @@
 {% endblock %}
 
 {% block content %}
+    {% block imagenesevento %}
     <div class="imagenes-evento">
         {% for imagen in imagenes %}
             <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
@@ -64,13 +65,18 @@
 
         <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
     </div>
+    {% endblock %}
 
     <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}</h2>
     <p class="organizador">{{evento.organizador}}</p>
     <p class="fecha">{{evento.fecha}}</p>
-    <p>{{evento.texto}}</p>
+    <p class="texto">{{evento.texto}}</p>
+
+    {% block fechas %}
     <h4>Fecha de publicación: {{evento.fecha_creacion}}</h4>
     <h4>Fecha de última modificación: {{evento.fecha_modif}}</h4>
+    {% endblock %}
+
     {% block social %}
     {% set rrss = ['Twitter', 'Facebook'] %}
     <!--Botones Sociales-->
@@ -93,12 +99,15 @@
     <script type="text/javascript" src="js/popup.js"></script>
     {% endblock %}
 
-    <a href="evento/{{evento.id_evento}}/imprimir">
+    <a id="btn-imprimir" href="evento/{{evento.id_evento}}/imprimir">
         <img class="imprimir" src="imgs/baseline-local_printshop-24px.svg" alt="Print">
     </a>
 
+    {% block video %}
     <iframe width="640" height="360" src={{evento.url_video}}>
     </iframe>
+    {% endblock %}
+    
 {% endblock %}
 
 {% block sidebar %}

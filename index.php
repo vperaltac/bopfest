@@ -60,7 +60,13 @@ switch($dir){
         }
         
         if(isset($_GET['imprimir'])){
-            echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);
+            $imprimir = $_GET['imprimir'];
+
+            if($imprimir == 'imprimir')
+                echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);
+            else
+                http_response_code(404);
+
         }
         else{
             echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);    
@@ -78,7 +84,9 @@ switch($dir){
         break;
     case 'addComentario':
         $datos = file_get_contents('php://input');
-        echo $datos;
         enviarComentario($datos);
+        break;
+    default:
+        http_response_code(404);
         break;
 }

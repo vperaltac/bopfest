@@ -5,6 +5,8 @@ const formulario  = document.getElementsByClassName("grupo-formulario");
 const nombreForm = document.getElementById("nombre-form");
 const emailForm  = document.getElementById("email-form");
 const mensajeForm = document.getElementById("mensaje-form");
+const idEvento = document.getElementsByClassName("titulo");
+
 var prohibidas;
 
 let botonComentariosActivo = false;
@@ -70,6 +72,17 @@ botonComentario.addEventListener("click", (e) =>{
         comentario.appendChild(mensaje);
 
         comentarios_dinamicos.appendChild(comentario);
+
+        // petición AJAX asíncrona 
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST',"../index.php?dir=addComentario");
+        xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+        xhr.send(JSON.stringify({
+                                    "id_evento" : idEvento[0].id,
+                                    "nombre"    : nombreForm.value,
+                                    "correo"    : emailForm.value,
+                                    "mensaje"   : mensajeForm.value
+                                }));
 
         nombreForm.value = "";
         emailForm.value  = "";

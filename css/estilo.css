@@ -208,23 +208,21 @@ p.fecha{
 /*                           BOTONES SOCIAL                            */
 
 /*Estilo de los icones para las redes sociales*/
-.social a{
+.social {
   float: left;
   padding: 10px;
   margin:10px;
-  text-decoration: none;
-  text-align: center;
-  color: #222;
+  cursor: pointer;
 }
 
 /*Estilo del icono imprimir*/
-.imprimir{
+.imprimir {
   float: right;
   padding: 10px;
   margin: 10px;
 }
 
-.imprimir:hover, .social a:hover {
+.imprimir:hover {
   background-color: darkgray;
 }
 /***********************************************************************/
@@ -374,7 +372,6 @@ iframe {
   border-radius: 4px;
 }
 
-/* The Modal (background) */
 .galeria {
   display: none;
   position: fixed;
@@ -388,7 +385,6 @@ iframe {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Modal Content */
 .contenido-galeria {
   position: relative;
   background-color: #fefefe;
@@ -398,7 +394,6 @@ iframe {
   max-width: 600px;
 }
 
-/* The Close Button */
 .cerrar-galeria {
   color: white;
   position: absolute;
@@ -415,7 +410,6 @@ iframe {
   cursor: pointer;
 }
 
-/* Hide the slides by default */
 .imagen-galeria {
   display: none;
 }
@@ -424,7 +418,6 @@ iframe {
   width: 100%;
 }
 
-/* Next & previous buttons */
 .prev,
 .next {
   cursor: pointer;
@@ -442,13 +435,11 @@ iframe {
   -webkit-user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-/* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
@@ -470,4 +461,29 @@ img.hover-shadow {
 .hover-shadow:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+/***********************************************************************/
 
+/***********************************************************************/
+/*                         VENTANA EMERGENTE                           */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 4% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+}

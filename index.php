@@ -55,9 +55,10 @@ switch($dir){
         echo $template->render(['polaroids' => polaroids('all')]);
         break;
     case 'evento':
-        if(isset($_GET['evento'])){
+        if(isset($_GET['evento']))
             $evento = (int)$_GET['evento'];
-        }
+        else
+            http_response_code(404);
         
         if(isset($_GET['imprimir'])){
             $imprimir = $_GET['imprimir'];
@@ -73,7 +74,11 @@ switch($dir){
         }
         break;
     case 'filtro':
-        $etiqueta = $_GET['etiqueta'];
+        if(isset($_GET['etiqueta']))
+            $etiqueta = $_GET['etiqueta'];
+        else
+            http_response_code(404);
+        
         echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
         break;
     case 'contacto':

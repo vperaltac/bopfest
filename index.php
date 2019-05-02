@@ -38,6 +38,8 @@ function imagenes($id_evento){
     return pedirImagenesEvento($id_evento);
 }
 
+
+
 function palabras(){
     return pedirPalabrasProhibidas();
 }

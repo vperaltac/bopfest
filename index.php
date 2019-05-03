@@ -1,12 +1,13 @@
 <?php 
 require 'vendor/autoload.php';
-require_once 'modelo/peticiones.php';
+require_once 'modelo/comentarios.php';
+require_once 'modelo/eventos.php';
+require_once 'modelo/polaroids.php';
 
 // Routing
 $dir = 'principal';
-if (isset($_GET['dir'])){
+if (isset($_GET['dir']))
     $dir = $_GET['dir'];
-}
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig   = new \Twig\Environment($loader,[ ]);
@@ -18,18 +19,16 @@ function polaroids($etiqueta){
 
 // obtener datos sobre comentarios
 function comentarios($id_evento){
-    if(!is_int($id_evento)){
+    if(!is_int($id_evento))
         trigger_error("id de evento desconocido. ", E_USER_ERROR);
-    }
 
     return pedirComentarios($id_evento);
 }
 
 // obtener datos sobre eventos
 function evento($id_evento){
-    if(!is_int($id_evento)){
+    if(!is_int($id_evento))
         trigger_error("id de evento desconocido. ", E_USER_ERROR);
-    }
 
     return pedirEventos($id_evento);
 }
@@ -37,8 +36,6 @@ function evento($id_evento){
 function imagenes($id_evento){
     return pedirImagenesEvento($id_evento);
 }
-
-
 
 function palabras(){
     return pedirPalabrasProhibidas();
@@ -50,7 +47,6 @@ function enviarComentario($datos){
 }
 
 $template = $twig->load('principal.html');
-
 
 switch($dir){
     case 'principal':
@@ -83,13 +79,6 @@ switch($dir){
         break;
     case 'contacto':
         echo $twig->render('contacto.html');    
-        break;
-    case 'palabras':
-        echo palabras();
-        break;
-    case 'addComentario':
-        $datos = file_get_contents('php://input');
-        enviarComentario($datos);
         break;
     default:
         http_response_code(404);

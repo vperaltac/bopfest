@@ -16,9 +16,8 @@ class Database{
         $this->conexion = new mysqli($config['servidor'],$config['usuario'],$config['password'],$config['nombre_bd']);
         $this->conexion->set_charset("utf8"); // para mostrar los caracteres latinos correctamente
 
-        if(mysqli_connect_error()) {
+        if(mysqli_connect_error())
 			trigger_error("Falló la conexion a la base de datos de MySQL: " . mysql_connect_error(),E_USER_ERROR);
-		}
     }
 
     // no permitir la copia del objeto singleton de la clase
@@ -27,9 +26,8 @@ class Database{
     // devuelve la instancia de la bd
     // si no existe, la crea primero
     public static function getInstancia(){
-        if(!self::$instancia){
+        if(!self::$instancia)
             self::$instancia = new self();
-        }
 
         return self::$instancia;
     }

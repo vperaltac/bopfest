@@ -87,7 +87,7 @@ botonComentario.addEventListener("click", (e) =>{
             let jsonip = JSON.parse(xhr.response);
 
             let request = new XMLHttpRequest();
-            request.open('POST',"../index.php?dir=addComentario");
+            request.open('POST',"../peticiones.php?peticion=addComentario");
             request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
             request.send(JSON.stringify({
                                         "id_evento" : idEvento[0].id,
@@ -113,7 +113,7 @@ function comprobarMensaje(texto){
     // solo realizar peticion AJAX al servidor si la variable prohibidas aún no está definida
     if(!prohibidas){
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','../index.php?dir=palabras',true);
+        xhr.open('GET','../peticiones.php?peticion=palabras',true);
         xhr.send();
 
         xhr.onload = function(){

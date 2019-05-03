@@ -53,17 +53,17 @@
 
 {% block content %}
     {% block imagenesevento %}
-    <div class="imagenes-evento">
-        {% for imagen in imagenes %}
-            <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
-            <div class="texto-imagen">
-                <p>{{imagen.titulo}}</p>
-                <p>{{imagen.creditos}}</p>
-            </div>
-        {% endfor %}
+        <div class="imagenes-evento">
+            {% for imagen in imagenes %}
+                <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
+                <div class="texto-imagen">
+                    <p>{{imagen.titulo}}</p>
+                    <p>{{imagen.creditos}}</p>
+                </div>
+            {% endfor %}
 
-        <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
-    </div>
+            <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
+        </div>
     {% endblock %}
 
     <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}</h2>
@@ -78,24 +78,26 @@
 
     {% block social %}
     {% set rrss = ['Twitter', 'Facebook'] %}
-    <!--Botones Sociales-->
-    <div class="social">
-        <img id={{rrss[0]}} src="imgs/twitter.png" alt="Twitter">   
-        <img id={{rrss[1]}} src="imgs/facebook.png" alt="Facebook">
-    </div>
-    {% for rs in rrss %}
-    <!-- Ventana emergente -->
-    <div id="modal{{rs}}" class="modal">
-        <!-- Contenido -->
-        <div class="modal-content">
-            <p>Se publicará en {{rs}} el siguiente mensaje:</p>
-            <p>{{evento.titulo}} vía @bopfest</p>
-            <img class="img-evento" src={{imagenes[0].imagen}} alt="">
-            <button id="modal-cerrar{{rs}}" class="boton-imagenes">Aceptar</button>
+        <!--Botones Sociales-->
+        <div class="social">
+            <img id={{rrss[0]}} src="imgs/twitter.png" alt="Twitter">   
+            <img id={{rrss[1]}} src="imgs/facebook.png" alt="Facebook">
         </div>
-    </div>
-    {% endfor %}
-    <script type="text/javascript" src="js/popup.js"></script>
+
+        {% for rs in rrss %}
+            <!-- Ventana emergente -->
+            <div id="modal{{rs}}" class="modal">
+                <!-- Contenido -->
+                <div class="modal-content">
+                    <p>Se publicará en {{rs}} el siguiente mensaje:</p>
+                    <p>{{evento.titulo}} vía @bopfest</p>
+                    <img class="img-evento" src={{imagenes[0].imagen}} alt="">
+                    <button id="modal-cerrar{{rs}}" class="boton-imagenes">Aceptar</button>
+                </div>
+            </div>
+        {% endfor %}
+
+        <script type="text/javascript" src="js/popup.js"></script>
     {% endblock %}
 
     <a id="btn-imprimir" href="evento/{{evento.id_evento}}/imprimir">
@@ -103,10 +105,9 @@
     </a>
 
     {% block video %}
-    {% if evento.url_video != '' %}
-    <iframe width="640" height="360" src={{evento.url_video}}>
-    </iframe>
-    {% endif %}
+        {% if evento.url_video != '' %}
+            <iframe width="640" height="360" src={{evento.url_video}}></iframe>
+        {% endif %}
     {% endblock %}
     
 {% endblock %}
@@ -117,22 +118,20 @@
 {% endblock %}
 
 {% block galeria %}
-<div id="galeriaEvento" class="galeria">
-    <span id="cerrar-galeria" class="cerrar-galeria">&times;</span>
-    <div class="contenido-galeria">
-  
-        {% for imagen in imagenes %}
-        <div class="imagen-galeria">
-            <img src={{imagen.imagen}}>
-        </div>
-        {% endfor %}
-  
-      <!-- Next/previous controls -->
-      <a id="anterior" class="prev">&#10094;</a>
-      <a id="siguiente" class="next">&#10095;</a>
-      </div>
-    </div>
-</div>
+    <div id="galeriaEvento" class="galeria">
+        <span id="cerrar-galeria" class="cerrar-galeria">&times;</span>
+        <div class="contenido-galeria">
+            {% for imagen in imagenes %}
+                <div class="imagen-galeria">
+                    <img src={{imagen.imagen}}>
+                </div>
+            {% endfor %}
 
-<script type="text/javascript" src="js/galeria.js"></script>
+            <!-- Next/previous controls -->
+            <a id="anterior" class="prev">&#10094;</a>
+            <a id="siguiente" class="next">&#10095;</a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/galeria.js"></script>
 {% endblock %}

@@ -1,18 +1,19 @@
 {% extends "evento.html" %}
 
 {% block estilo %}
-<link rel="stylesheet" type="text/css" href="../css/estilo_imprimir.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilo_imprimir.css">
 {% endblock %}
 
 {% block header %}
-<div id="cabecera">
-    <div id="titulo-barra">
-        <img class="logo" src="imgs/logo-imprimir.png" alt="logo">
+    <div id="cabecera">
+        <div id="titulo-barra">
+            <img class="logo" src="imgs/logo-imprimir.png" alt="logo">
+        </div>
     </div>
-</div>
-<img class="img-evento" src="imgs/foto-imprimir.jpg" alt="sfdkimg1"> 
+
+    <img class="img-evento" src="imgs/foto-imprimir.jpg" alt="sfdkimg1"> 
 {% endblock %}
 
 {% block video %}
-<p class="url_video">{{evento.url_video}}</p>
+    <p class="url_video">{{evento.url_video}}</p>
 {% endblock %}

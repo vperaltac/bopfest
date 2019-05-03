@@ -69,11 +69,9 @@ switch($dir){
                 echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);
             else
                 http_response_code(404);
-
         }
-        else{
+        else
             echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);    
-        }
         break;
     case 'filtro':
         if(isset($_GET['etiqueta']))

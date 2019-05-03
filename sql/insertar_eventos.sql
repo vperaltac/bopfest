@@ -14,6 +14,16 @@ Artistas invitados: Kase O, Fyahbwoy, Capaz, Juaninacka, El Chojin, Kaze, R de R
 "Para saber más acerca de este evento como ver su localización exacta y comprar entradas, diríjase a la web del organizador." 
 );
 
+UPDATE eventos SET texto = 'Más de 3 horas de show y repaso a toda su carrera. Concierto único e irrepetible.
+NUEVA UBICACIÓN - Centro Andaluz de Arte Contemporáneo - SEVILLA
+18:00 - Apertura de puertas
+19:00 - Dj Hazhe
+20:00 - R de Rumba
+21:00 - SFDK + Invitados (Más de 3 horas de show)
+Cuando por caprichos del destino nos conocimos aquel verano de 1994 era impensable que en 2019 fuéramos a estar celebrando nuestros 25 años como grupo. 25 años de trabajo, de esfuerzo, de aprendizaje. 25 años de creer en nosotros y en nuestra música. De aportar nuestro granito de arena para hacer crecer y respetar un estilo musical en nuestro país. 25 años de lágrimas y alegrías. 25 años de SFDK. Un largo camino recompensado por las muestras de cariño de todas las personas que han apoyado nuestra música a lo largo de estos años. Siempre os estaremos agradecidos. Para tan marcada celebración hemos querido preparar algo muy especial: El día 16 de marzo de 2019 y en la ciudad que nos vio nacer y crecer; Sevilla, realizaremos un concierto único e irrepetible donde repasaremos toda nuestra carrera profesional, incluyendo canciones que nunca fueron tocadas en directo y donde nos rodearemos de amigos que, de una forma u otra, han sido participes y testigos de nuestra andadura musical. Quizás estemos hablando del día más especial de nuestra trayectoria. Hasta hoy.
+Artistas invitados: Kase O, Fyahbwoy, Capaz, Juaninacka, El Chojin, Kaze, R de Rumba, Sho-Hai, Hazhe, Little Pepe, Shabu One Shant, El Límite Darmo, Legendario, Gordo Master, Ose Him, Andreas Lutz, Hermanos del Groove... ",
+"Para saber más acerca de este evento como ver su localización exacta y comprar entradas, diríjase a la web del organizador." ' WHERE id_evento = 1;
+
 INSERT INTO eventos VALUES (
     NULL,
     "Concierto Ruth Lorenzo",

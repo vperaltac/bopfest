@@ -18,7 +18,7 @@
                         <img class="imagen-comentario" src="imgs/user.png" alt="usuario1">
                         <div class="datos-usuario">
                             <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
-                            <p class="fecha-usuario">{{comentario.fecha}}</p>
+                            <p class="fecha-usuario">{{comentario.fecha | date("d/m/Y H:i:s")}}</p>
                             <p class="comentario-usuario">{{comentario.texto}}</p>
                         </div>
                     </div>
@@ -68,12 +68,12 @@
 
     <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}</h2>
     <p class="organizador">{{evento.organizador}}</p>
-    <p class="fecha">{{evento.fecha}}</p>
+    <p class="fecha">{{evento.fecha | date("d/m/Y")}}</p>
     <p class="texto">{{evento.texto | nl2br}}</p>
 
     <div id="fechas">
-        <h4>Fecha de publicación: {{evento.fecha_creacion}}</h4>
-        <h4>Fecha de última modificación: {{evento.fecha_modif}}</h4>
+        <h4>Fecha de publicación: {{evento.fecha_creacion | date("d/m/Y H:i:s")}}</h4>
+        <h4>Fecha de última modificación: {{evento.fecha_modif | date("d/m/Y H:i:s")}}</h4>
     </div>
 
     {% block social %}

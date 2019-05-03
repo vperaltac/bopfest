@@ -37,15 +37,6 @@ function imagenes($id_evento){
     return pedirImagenesEvento($id_evento);
 }
 
-function palabras(){
-    return pedirPalabrasProhibidas();
-}
-
-function enviarComentario($datos){
-    $valores = json_decode($datos);
-    addComentario($valores->id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
-}
-
 $template = $twig->load('principal.html');
 
 switch($dir){

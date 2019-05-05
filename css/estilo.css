@@ -388,11 +388,9 @@ iframe {
 
 .contenido-galeria {
   position: relative;
-  background-color: #fefefe;
   margin: auto;
   padding: 0;
-  width: 90%;
-  max-width: 600px;
+  width: 350px;
 }
 
 .cerrar-galeria {
@@ -413,6 +411,8 @@ iframe {
 
 .imagen-galeria {
   display: none;
+  width: 350px;
+  height: auto;
 }
 
 .imagen-galeria img {

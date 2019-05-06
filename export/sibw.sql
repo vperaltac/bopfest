@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.25, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
 --
 -- Host: localhost    Database: sibw
 -- ------------------------------------------------------
--- Server version	5.7.25-0ubuntu0.18.04.2
+-- Server version	5.7.26-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -150,6 +150,7 @@ CREATE TABLE `galeria` (
 
 LOCK TABLES `galeria` WRITE;
 /*!40000 ALTER TABLE `galeria` DISABLE KEYS */;
+INSERT INTO `galeria` VALUES (1,'imgs/sfdk3.jpg'),(1,'imgs/sfdk4.jpg'),(2,'imgs/ruthlorenzo3.jpg'),(2,'imgs/ruthlorenzo4.jpg');
 /*!40000 ALTER TABLE `galeria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-05 17:49:59
+-- Dump completed on 2019-05-06 23:21:39

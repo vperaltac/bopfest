@@ -390,7 +390,7 @@ iframe {
   position: relative;
   margin: auto;
   padding: 0;
-  width: 350px;
+  width: 500px;
 }
 
 .cerrar-galeria {
@@ -411,7 +411,7 @@ iframe {
 
 .imagen-galeria {
   display: none;
-  width: 350px;
+  width: 500px;
   height: auto;
 }
 

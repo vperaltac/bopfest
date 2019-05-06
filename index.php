@@ -37,6 +37,10 @@ function imagenes($id_evento){
     return pedirImagenesEvento($id_evento);
 }
 
+function galeria($id_evento){
+    return pedirImagenesGaleria($id_evento);
+}
+
 $template = $twig->load('principal.html');
 
 switch($dir){
@@ -58,7 +62,7 @@ switch($dir){
                 http_response_code(404);
         }
         else
-            echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);    
+            echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento), 'galeria' => galeria($evento)]);    
         break;
     case 'filtro':
         if(isset($_GET['etiqueta']))

@@ -37,6 +37,24 @@ function pedirImagenesEvento($id_evento){
     return $imagenes;
 }
 
+function pedirImagenesGaleria($id_evento){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
+    $id_evento = $mysqli->real_escape_string($id_evento);
+
+    $peticion = $mysqli->query("SELECT * FROM galeria WHERE id_evento='$id_evento';");
+    $imagenes = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $imagenes[$i] = $fila;
+        $i++;
+    }
+
+    return $imagenes;
+}
+
 // añade a la base de datos un nuevo evento
 function addEvento($titulo,$organizador,$texto){
     $db = Database::getInstancia();

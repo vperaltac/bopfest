@@ -61,8 +61,10 @@
                     <p>{{imagen.creditos}}</p>
                 </div>
             {% endfor %}
-
-            <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
+            
+            {% if galeria %}
+                <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
+            {% endif %}
         </div>
     {% endblock %}
 
@@ -118,20 +120,22 @@
 {% endblock %}
 
 {% block galeria %}
-    <div id="galeriaEvento" class="galeria">
-        <span id="cerrar-galeria" class="cerrar-galeria">&times;</span>
-        <div class="contenido-galeria">
-            {% for imagen in galeria %}
-                <div class="imagen-galeria">
-                    <img src={{imagen.imagen}}>
-                </div>
-            {% endfor %}
+    {% if galeria %}
+        <div id="galeriaEvento" class="galeria">
+            <span id="cerrar-galeria" class="cerrar-galeria">&times;</span>
+            <div class="contenido-galeria">
+                {% for imagen in galeria %}
+                    <div class="imagen-galeria">
+                        <img src={{imagen.imagen}}>
+                    </div>
+                {% endfor %}
 
-            <!-- Next/previous controls -->
-            <a id="anterior" class="prev">&#10094;</a>
-            <a id="siguiente" class="next">&#10095;</a>
+                <!-- Next/previous controls -->
+                <a id="anterior" class="prev">&#10094;</a>
+                <a id="siguiente" class="next">&#10095;</a>
+            </div>
         </div>
-    </div>
 
-    <script type="text/javascript" src="js/galeria.js"></script>
+        <script type="text/javascript" src="js/galeria.js"></script>
+    {% endif %}
 {% endblock %}

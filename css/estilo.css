@@ -488,3 +488,60 @@ img.hover-shadow {
   width: 50%;
   text-align: center;
 }
+/***********************************************************************/
+
+/***********************************************************************/
+/*                         INICIO SESION/REGISTRO                      */
+#iniciar-sesion {
+  float: right;
+  cursor: pointer;
+}
+
+.contenido-inicio-sesion {
+  display: flex;
+}
+
+.zona-inicio {
+  flex: 49%;
+}
+
+.zona-registro {
+  flex:49%;
+}
+
+.zona-inicio h2,
+.zona-registro h2 {
+  margin-bottom: 2%;
+}
+
+.formulario-inicio {
+  padding: 20px;
+}
+
+.formulario-inicio .grupo-formulario{
+  padding-bottom: 15px;
+}
+
+.formulario-inicio label{
+  display:block;
+}
+
+.formulario-inicio input[type="text"],
+.formulario-inicio input[type="password"],
+.formulario-inicio textarea{
+  padding: 8px;
+  width: 60%;
+}
+
+.formulario-inicio textarea{
+  resize: none;
+  height: 280px;
+}
+
+.formulario-inicio input[type="submit"]{
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}

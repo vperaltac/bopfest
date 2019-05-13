@@ -6,12 +6,12 @@
             <meta charset="UTF-8">
             <meta name="descripcion" content="Promoción de eventos musicales">
             {% block estilo %}
-                <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+                <link rel="stylesheet" type="text/css" href="/css/estilo.css">
             {% endblock %}
             <!--Fuente Roboto de Google-->
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
             <!--Favicon-->
-            <link rel="icon" href="../imgs/favicon.png" type="imgs">
+            <link rel="icon" href="/imgs/favicon.png" type="imgs">
             <title>Bop Fest</title>
         {% endblock %}
     </head>
@@ -21,7 +21,7 @@
             <header id='cabecera'>
                 <div class='titulo-barra'>
                     <a href='principal'>
-                        <img class='logo' src='../../imgs/logo.png' alt='logo'>
+                        <img class='logo' src='/imgs/logo.png' alt='logo'>
                     </a>
                     <h1>Bop Fest</h1>
                 </div>
@@ -33,15 +33,18 @@
             {% block menu %}
                 <a href='principal'>Eventos</a>
                 <a href='contacto'>Contacto</a>
+                <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
             {% endblock %}
         </nav>
 
         <main class="bloque-principal">
-            <!--Columna lateral izquierda (Informacion adicional)-->
-            <aside class="barra-lateral">
-                {% block sidebar %}
-                {% endblock %}
-            </aside>
+            {% block side %}
+                <!--Columna lateral izquierda (Informacion adicional)-->
+                <aside class="barra-lateral">
+                    {% block sidebar %}
+                    {% endblock %}
+                </aside>
+            {% endblock %}
 
             {% block comentarios %}
             {% endblock %}

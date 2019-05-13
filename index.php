@@ -75,6 +75,9 @@ switch($dir){
     case 'contacto':
         echo $twig->render('contacto.html');    
         break;
+    case 'iniciar-sesion':
+        echo $twig->render('iniciar_sesion.html');    
+    break;
     default:
         http_response_code(404);
         break;

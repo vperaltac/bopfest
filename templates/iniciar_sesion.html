@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <a href='principal'>Eventos</a>
+    <a href='contacto'>Contacto</a>
+{% endblock %}
+
+{% block side %}
+{% endblock %}
+
+{% block content %}
+<div class="contenido-inicio-sesion">
+    <div class="zona-inicio formulario-inicio">
+        <h2>Iniciar sesión</h2>
+        <div class="grupo-formulario">
+            <label for="uname">Email</label>
+            <input type="text" name="uname" required>
+        </div>
+        
+        <div class="grupo-formulario">
+            <label for="psw">Contraseña</label>
+            <input type="password" name="psw" required>
+        </div>
+    
+        <input class="boton" type="submit" value="Iniciar sesión" name="">
+    </div>
+    
+    <div class="zona-registro formulario-inicio">
+        <h2>Regístrate</h2>
+        <div class="grupo-formulario">
+            <label for="uname">Email</label>
+            <input type="text" name="uname" required>
+        </div>
+        
+        <div class="grupo-formulario">
+            <label for="psw">Contraseña</label>
+            <input type="password" name="psw" required>
+        </div>
+    
+        <div class="grupo-formulario">
+            <label for="psw">Repita la contraseña</label>
+            <input type="password" name="psw" required>
+        </div>
+    
+        <input class="boton" type="submit" value="Registrar" name="">
+    </div>
+</div>
+{% endblock %}

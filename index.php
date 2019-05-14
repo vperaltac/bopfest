@@ -10,7 +10,11 @@ if (isset($_GET['dir']))
     $dir = $_GET['dir'];
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig   = new \Twig\Environment($loader,[ ]);
+$twig   = new \Twig\Environment($loader,[
+    'debug' => 'true'
+ ]);
+ $twig->addExtension(new \Twig\Extension\DebugExtension());
+
 
 // obtener datos sobre polaroids (pagina principal)
 function polaroids($etiqueta){

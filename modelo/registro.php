@@ -8,7 +8,7 @@ require_once "database.php";
 
 
 // registra un usuario en la base de datos
-function registrarUsuario($correo,$hash){
+function registrarUsuario($correo,$nombre,$hash){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
@@ -18,8 +18,8 @@ function registrarUsuario($correo,$hash){
         $correo = $mysqli->real_escape_string($correo);
         $tipo = "registrado";
 
-        $sentencia = $mysqli->prepare("INSERT INTO usuarios (email,passwd,tipo) VALUES (?,?,?);");
-        $sentencia->bind_param("sss",$correo,$hash,$tipo);
+        $sentencia = $mysqli->prepare("INSERT INTO usuarios (email,nombre,passwd,tipo) VALUES (?,?,?,?);");
+        $sentencia->bind_param("ssss",$correo,$nombre,$hash,$tipo);
         $sentencia->execute();
     }
     else{

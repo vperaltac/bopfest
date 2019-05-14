@@ -60,4 +60,31 @@ function addComentario($id_evento,$ip_usuario,$nombre,$correo,$texto){
     $sentencia->bind_param("issss",$id_evento,$ip_usuario,$nombre,$correo,$texto);
     $sentencia->execute();
 }
+
+function editarComentario($id_evento,$id_comentario,$nuevo_texto,$moderador){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $id_evento = $mysqli->real_escape_string($id_evento);
+    $id_comentario = $mysqli->real_escape_string($id_comentario);
+    $nuevo_texto = $mysqli->real_escape_string($nuevo_texto);
+    $moderador = $mysqli->real_escape_string($moderador);
+
+    $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=$nuevo_texto,editado=$moderador WHERE id_evento=$id_evento and id_comentario=$id_comentario");
+    $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_evento,$id_comentario);
+    $sentencia->execute();
+}
+
+function eliminarComentario($id_evento,$id_comentario){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $id_evento = $mysqli->real_escape_string($id_evento);
+    $id_comentario = $mysqli->real_escape_string($id_comentario);
+
+    $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=$nuevo_texto,editado=$moderador WHERE id_evento=$id_evento and id_comentario=$id_comentario");
+    $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_evento,$id_comentario);
+    $sentencia->execute();
+}
+
 ?>

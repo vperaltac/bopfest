@@ -14,7 +14,7 @@
         <section id="lista-comentarios">
             <!--Comentarios -->
             {% for comentario in comentarios %}
-                <div class="comentario">
+                <div class="comentario" data-id-comentario={{comentario.id_comentario}}>
                     <div class="cuadro-usuario">
                         <img class="imagen-comentario" src="imgs/user.png" alt="usuario1">
                         <div class="datos-usuario">

@@ -14,12 +14,12 @@
         <h2>Iniciar sesión</h2>
         <div class="grupo-formulario">
             <label for="uname">Email</label>
-            <input type="text" name="uname" required>
+            <input type="text" name="uname" id="email-inicio" required>
         </div>
         
         <div class="grupo-formulario">
             <label for="psw">Contraseña</label>
-            <input type="password" name="psw" required>
+            <input type="password" name="psw" id="pwd-inicio" required>
         </div>
     
         <input class="boton" type="submit" value="Iniciar sesión" name="">
@@ -29,20 +29,22 @@
         <h2>Regístrate</h2>
         <div class="grupo-formulario">
             <label for="uname">Email</label>
-            <input type="text" name="uname" required>
+            <input type="text" name="uname" id="email-registro" required>
         </div>
         
         <div class="grupo-formulario">
             <label for="psw">Contraseña</label>
-            <input type="password" name="psw" required>
+            <input type="password" name="psw" id="pwd-registro" required>
         </div>
     
         <div class="grupo-formulario">
             <label for="psw">Repita la contraseña</label>
-            <input type="password" name="psw" required>
+            <input type="password" name="psw" id="pwdr-registro" required>
         </div>
     
-        <input class="boton" type="submit" value="Registrar" name="">
+        <input class="boton" type="submit" value="Registrar" name="" id="boton-registro">
     </div>
+
+    <script type="text/javascript" src="js/registro.js"></script>
 </div>
 {% endblock %}

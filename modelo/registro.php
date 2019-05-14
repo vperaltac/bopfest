@@ -16,9 +16,10 @@ function registrarUsuario($correo,$hash){
 
     if($peticion->num_rows === 0){
         $correo = $mysqli->real_escape_string($correo);
-    
+        $tipo = "registrado";
+
         $sentencia = $mysqli->prepare("INSERT INTO usuarios (email,passwd,tipo) VALUES (?,?,?);");
-        $sentencia->bind_param("sss",$correo,$hash,"registrado");
+        $sentencia->bind_param("sss",$correo,$hash,$tipo);
         $sentencia->execute();
     }
     else{

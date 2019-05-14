@@ -69,14 +69,30 @@
         </div>
     {% endblock %}
 
-    <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}</h2>
-    <p class="organizador">{{evento.organizador}}</p>
-    <p class="fecha">{{evento.fecha | date("d/m/Y")}}</p>
-    <p class="texto">{{evento.texto | nl2br}}</p>
+    <div class="formulario-inicio">
+        <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}
+                <img src="/imgs/iconos/round-create-24px.svg" alt="">
+        </h2>
+        <div class="grupo-formulario">
+            <input type="text" name="uname" value="{{evento.titulo}}" id="titulo-evento">
+        </div>
+        <p class="organizador">{{evento.organizador}}</p>
+        <div class="grupo-formulario">
+            <input type="text" name="uname" value="{{evento.organizador}}" id="organizador">
+        </div>
+        <p class="fecha">{{evento.fecha | date("d/m/Y")}}</p>
+        <div class="grupo-formulario">
+            <input type="text" name="uname" value="{{evento.fecha | date("d/m/Y")}}" id="fecha-evento">
+        </div>
+        <p class="texto">{{evento.texto | nl2br}}</p>
+        <div class="grupo-formulario">
+            <textarea name="texto-evento" id="texto-evento">{{evento.texto}}</textarea>
+        </div>
 
-    <div id="fechas">
-        <h4>Fecha de publicación: {{evento.fecha_creacion | date("d/m/Y H:i:s")}}</h4>
-        <h4>Fecha de última modificación: {{evento.fecha_modif | date("d/m/Y H:i:s")}}</h4>
+        <div id="fechas">
+            <h4>Fecha de publicación: {{evento.fecha_creacion | date("d/m/Y H:i:s")}}</h4>
+            <h4>Fecha de última modificación: {{evento.fecha_modif | date("d/m/Y H:i:s")}}</h4>
+        </div>
     </div>
 
     {% block social %}

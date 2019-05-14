@@ -78,6 +78,9 @@ switch($dir){
     case 'iniciar-sesion':
         echo $twig->render('iniciar_sesion.html');    
     break;
+    case 'prueba':
+        echo $twig->render('perfil_usuario.html');    
+    break;
     default:
         http_response_code(404);
         break;

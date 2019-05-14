@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <a href='principal'>Eventos</a>
+    <a href='contacto'>Contacto</a>
+{% endblock %}
+
+{% block sidebar %}
+<p class="titulo-lateral">Ajustes</p>
+<div id="editar-informacion">
+    <a id="btnNombre">Cambiar nombre</a>
+    <a id="btnEmail">Cambiar email</a>
+    <a id="btnPass">Cambiar contraseña</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<h2>Mi perfil</h2>
+<div class="formulario-inicio">
+    <p id="nombre">Nombre: Diego García Aurelio</p>
+    <div class="grupo-formulario">
+        <p id="editar-nombre">
+            Nombre: 
+            <input type="text" name="uname" value="Diego García Aurelio" id="nombre-usuario">
+            <input id="btn-cancelar-nombre" class="boton" type="submit" value="Cancelar" name="">
+            <input class="boton" type="submit" value="Aceptar" name="">
+        </p>
+    </div>
+    <p id="email">Email: diegoga@correo.ugr.es</p>
+    <div class="grupo-formulario">
+        <p id="editar-email">
+            Email: 
+            <input type="text" name="uname" value="diegoga@correo.ugr.es" id="email-usuario">
+            <input id="btn-cancelar-email" class="boton" type="submit" value="Cancelar" name="">
+            <input class="boton" type="submit" value="Aceptar" name="">
+        </p>
+    </div>
+    <p>Tipo de usuario: Registrado</p>
+
+    <div id="editar-pass" class="grupo-formulario">
+        <p>
+            Contraseña antigua: 
+            <input type="password" name="psw" id="pwd-antigua">
+        </p>
+        <p>
+            Contraseña nueva: 
+            <input type="password" name="psw" id="pwd-nueva">
+        </p>
+        <p>
+            Repita la contraseña nueva: 
+            <input type="password" name="psw" id="pwd-nueva2">
+        </p>
+        <input id="btn-cancelar-pass" class="boton" type="submit" value="Cancelar" name="">
+        <input class="boton" type="submit" value="Aceptar" name="">
+    </div>
+</div>
+
+<script type="text/javascript" src="js/ajustes-perfil.js"></script>
+{% endblock %}

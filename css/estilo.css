@@ -545,3 +545,30 @@ img.hover-shadow {
   border: none;
   cursor: pointer;
 }
+/***********************************************************************/
+
+/***********************************************************************/
+/*                         PERFIL USUARIO                              */
+#editar-informacion {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  overflow: auto;
+}
+
+#editar-informacion a {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#editar-nombre,
+#editar-email,
+#editar-pass {
+  display: none;
+}
+
+#texto-evento {
+  height: 400px;
+}

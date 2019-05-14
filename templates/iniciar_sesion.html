@@ -10,7 +10,7 @@
 
 {% block content %}
 <div class="contenido-inicio-sesion">
-    <div class="zona-inicio formulario-inicio">
+    <form  class="zona-inicio formulario-inicio">
         <h2>Iniciar sesión</h2>
         <div class="grupo-formulario">
             <label for="uname">Email</label>
@@ -22,16 +22,21 @@
             <input type="password" name="psw" id="pwd-inicio" required>
         </div>
     
-        <input class="boton" type="submit" value="Iniciar sesión" name="">
-    </div>
+        <input class="boton" type="submit" value="Iniciar sesión" name="" id="boton-inicio">
+    </form>
     
-    <div class="zona-registro formulario-inicio">
+    <form class="zona-registro formulario-inicio">
         <h2>Regístrate</h2>
         <div class="grupo-formulario">
-            <label for="uname">Email</label>
-            <input type="text" name="uname" id="email-registro" required>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email-registro" required>
         </div>
         
+        <div class="grupo-formulario">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre-registro" required>
+        </div>
+
         <div class="grupo-formulario">
             <label for="psw">Contraseña</label>
             <input type="password" name="psw" id="pwd-registro" required>
@@ -43,8 +48,9 @@
         </div>
     
         <input class="boton" type="submit" value="Registrar" name="" id="boton-registro">
-    </div>
+    </form>
 
     <script type="text/javascript" src="js/registro.js"></script>
+    <script type="text/javascript" src="js/iniciar_sesion.js"></script>
 </div>
 {% endblock %}

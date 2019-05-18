@@ -572,3 +572,43 @@ img.hover-shadow {
 #texto-evento {
   height: 400px;
 }
+/***********************************************************************/
+
+/***********************************************************************/
+/*                         PANEL DE CONTROL                            */
+.busqueda-tabla {
+  background-image: url('/imgs/iconos/round-search-24px.svg');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+.tabla {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+  margin-bottom: 3%;
+}
+
+.tabla th, .tabla td {
+  text-align: left;
+  padding: 12px;
+}
+
+.tabla tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla tr.header, .tabla tr:hover {
+  background-color: #f1f1f1;
+}
+
+td a {
+  text-decoration: none;
+  color: #222;
+}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<p class="titulo-lateral">Panel de control</p>
+<div id="editar-informacion">
+    <a id="btnEventos">Eventos</a>
+    <a id="btnComentarios">Comentarios</a>
+    <a id="btnUsuarios">Usuarios</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="lista-eventos">
+    <h2>Lista de eventos</h2>
+    <!--Barra de busqueda-->
+    <input type="text" id="busquedaE" class="busqueda-tabla" placeholder="Busca por título de evento..." title="Escribe el nombre de un evento">
+    <!--Tabla Eventos-->
+    <table id="tablaE" class="tabla">
+    <tr class="header">
+        <th>#</th>
+        <th>Título de evento</th>
+        <th>Etiquetas</th>
+    </tr>
+    {% for polaroid in polaroids %}
+    <tr>
+        <td><a href="evento/{{polaroid.id_evento}}">{{polaroid.id_evento}}</a></td>
+        <td><a href="evento/{{polaroid.id_evento}}">{{polaroid.titulo}}</a></td>
+        <td>{{polaroid.etiqueta}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+</div>
+
+<div id="lista-comentarios">
+    <h2>Lista de comentarios</h2>
+    <!--Busqueda-->
+    <input type="text" id="busquedaC" class="busqueda-tabla" placeholder="Busca por palabras..." title="Escribe palabras">
+    <!--Tabla Comentarios-->
+    <table id="tablaC" class="tabla">
+        <tr class="header">
+            <th>ID evento</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Comentario</th>
+            <th>Fecha</th>
+        </tr>
+        {% for comentario in comentarios %}
+        <tr>
+            <td><a href="evento/{{comentario.id_evento}}">{{comentario.id_evento}}</a></td>
+            <td>{{comentario.nombre}}</td>
+            <td>{{comentario.correo}}</td>
+            <td>{{comentario.texto}}</td>
+            <td>{{comentario.fecha | date("d/m/Y H:i:s")}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div id="lista-usuarios">
+    <h2>Lista de usuarios</h2>
+    <!--Busqueda-->
+    <input type="text" id="busquedaU" class="busqueda-tabla" placeholder="Busca por email..." title="Escribe el email de un usuario">
+    <!--Tabla Usuarios-->
+    <table id="tablaU" class="tabla">
+        <tr class="header">
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Rol</th>
+        </tr>
+        <tr>
+            <td>Diego García Aurelio</td>
+            <td>diegoga@gmail.com</td>
+            <td>Superusuario</td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" src="js/panel_control.js"></script>
+{% endblock %}

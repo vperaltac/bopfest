@@ -29,6 +29,10 @@ function comentarios($id_evento){
     return pedirComentarios($id_evento);
 }
 
+function todosComentarios() {
+    return pedirTodosComentarios();
+}
+
 // obtener datos sobre eventos
 function evento($id_evento){
     if(!is_int($id_evento))
@@ -84,6 +88,9 @@ switch($dir){
     break;
     case 'prueba':
         echo $twig->render('perfil_usuario.html');    
+    break;
+    case 'panel-control':
+        echo $twig->render('panel_control.html', ['polaroids' => polaroids('all'), 'comentarios' => todosComentarios()]);    
     break;
     default:
         http_response_code(404);

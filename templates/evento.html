@@ -59,7 +59,13 @@
                 <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
                 <div class="texto-imagen">
                     <p>{{imagen.titulo}}</p>
+                    <div class="formulario-inicio grupo-formulario">
+                        <input type="text" name="uname" value="{{imagen.titulo}}" id="titulo-evento">
+                    </div>
                     <p>{{imagen.creditos}}</p>
+                    <div class="formulario inicio grupo-formulario">
+                        <input type="text" name="uname" value="{{imagen.creditos}}" id="titulo-evento">
+                    </div>
                 </div>
             {% endfor %}
             
@@ -71,7 +77,7 @@
 
     <div class="formulario-inicio">
         <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}
-                <img src="/imgs/iconos/round-create-24px.svg" alt="">
+                <img id="editar-evento" src="/imgs/iconos/round-create-24px.svg" alt="">
         </h2>
         <div class="grupo-formulario">
             <input type="text" name="uname" value="{{evento.titulo}}" id="titulo-evento">

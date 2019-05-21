@@ -10,6 +10,7 @@ const btnEditarC = document.getElementById("editar-comentario");
 const btnBorrarC = document.getElementById("borrar-comentario");
 const inTextoE = document.getElementById("inTextoE");
 const comentarios = document.getElementsByClassName("comentario");
+const botonesBorrar = document.getElementsByClassName("btn-comentario");
 
 var prohibidas;
 
@@ -189,20 +190,24 @@ function incluirFecha() {
 }
 
 
+for(var i=0; i<botonesBorrar.length; i++){ 
+    botonesBorrar[i].onclick = function(){ 
+        let posicion = btnBorrarC.dataset.index;
+        let id_comentario = comentarios[posicion-1].dataset.idComentario;
+
+        let request = new XMLHttpRequest();
+        request.open('DELETE',"../peticiones.php?peticion=eliminarComentario");
+        request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+        request.send(JSON.stringify({
+                                    "id_evento" : idEvento[0].id,
+                                    "id_comentario": id_comentario
+        }));
+
+        comentarios[posicion-1].remove();
+    } 
+}
+
 
 btnEditarC.onclick = function() {
     inTextoE.style.display = "block";
-}
-
-btnBorrarC.onclick = function(){
-    id_comentario = comentarios[0].dataset.idComentario;
-    console.log("Pulsado borrar");
-
-    let request = new XMLHttpRequest();
-    request.open('DELETE',"../peticiones.php?peticion=eliminarComentario");
-    request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-    request.send(JSON.stringify({
-                                "id_evento" : idEvento[0].id,
-                                "id_comentario": id_comentario
-    }));
 }

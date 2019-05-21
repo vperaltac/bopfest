@@ -43,6 +43,10 @@ body {
   
 /***********************************************************************/
 /*                                MENÚ                                 */
+#iniciar-sesion {
+  float: right;
+  cursor: pointer;
+}
 
 /*Estilo de la barra de navegacion / Menu*/
 .barra-navegacion {

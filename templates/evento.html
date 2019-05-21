@@ -24,7 +24,7 @@
                     <div class="cuadro-usuario">
                         <img class="imagen-comentario" src="imgs/user.png" alt="usuario1">
                         <div class="datos-usuario">
-                            <img id="borrar-comentario" src="/imgs/iconos/round-delete-24px.svg" alt="">
+                            <img id="borrar-comentario" class="btn-comentario" data-index={{loop.index}} src="/imgs/iconos/round-delete-24px.svg" alt="">
                             <img id="editar-comentario" src="/imgs/iconos/round-create-24px.svg" alt="">
                             <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
                             <p class="fecha-usuario">{{comentario.fecha | date("d/m/Y H:i:s")}}</p>

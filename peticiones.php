@@ -16,7 +16,7 @@ function enviarComentario($datos){
 
 function eliminarComentario($datos){
     $valores = json_decode($datos);
-    return pedirEliminarComentario($valores->id_evento,$valores->id_comentario);
+    pedirEliminarComentario($valores->id_evento,$valores->id_comentario);
 }
 
 switch($peticion){

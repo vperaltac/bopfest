@@ -497,6 +497,11 @@ img.hover-shadow {
   cursor: pointer;
 }
 
+#desconectar{
+  float: right;
+  cursor: pointer;
+}
+
 .contenido-inicio-sesion {
   display: flex;
 }

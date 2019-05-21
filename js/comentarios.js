@@ -6,6 +6,10 @@ const nombreForm = document.getElementById("nombre-form");
 const emailForm  = document.getElementById("email-form");
 const mensajeForm = document.getElementById("mensaje-form");
 const idEvento = document.getElementsByClassName("titulo");
+const btnEditarC = document.getElementById("editar-comentario");
+const btnBorrarC = document.getElementById("borrar-comentario");
+const inTextoE = document.getElementById("inTextoE");
+const comentarios = document.getElementsByClassName("comentario");
 
 var prohibidas;
 
@@ -27,80 +31,106 @@ abrirComentarios.onclick = function () {
     }   
 }
 
-//Al pulsar el boton enviar, procesa y añade el comentario
-botonComentario.addEventListener("click", (e) =>{
-    e.preventDefault(); // evitar que se refresque la página
+if(botonComentario){
+    //Al pulsar el boton enviar, procesa y añade el comentario
+    botonComentario.addEventListener("click", (e) =>{
+        e.preventDefault(); // evitar que se refresque la página
 
-    // crear objeto de imagen
-    let imagen  = document.createElement("img");
-    imagen.src = "../imgs/user.png";
-    imagen.classList.add("imagen-comentario");
+        // crear objeto de imagen
+        let imagen  = document.createElement("img");
+        imagen.src = "../imgs/user.png";
+        imagen.classList.add("imagen-comentario");
 
-    // crear objeto de nombre
-    let nombre  = document.createElement("h3");
-    let correo  = document.createElement("p");
-    let fecha   = document.createElement("p");
-    let mensaje = document.createElement("p");
+        // crear objeto de nombre
+        let nombre  = document.createElement("h3");
+        let correo  = document.createElement("p");
+        let fecha   = document.createElement("p");
+        let mensaje = document.createElement("p");
 
 
-    if(nombreForm.value == "" || emailForm.value == "" || mensajeForm.value == "")
-        alert("¡Algun campo está vacio!")
-    else if (!validarEmail(emailForm.value))
-        alert("¡Email no correcto!")
-    else{
-        // añadir contenido
-        nombre.appendChild(document.createTextNode(`${nombreForm.value}`));
-        fecha.appendChild(document.createTextNode(incluirFecha()));
-        mensaje.appendChild(document.createTextNode(`${mensajeForm.value}`));
+        if(nombreForm.value == "" || emailForm.value == "" || mensajeForm.value == "")
+            alert("¡Algun campo está vacio!")
+        else if (!validarEmail(emailForm.value))
+            alert("¡Email no correcto!")
+        else{
+            // añadir contenido
+            nombre.appendChild(document.createTextNode(`${nombreForm.value}`));
+            fecha.appendChild(document.createTextNode(incluirFecha()));
+            mensaje.appendChild(document.createTextNode(`${mensajeForm.value}`));
 
-        // añadir clases
-        nombre.classList.add("nombre-usuario");
-        fecha.classList.add("fecha-usuario");
-        mensaje.classList.add("comentario-usuario");
+            // añadir clases
+            nombre.classList.add("nombre-usuario");
+            fecha.classList.add("fecha-usuario");
+            mensaje.classList.add("comentario-usuario");
 
-        // añadir div contenedor
-        let comentarios_dinamicos = document.getElementById("comentarios-dyn");
+            // añadir div contenedor
+            let comentarios_dinamicos = document.getElementById("comentarios-dyn");
 
-        let comentario = document.createElement("div");
-        comentario.classList.add("comentario");
-        comentario.appendChild(imagen);
-        comentario.appendChild(nombre);
-        comentario.appendChild(fecha);
-        comentario.appendChild(mensaje);
+            let comentario = document.createElement("div");
+            comentario.classList.add("comentario");
+            comentario.appendChild(imagen);
+            comentario.appendChild(nombre);
+            comentario.appendChild(fecha);
+            comentario.appendChild(mensaje);
 
-        comentarios_dinamicos.appendChild(comentario);
+            comentarios_dinamicos.appendChild(comentario);
 
-        let nombreEnvio = nombreForm.value;
-        let correoEnvio = emailForm.value;
-        let mensajeEnvio = mensajeForm.value;
+            let nombreEnvio = nombreForm.value;
+            let correoEnvio = emailForm.value;
+            let mensajeEnvio = mensajeForm.value;
 
-        if (typeof(Storage) !== "undefined") {
-            sessionStorage.setItem('usuario',nombreEnvio);
-            sessionStorage.setItem('correo',correoEnvio);
+            if (typeof(Storage) !== "undefined") {
+                sessionStorage.setItem('usuario',nombreEnvio);
+                sessionStorage.setItem('correo',correoEnvio);
+            }
+
+            // petición AJAX asíncrona 
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET','https://ipapi.co/json/');
+            xhr.send();
+            xhr.onload = function(){
+                let jsonip = JSON.parse(xhr.response);
+
+                let request = new XMLHttpRequest();
+                request.open('POST',"../peticiones.php?peticion=addComentario");
+                request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+                request.send(JSON.stringify({
+                                            "id_evento" : idEvento[0].id,
+                                            "ip_usuario": jsonip.ip,
+                                            "nombre"    : nombreEnvio,
+                                            "correo"    : correoEnvio,
+                                            "mensaje"   : mensajeEnvio
+                                        }));
+            }
+
+            mensajeForm.value = "";
         }
+    });
 
-        // petición AJAX asíncrona 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET','https://ipapi.co/json/');
-        xhr.send();
-        xhr.onload = function(){
-            let jsonip = JSON.parse(xhr.response);
+    //Se comprueba cada vez que levantas una tecla en el formulario si hay una palabra prohibida
+mensajeForm.onkeyup = function () {
+    comprobarMensaje(mensajeForm);
+}
 
-            let request = new XMLHttpRequest();
-            request.open('POST',"../peticiones.php?peticion=addComentario");
-            request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-            request.send(JSON.stringify({
-                                        "id_evento" : idEvento[0].id,
-                                        "ip_usuario": jsonip.ip,
-                                        "nombre"    : nombreEnvio,
-                                        "correo"    : correoEnvio,
-                                        "mensaje"   : mensajeEnvio
-                                    }));
-        }
+nombreForm.onkeyup = function () {
+    comprobarMensaje(nombreForm);
+}
 
-        mensajeForm.value = "";
-    }
-});
+emailForm.onkeyup = function () {
+    comprobarMensaje(emailForm);
+}
+
+// uso de Sesiones/Storage HTML5
+if (sessionStorage.getItem("usuario") != null) {
+    nombreForm.value = sessionStorage.getItem("usuario");
+}
+  
+if (sessionStorage.getItem("correo") != null) {
+    emailForm.value = sessionStorage.getItem("correo");
+}
+
+
+}
 
 //Comprueba que un email es correcto
 function validarEmail(email) {
@@ -158,24 +188,21 @@ function incluirFecha() {
     return fechaCompleta;
 }
 
-//Se comprueba cada vez que levantas una tecla en el formulario si hay una palabra prohibida
-mensajeForm.onkeyup = function () {
-    comprobarMensaje(mensajeForm);
+
+
+btnEditarC.onclick = function() {
+    inTextoE.style.display = "block";
 }
 
-nombreForm.onkeyup = function () {
-    comprobarMensaje(nombreForm);
-}
+btnBorrarC.onclick = function(){
+    id_comentario = comentarios[0].dataset.idComentario;
+    console.log("Pulsado borrar");
 
-emailForm.onkeyup = function () {
-    comprobarMensaje(emailForm);
-}
-
-// uso de Sesiones/Storage HTML5
-if (sessionStorage.getItem("usuario") != null) {
-    nombreForm.value = sessionStorage.getItem("usuario");
-}
-  
-if (sessionStorage.getItem("correo") != null) {
-    emailForm.value = sessionStorage.getItem("correo");
+    let request = new XMLHttpRequest();
+    request.open('DELETE',"../peticiones.php?peticion=eliminarComentario");
+    request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+    request.send(JSON.stringify({
+                                "id_evento" : idEvento[0].id,
+                                "id_comentario": id_comentario
+    }));
 }

@@ -4,6 +4,7 @@ require_once 'modelo/comentarios.php';
 require_once 'modelo/eventos.php';
 require_once 'modelo/polaroids.php';
 require_once 'modelo/iniciar_sesion.php';
+require_once 'modelo/usuarios.php';
 
 // Routing
 $dir = 'principal';
@@ -55,6 +56,11 @@ function usuario(){
     return pedirUsuario();
 }
 
+function usuarios(){
+    return pedirUsuarios();
+}
+
+
 
 $template = $twig->load('principal.html');
 $user = usuario();
@@ -99,7 +105,7 @@ switch($dir){
         echo $twig->render('perfil_usuario.html', ['usuario' => $user]);    
     break;
     case 'panel-control':
-        echo $twig->render('panel_control.html', ['polaroids' => polaroids('all'), 'comentarios' => todosComentarios(), 'usuario' => $user]);    
+        echo $twig->render('panel_control.html', ['polaroids' => polaroids('all'), 'comentarios' => todosComentarios(), 'usuario' => $user, 'usuarios' => usuarios()]);    
     break;
     default:
         http_response_code(404);

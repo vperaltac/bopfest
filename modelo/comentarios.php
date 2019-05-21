@@ -90,15 +90,15 @@ function editarComentario($id_evento,$id_comentario,$nuevo_texto,$moderador){
     $sentencia->execute();
 }
 
-function eliminarComentario($id_evento,$id_comentario){
+function pedirEliminarComentario($id_evento,$id_comentario){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
     $id_evento = $mysqli->real_escape_string($id_evento);
     $id_comentario = $mysqli->real_escape_string($id_comentario);
 
-    $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=$nuevo_texto,editado=$moderador WHERE id_evento=$id_evento and id_comentario=$id_comentario");
-    $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_evento,$id_comentario);
+    $sentencia = $mysqli->prepare("DELETE FROM comentarios WHERE id_evento=? AND id_comentario=?");
+    $sentencia->bind_param("ss",$id_evento,$id_comentario);
     $sentencia->execute();
 }
 

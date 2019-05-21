@@ -3,6 +3,7 @@ require 'vendor/autoload.php';
 require_once 'modelo/comentarios.php';
 require_once 'modelo/eventos.php';
 require_once 'modelo/polaroids.php';
+require_once 'modelo/iniciar_sesion.php';
 
 // Routing
 $dir = 'principal';
@@ -49,11 +50,17 @@ function galeria($id_evento){
     return pedirImagenesGaleria($id_evento);
 }
 
+function usuario(){
+    return pedirUsuario();
+}
+
 $template = $twig->load('principal.html');
+$user = usuario();
 
 switch($dir){
     case 'principal':
-        echo $template->render(['polaroids' => polaroids('all')]);
+
+        echo $template->render(['polaroids' => polaroids('all'), 'usuario' => $user]);
         break;
     case 'evento':
         if(isset($_GET['evento']))
@@ -65,12 +72,12 @@ switch($dir){
             $imprimir = $_GET['imprimir'];
 
             if($imprimir == 'imprimir')
-                echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento)]);
+                echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento), 'usuario' => $user]);
             else
                 http_response_code(404);
         }
         else
-            echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento), 'galeria' => galeria($evento)]);    
+            echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento), 'galeria' => galeria($evento),'usuario' => $user]);    
         break;
     case 'filtro':
         if(isset($_GET['etiqueta']))
@@ -81,16 +88,16 @@ switch($dir){
         echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
         break;
     case 'contacto':
-        echo $twig->render('contacto.html');    
+        echo $twig->render('contacto.html', ['usuario' => $user]);    
         break;
     case 'iniciar-sesion':
         echo $twig->render('iniciar_sesion.html');    
     break;
     case 'prueba':
-        echo $twig->render('perfil_usuario.html');    
+        echo $twig->render('perfil_usuario.html', ['usuario' => $user]);    
     break;
     case 'panel-control':
-        echo $twig->render('panel_control.html', ['polaroids' => polaroids('all'), 'comentarios' => todosComentarios()]);    
+        echo $twig->render('panel_control.html', ['polaroids' => polaroids('all'), 'comentarios' => todosComentarios(), 'usuario' => $user]);    
     break;
     default:
         http_response_code(404);

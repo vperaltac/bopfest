@@ -33,7 +33,12 @@
             {% block menu %}
                 <a href='principal'>Eventos</a>
                 <a href='contacto'>Contacto</a>
-                <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
+
+                {% if usuario == "none" %}
+                    <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
+                {% else %}
+                    <a id="iniciar-sesion" href="iniciar-sesion">Desconectar</a>
+                {% endif %}
             {% endblock %}
         </nav>
 

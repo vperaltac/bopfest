@@ -18,7 +18,7 @@ boton_inicio.addEventListener("click", (e) =>{
 
     xhr.onload = function(){
         if(xhr.response == correo){
-            window.location.href = "principal";
+            window.location.href = "principal/1";
         }
         console.log(xhr.response);
     }

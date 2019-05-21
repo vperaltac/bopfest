@@ -19,6 +19,7 @@ function iniciarSesion($correo,$passwd){
         $row = $peticion->fetch_assoc();
 
         if(password_verify($passwd,$row['passwd'])){
+            $mysqli->query("UPDATE usuarios SET conectado=TRUE where email='$correo';");
             echo $correo;
         }
         else
@@ -26,4 +27,22 @@ function iniciarSesion($correo,$passwd){
     }
     else
         echo "Existen múltiples usuarios con el mismo correo";
+}
+
+function pedirUsuario(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT id_usuario FROM usuarios WHERE conectado=TRUE;");
+
+    if($peticion->num_rows === 0){
+        echo "Usuario no existe";
+    }
+    else if($peticion->num_rows === 1){
+        $row = $peticion->fetch_assoc();
+
+        return $row['id_usuario']; 
+    }
+
+    return "none";
 }

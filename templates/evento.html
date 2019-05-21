@@ -40,6 +40,7 @@
             <div id="comentarios-dyn"></div>
         </section>
 
+        {% if (usuario.tipo == 'registrado') %}
         <!--Formulario para añadir un comentario-->
         <form class="formulario">
             <div class="grupo-formulario">
@@ -57,7 +58,9 @@
 
             <input id="boton-comentario" type="submit" value="Enviar">
         </form>
+        {% endif %}
     </aside>
+    
 
     <script type="text/javascript" src="js/comentarios.js"></script>
 {% endblock %}

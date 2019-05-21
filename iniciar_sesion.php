@@ -9,4 +9,4 @@ require_once 'modelo/iniciar_sesion.php';
 $datos = json_decode(file_get_contents('php://input'));
 
 // encriptar contraseña (Bcrypt)
-iniciarSesion($datos->correo,$datos->password);
+iniciarSesion($datos->correo,$datos->ip_usuario,$datos->password);

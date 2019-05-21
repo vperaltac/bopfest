@@ -35,7 +35,16 @@ botonRegistro.addEventListener("click", (e) =>{
                             }));
 
     xhr.onload = function(){
-        console.log(xhr.response);
+        if(xhr.response == "Correcto"){
+            email_registro.value = "";
+            pwd_registro.value = "";
+            pwdr_registro.value = "";
+            nombre_registro.value = "";
+
+            alert("Usuario registrado correctamente");
+        }
+        else
+            alert(xhr.response);
     }
 
 });

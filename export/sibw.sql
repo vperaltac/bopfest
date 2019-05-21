@@ -30,10 +30,11 @@ CREATE TABLE `comentarios` (
   `fecha` datetime NOT NULL,
   `texto` text NOT NULL,
   `ip_usuario` varchar(30) DEFAULT NULL,
+  `editado` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_comentario`),
   KEY `id_evento` (`id_evento`),
   CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,8 +43,34 @@ CREATE TABLE `comentarios` (
 
 LOCK TABLES `comentarios` WRITE;
 /*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
-INSERT INTO `comentarios` VALUES (1,7,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:24:59','Me encanta SFDK, me muero de ganas de que llegue el día del concierto!',NULL),(1,8,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:25:45','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL),(2,9,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:28:00','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL),(2,10,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:28:00','Me encanta Ruth Lorenzo, me muero de ganas de que llegue el día del concierto!',NULL),(1,46,'Julian Cifuentes','julian@correo.ugr.es','2019-04-30 00:41:21','como mola la página!',NULL),(1,48,'Julio Ortega','julio@yahoo.es','2019-04-30 00:52:49','me parece que llego tarde.',NULL),(1,54,'María Delgado','mariadelg@gmail.com','2019-04-30 07:14:44','me ha parecido interesante','150.214.205.72'),(3,56,'Pedro Villar','pedro@gmail.com','2019-04-30 13:04:54','Un festival muy épico!','150.214.205.72');
+INSERT INTO `comentarios` VALUES (1,7,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:24:59','Me encanta SFDK, me muero de ganas de que llegue el día del concierto!',NULL,NULL),(1,8,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:25:45','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL,NULL),(2,9,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:28:00','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL,NULL),(2,10,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:28:00','Me encanta Ruth Lorenzo, me muero de ganas de que llegue el día del concierto!',NULL,NULL),(1,46,'Julian Cifuentes','julian@correo.ugr.es','2019-04-30 00:41:21','como mola la página!',NULL,NULL),(1,48,'Julio Ortega','julio@yahoo.es','2019-04-30 00:52:49','me parece que llego tarde.',NULL,NULL),(1,54,'María Delgado','mariadelg@gmail.com','2019-04-30 07:14:44','me ha parecido interesante','150.214.205.72',NULL),(3,56,'Pedro Villar','pedro@gmail.com','2019-04-30 13:04:54','Un festival muy épico!','150.214.205.72',NULL),(1,57,'lds,dpad','ch3rokee8@gmail.com','2019-05-07 14:19:59','dopwakdpowa','150.214.205.76',NULL),(1,58,'vcwda','victorcherokee@hotmail.com','2019-05-14 09:28:01','dwadwa','150.214.205.62',NULL);
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `conexiones`
+--
+
+DROP TABLE IF EXISTS `conexiones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `conexiones` (
+  `id_usuario` int(11) NOT NULL,
+  `ip_usuario` varchar(30) NOT NULL,
+  `conectado` tinyint(1) DEFAULT NULL,
+  KEY `id_usuario` (`id_usuario`),
+  CONSTRAINT `conexiones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `conexiones`
+--
+
+LOCK TABLES `conexiones` WRITE;
+/*!40000 ALTER TABLE `conexiones` DISABLE KEYS */;
+INSERT INTO `conexiones` VALUES (15,'150.214.205.63',1),(19,'150.214.205.63',0);
+/*!40000 ALTER TABLE `conexiones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -110,8 +137,6 @@ CREATE TABLE `eventos` (
   `fecha` date DEFAULT NULL,
   `texto` longtext,
   `info_adicional` text,
-  `twitter` varchar(60) DEFAULT NULL,
-  `facebook` varchar(60) DEFAULT NULL,
   `fecha_modif` datetime DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
   `url_video` varchar(60) DEFAULT NULL,
@@ -125,7 +150,7 @@ CREATE TABLE `eventos` (
 
 LOCK TABLES `eventos` WRITE;
 /*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
-INSERT INTO `eventos` VALUES (1,'Concierto SFDK - 25 Aniversario','Organizado por Wegow Technologies S.L.','2019-04-18','Más de 3 horas de show y repaso a toda su carrera. Concierto único e irrepetible.\nNUEVA UBICACIÓN - Centro Andaluz de Arte Contemporáneo - SEVILLA\n18:00 - Apertura de puertas\n19:00 - Dj Hazhe\n20:00 - R de Rumba\n21:00 - SFDK + Invitados (Más de 3 horas de show)\nCuando por caprichos del destino nos conocimos aquel verano de 1994 era impensable que en 2019 fuéramos a estar celebrando nuestros 25 años como grupo. 25 años de trabajo, de esfuerzo, de aprendizaje. 25 años de creer en nosotros y en nuestra música. De aportar nuestro granito de arena para hacer crecer y respetar un estilo musical en nuestro país. 25 años de lágrimas y alegrías. 25 años de SFDK. Un largo camino recompensado por las muestras de cariño de todas las personas que han apoyado nuestra música a lo largo de estos años. Siempre os estaremos agradecidos. Para tan marcada celebración hemos querido preparar algo muy especial: El día 16 de marzo de 2019 y en la ciudad que nos vio nacer y crecer; Sevilla, realizaremos un concierto único e irrepetible donde repasaremos toda nuestra carrera profesional, incluyendo canciones que nunca fueron tocadas en directo y donde nos rodearemos de amigos que, de una forma u otra, han sido participes y testigos de nuestra andadura musical. Quizás estemos hablando del día más especial de nuestra trayectoria. Hasta hoy.\nArtistas invitados: Kase O, Fyahbwoy, Capaz, Juaninacka, El Chojin, Kaze, R de Rumba, Sho-Hai, Hazhe, Little Pepe, Shabu One Shant, El Límite Darmo, Legendario, Gordo Master, Ose Him, Andreas Lutz, Hermanos del Groove... ','Para saber más acerca de este evento como ver su localización exacta y comprar entradas, diríjase a la web del organizador.','https://twitter.com/sfdkoficial/','https://facebook.com/sfdkoficial/',NULL,NULL,'https://www.youtube.com/embed/JX65DcsIXHs'),(2,'Concierto Ruth Lorenzo','Organizado por Diego García Aurelio','2019-04-18','Ruth Lorenzo llega al Festival Mil·lenni el próximo martes 29 de marzo de 2019 a las 21:00 horas en el Teatre Coliseum de Barcelona.\nSu último disco \'Loveaholic\' es una mezcla en inglés y castellano de música rock, blues y música española. Esta mezcla hace que su último trabajo discográfico sea sofisticado y lleno de carácter, pasión y musicalidad, además de contar con el guitarrista Jeff Beck en algún tema.\nLa artista se caracteriza por tener un potente directo, un show lleno de “Power” y con una capacidad vocal extraordinaria que no deja a nadie indiferente cuando la escuchan en directo. La describimos como la diva millennial “old school” que no te puedes perder. En esta ocasión nos presenta en directo “Loveaholic” acompañado además de temas inéditos y versiones que han marcado su carrera hasta convertirse en la artista que es en la actualidad. Un derroche de amor por la música y una fiera escénica y vocal','Concierto 29/03/2019',NULL,NULL,NULL,NULL,'https://www.youtube.com/embed/tQqTcgZvWxQ'),(3,'Plastic Festival','Organizado por Diego García Aurelio','2019-04-30','Tercera edición de Plastic Festival, se celebrará el próximo Sábado 27 de Abril de 2019 en El Ejido (Almería). Festival pensado y organizado con el único fin de que pases toda una tarde noche sin parar de bailar. INFORMACIÓN IMPORTANTE para disfrutar del Festival. Queremos ayudar a todas y todos a disfrutar lo mejor posible de nuestra gran fiesta. Para ello os dejamos algunas de las claves de PLASTIC: - Pueden venir sin problema menores (de forma gratuita hasta 13 años) cumplimentando el formulario que puedes descargar en nuestra web y presentarlo en la entrada. - Recomendamos venir con tiempo para el acceso y así evitar colas o perderte el concierto que tanto esperas bailar. - En barras para beber y comer se utiliza nuestra propia moneda que puedes canjear una vez dentro del recinto. Lo poco que queda es inversamente proporcional a lo bien que vamos a pasarlo y la pasada de mover los pies que nos daremos.',NULL,'https://twitter.com/plasticfestival','https://www.facebook.com/plasticfestival/','2019-04-30 07:37:33','2019-04-30 07:37:33','https://www.youtube.com/embed/QfzNqibXa44'),(4,'Miriam Rodríguez','Jet Entertainment','2019-04-30','La cantante gallega MIRIAM RODRÍGUEZ, finalista de la última edición de Operación Triunfo 2017, no deja de acumular éxitos. Tras la gran acogida que ha tenido en la industria musical su primer single “Hay algo en mí” y tras cumplir uno de sus grandes sueños al formar parte del elenco de la cuarta temporada de ‘Vis a Vis’, la tercera clasificada de Operación Triunfo 2017 ha anunciado su gira por España que comenzará el próximo mes de noviembre en A Coruña, su ciudad natal.\nHaciendo un pequeño homenaje a su tierra, después de recorrer España con un total de 15 conciertos, Miriam cerrará su gira también en Galicia, concretamente en Santiago de Compostela en el mes de febrero. Durante estos conciertos, la cantante pasará por las ciudades más importantes de nuestro país como Madrid, Barcelona, Valencia o Sevilla. \nLas entradas están a la venta desde el jueves 26 de julio a las 12:00h a través de los canales habituales de Ticketmaster España; ticketmaster.es, puntos físicos de Fnac, Halcón Viajes y Viajes Carrefour, y por venta telefónica al 902.150.025. Ticketmaster España gestiona la venta en exclusiva de todos los conciertos de la gira, excepto los siguientes que los gestionan otras operadoras: A Coruña (30/11), Vigo (01/12), Zaragoza (01/02) y Santiago de Compostela (15/02). \nMiriam Rodríguez se ha mostrado de lo más feliz y emocionada por esta noticia, la cual supone un gran paso en su carrera profesional como artista. Está claro que este 2018 está siendo un año increíble para ella ya que ha podido cumplir muchos de sus grandes sueños, contando con el apoyo incondicional de sus leones -así es como se hacen llamar sus fans-. Visto lo visto, el próximo 2019 también promete para ella.','','','','2019-05-05 17:43:14','2019-05-05 17:43:14','https://www.youtube.com/embed/atwWYqaMhTs'),(5,'Manuel Carrasco','Organizado por Jet Entertainment','2019-04-30','Manuel Carrasco Su inconfundible estilo, con una voz tamizada y con una gran sensibilidad para las baladas, le ha valido un amplio número de seguidores a ambos lados del Atlántico. Manuel Carrasco es, sin lugar a dudas, un compositor de historias, un artista capaz de convertir sus palabras en versos y transformar sus emociones en melodías Manuel Carrasco nació en Isla Cristina (Huelva) en 1981, teniendo como peculiar punto de partida simbólico de su carrera musical su participación en los certámenes de chirigotas y fiestas carnavalescas. \nEn 2003 estrenó Quiéreme, su primer álbum profesional y que tenía como tema principal Que corra el aire. Sin embargo, fue su segundo disco, bautizado como el cantante, el que lo encumbraría en el panorama musical español. Manuel Carrasco es una apuesta a caballo ganador y su calidad artística, su humildad y filantropía personal le llevan a lo más alto del reconocimiento artístico. \nAdemás, artistas como Miguel Poveda, Malú, Antonio Orozco, Maite Martin, India Martínez, Pastora Soler, Josemi Carmona (Ketama), entre muchos, se han subido escenario con él para acompañarle en momentos inolvidables de sus giras anteriores. El gran salto internacional de Manuel Carrasco se produjo con el lanzamiento de su cuarto álbum de estudio, Inercia, que el artista decidió grabar precisamente en Argentina en 2008. Y más recientemente, su nueva gira, Tour Bailar el Viento, le han situado en medio de una gran popularidad.','','','','2019-05-05 17:43:20','2019-05-05 17:43:20','https://www.youtube.com/embed/atwWYqaMhTs'),(6,'Titulo','CHerokee','2019-04-22','texto texto texto texto texto nuevo nuevo nuevo',NULL,NULL,NULL,NULL,NULL,NULL),(7,'','','2019-04-30','','','','','2019-04-30 11:48:36','2019-04-30 11:48:36',''),(8,'','','2019-04-30','','','','','2019-04-30 11:48:36','2019-04-30 11:48:36',''),(9,'','','2019-04-30','','','','','2019-04-30 11:48:36','2019-04-30 11:48:36','');
+INSERT INTO `eventos` VALUES (1,'Concierto SFDK - 25 Aniversario','Organizado por Wegow Technologies S.L.','2019-04-18','Más de 3 horas de show y repaso a toda su carrera. Concierto único e irrepetible.\nNUEVA UBICACIÓN - Centro Andaluz de Arte Contemporáneo - SEVILLA\n18:00 - Apertura de puertas\n19:00 - Dj Hazhe\n20:00 - R de Rumba\n21:00 - SFDK + Invitados (Más de 3 horas de show)\nCuando por caprichos del destino nos conocimos aquel verano de 1994 era impensable que en 2019 fuéramos a estar celebrando nuestros 25 años como grupo. 25 años de trabajo, de esfuerzo, de aprendizaje. 25 años de creer en nosotros y en nuestra música. De aportar nuestro granito de arena para hacer crecer y respetar un estilo musical en nuestro país. 25 años de lágrimas y alegrías. 25 años de SFDK. Un largo camino recompensado por las muestras de cariño de todas las personas que han apoyado nuestra música a lo largo de estos años. Siempre os estaremos agradecidos. Para tan marcada celebración hemos querido preparar algo muy especial: El día 16 de marzo de 2019 y en la ciudad que nos vio nacer y crecer; Sevilla, realizaremos un concierto único e irrepetible donde repasaremos toda nuestra carrera profesional, incluyendo canciones que nunca fueron tocadas en directo y donde nos rodearemos de amigos que, de una forma u otra, han sido participes y testigos de nuestra andadura musical. Quizás estemos hablando del día más especial de nuestra trayectoria. Hasta hoy.\nArtistas invitados: Kase O, Fyahbwoy, Capaz, Juaninacka, El Chojin, Kaze, R de Rumba, Sho-Hai, Hazhe, Little Pepe, Shabu One Shant, El Límite Darmo, Legendario, Gordo Master, Ose Him, Andreas Lutz, Hermanos del Groove... ','Para saber más acerca de este evento como ver su localización exacta y comprar entradas, diríjase a la web del organizador.',NULL,NULL,'https://www.youtube.com/embed/JX65DcsIXHs'),(2,'Concierto Ruth Lorenzo','Organizado por Diego García Aurelio','2019-04-18','Ruth Lorenzo llega al Festival Mil·lenni el próximo martes 29 de marzo de 2019 a las 21:00 horas en el Teatre Coliseum de Barcelona.\nSu último disco \'Loveaholic\' es una mezcla en inglés y castellano de música rock, blues y música española. Esta mezcla hace que su último trabajo discográfico sea sofisticado y lleno de carácter, pasión y musicalidad, además de contar con el guitarrista Jeff Beck en algún tema.\nLa artista se caracteriza por tener un potente directo, un show lleno de “Power” y con una capacidad vocal extraordinaria que no deja a nadie indiferente cuando la escuchan en directo. La describimos como la diva millennial “old school” que no te puedes perder. En esta ocasión nos presenta en directo “Loveaholic” acompañado además de temas inéditos y versiones que han marcado su carrera hasta convertirse en la artista que es en la actualidad. Un derroche de amor por la música y una fiera escénica y vocal','Concierto 29/03/2019',NULL,NULL,'https://www.youtube.com/embed/tQqTcgZvWxQ'),(3,'Plastic Festival','Organizado por Diego García Aurelio','2019-04-30','Tercera edición de Plastic Festival, se celebrará el próximo Sábado 27 de Abril de 2019 en El Ejido (Almería). Festival pensado y organizado con el único fin de que pases toda una tarde noche sin parar de bailar. INFORMACIÓN IMPORTANTE para disfrutar del Festival. Queremos ayudar a todas y todos a disfrutar lo mejor posible de nuestra gran fiesta. Para ello os dejamos algunas de las claves de PLASTIC: - Pueden venir sin problema menores (de forma gratuita hasta 13 años) cumplimentando el formulario que puedes descargar en nuestra web y presentarlo en la entrada. - Recomendamos venir con tiempo para el acceso y así evitar colas o perderte el concierto que tanto esperas bailar. - En barras para beber y comer se utiliza nuestra propia moneda que puedes canjear una vez dentro del recinto. Lo poco que queda es inversamente proporcional a lo bien que vamos a pasarlo y la pasada de mover los pies que nos daremos.',NULL,'2019-04-30 07:37:33','2019-04-30 07:37:33','https://www.youtube.com/embed/QfzNqibXa44'),(4,'Miriam Rodríguez','Jet Entertainment','2019-04-30','La cantante gallega MIRIAM RODRÍGUEZ, finalista de la última edición de Operación Triunfo 2017, no deja de acumular éxitos. Tras la gran acogida que ha tenido en la industria musical su primer single “Hay algo en mí” y tras cumplir uno de sus grandes sueños al formar parte del elenco de la cuarta temporada de ‘Vis a Vis’, la tercera clasificada de Operación Triunfo 2017 ha anunciado su gira por España que comenzará el próximo mes de noviembre en A Coruña, su ciudad natal.\nHaciendo un pequeño homenaje a su tierra, después de recorrer España con un total de 15 conciertos, Miriam cerrará su gira también en Galicia, concretamente en Santiago de Compostela en el mes de febrero. Durante estos conciertos, la cantante pasará por las ciudades más importantes de nuestro país como Madrid, Barcelona, Valencia o Sevilla. \nLas entradas están a la venta desde el jueves 26 de julio a las 12:00h a través de los canales habituales de Ticketmaster España; ticketmaster.es, puntos físicos de Fnac, Halcón Viajes y Viajes Carrefour, y por venta telefónica al 902.150.025. Ticketmaster España gestiona la venta en exclusiva de todos los conciertos de la gira, excepto los siguientes que los gestionan otras operadoras: A Coruña (30/11), Vigo (01/12), Zaragoza (01/02) y Santiago de Compostela (15/02). \nMiriam Rodríguez se ha mostrado de lo más feliz y emocionada por esta noticia, la cual supone un gran paso en su carrera profesional como artista. Está claro que este 2018 está siendo un año increíble para ella ya que ha podido cumplir muchos de sus grandes sueños, contando con el apoyo incondicional de sus leones -así es como se hacen llamar sus fans-. Visto lo visto, el próximo 2019 también promete para ella.','','2019-05-05 17:43:14','2019-05-05 17:43:14','https://www.youtube.com/embed/atwWYqaMhTs'),(5,'Manuel Carrasco','Organizado por Jet Entertainment','2019-04-30','Manuel Carrasco Su inconfundible estilo, con una voz tamizada y con una gran sensibilidad para las baladas, le ha valido un amplio número de seguidores a ambos lados del Atlántico. Manuel Carrasco es, sin lugar a dudas, un compositor de historias, un artista capaz de convertir sus palabras en versos y transformar sus emociones en melodías Manuel Carrasco nació en Isla Cristina (Huelva) en 1981, teniendo como peculiar punto de partida simbólico de su carrera musical su participación en los certámenes de chirigotas y fiestas carnavalescas. \nEn 2003 estrenó Quiéreme, su primer álbum profesional y que tenía como tema principal Que corra el aire. Sin embargo, fue su segundo disco, bautizado como el cantante, el que lo encumbraría en el panorama musical español. Manuel Carrasco es una apuesta a caballo ganador y su calidad artística, su humildad y filantropía personal le llevan a lo más alto del reconocimiento artístico. \nAdemás, artistas como Miguel Poveda, Malú, Antonio Orozco, Maite Martin, India Martínez, Pastora Soler, Josemi Carmona (Ketama), entre muchos, se han subido escenario con él para acompañarle en momentos inolvidables de sus giras anteriores. El gran salto internacional de Manuel Carrasco se produjo con el lanzamiento de su cuarto álbum de estudio, Inercia, que el artista decidió grabar precisamente en Argentina en 2008. Y más recientemente, su nueva gira, Tour Bailar el Viento, le han situado en medio de una gran popularidad.','','2019-05-05 17:43:20','2019-05-05 17:43:20',NULL),(6,'Titulo','CHerokee','2019-04-22','texto texto texto texto texto nuevo nuevo nuevo',NULL,NULL,NULL,NULL),(7,'','','2019-04-30','','','2019-04-30 11:48:36','2019-04-30 11:48:36',''),(8,'','','2019-04-30','','','2019-04-30 11:48:36','2019-04-30 11:48:36',''),(9,'','','2019-04-30','','','2019-04-30 11:48:36','2019-04-30 11:48:36','');
 /*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,12 +188,14 @@ DROP TABLE IF EXISTS `imagenes_eventos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `imagenes_eventos` (
   `id_evento` int(10) unsigned DEFAULT NULL,
+  `id_imagen` int(11) NOT NULL AUTO_INCREMENT,
   `imagen` varchar(100) NOT NULL,
   `titulo` varchar(30) NOT NULL,
   `creditos` varchar(60) DEFAULT NULL,
+  UNIQUE KEY `id_imagen` (`id_imagen`),
   KEY `id_evento` (`id_evento`),
   CONSTRAINT `imagenes_eventos_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,7 +204,7 @@ CREATE TABLE `imagenes_eventos` (
 
 LOCK TABLES `imagenes_eventos` WRITE;
 /*!40000 ALTER TABLE `imagenes_eventos` DISABLE KEYS */;
-INSERT INTO `imagenes_eventos` VALUES (1,'imgs/sfdk1.jpeg','Zatu y Acción Sanchez','Recuperado de https://www.spotify.com'),(1,'imgs/sfdk2.jpg','Cartel del concierto','https://www.wegow.com'),(2,'imgs/ruthlorenzo0.jpg','Foto 1 de Ruth Lorenzo','Recuperado de http://www.ruthlorenzo.com'),(2,'imgs/ruthlorenzo1.jpg','Foto 2 de Ruth Lorenzo','Recuperado de http://www.ruthlorenzo.com'),(3,'imgs/plastic-festival.jpg','Foto 1 de Plastic Festival','Recuperado de https://www.spotify.com'),(3,'imgs/plastic-festival2.jpg','Foto 2 de Plastic Festival','Recuperado de https://www.spotify.com'),(4,'imgs/miriam1.jpg','Foto 1 Miriam Rodríguez','Recuperado de elconfidencial.es'),(4,'imgs/miriam2.jpg','Foto 2 Miriam Rodríguez','Recuperado de produceme.es'),(5,'imgs/manuel-carrasco1.jpg','Foto 1 Manuel Carrasco','Recuperado de huelvahoy.com'),(5,'imgs/manuel-carrasco2.jpg','Foto 2 Manuel Carrasco','Recuperado de lasprovincias.es');
+INSERT INTO `imagenes_eventos` VALUES (1,1,'imgs/sfdk1.jpeg','Zatu y Acción Sanchez','Recuperado de https://www.spotify.com'),(1,2,'imgs/sfdk2.jpg','Cartel del concierto','https://www.wegow.com'),(2,3,'imgs/ruthlorenzo0.jpg','Foto 1 de Ruth Lorenzo','Recuperado de http://www.ruthlorenzo.com'),(2,4,'imgs/ruthlorenzo1.jpg','Foto 2 de Ruth Lorenzo','Recuperado de http://www.ruthlorenzo.com'),(3,5,'imgs/plastic-festival.jpg','Foto 1 de Plastic Festival','Recuperado de https://www.spotify.com'),(3,6,'imgs/plastic-festival2.jpg','Foto 2 de Plastic Festival','Recuperado de https://www.spotify.com'),(4,7,'imgs/miriam1.jpg','Foto 1 Miriam Rodríguez','Recuperado de elconfidencial.es'),(4,8,'imgs/miriam2.jpg','Foto 2 Miriam Rodríguez','Recuperado de produceme.es'),(5,9,'imgs/manuel-carrasco1.jpg','Foto 1 Manuel Carrasco','Recuperado de huelvahoy.com'),(5,10,'imgs/manuel-carrasco2.jpg','Foto 2 Manuel Carrasco','Recuperado de lasprovincias.es');
 /*!40000 ALTER TABLE `imagenes_eventos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,6 +256,34 @@ LOCK TABLES `polaroids` WRITE;
 INSERT INTO `polaroids` VALUES ('imgs/sfdk1-evento.jpeg','SFDK',1),('imgs/ruthlorenzo.jpg','Ruth Lorenzo',2),('imgs/manuel-carrasco.jpg','Manuel Carrasco',5),('imgs/bely-basarte.jpg','Bely Basarte',6),('imgs/luz-casal.jpg','Luz Casal',7),('imgs/shotta.jpg','Shotta',8),('imgs/madrid-salvaje.png','Festival Madrid Salvaje',9),('imgs/plastic-festival.jpg','Plastic Festival',3),('imgs/miriam.jpg','Miriam Rodríguez',4);
 /*!40000 ALTER TABLE `polaroids` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(20) DEFAULT NULL,
+  `email` varchar(60) NOT NULL,
+  `passwd` char(60) NOT NULL,
+  `tipo` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (15,'Victor Peralta','victo2@gmail.com','$2y$10$m5/GXb0hH2CEi9fZAEH7lu4LG4EwbocxqF7/GIxEjQIfrKThq0vDi','registrado'),(16,'Victor Peralta','vic@gmail.com','$2y$10$bns02ibfdSvhIgGEgif35.fqIYVrHiEcWu2sIY85KTCHRJZaDN8XS','registrado'),(17,'Victor Peralta','123efe','$2y$10$LE/21pwFgcHqc9fPdxoKluLjSU2K/L.xhk5EmqH3v9wE/ND1jQcfi','registrado'),(18,'Victor Peralta','vic2@gmail.com','$2y$10$FVmllh48p0UDg7bnmormP.DbP6WDPU9WCiRcZQPRim5UPp5diZNRC','registrado'),(19,'Diego García','diego@gmail.com','$2y$10$Cel6nIHZsT9qp2.i6iKcPOmXUWktlnG9eSOzyoI2.aHG.KPItmSce','superusuario'),(20,'Juan','123@hotmail.com','$2y$10$6qRHl4g407JsYZcK5BkIsOicc7ws1MCZwq.TwGom8uD8rbu3PMvJ6','registrado'),(21,'Cristina','1234@hotmail.com','$2y$10$QplOYGM75UJaleeEqCpV1uBj71GdsB13dcuMeTGWOIXWowt4wT65S','registrado'),(22,'12345','12345@hotmail.com','$2y$10$y9YB5ovTTQ7MAUB4dJjDr.JELuyXSIYGhuGM1SAikMvSNDGHRMoea','registrado');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -239,4 +294,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-06 23:21:39
+-- Dump completed on 2019-05-21 10:01:24

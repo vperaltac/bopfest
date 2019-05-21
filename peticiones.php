@@ -22,6 +22,8 @@ switch($peticion){
         $datos = file_get_contents('php://input');
         enviarComentario($datos);
         break;
+    case 'usuarios':
+        echo usuarios();
     default:
         http_response_code(404);
         break;

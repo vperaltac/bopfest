@@ -67,11 +67,13 @@
             <th>Email</th>
             <th>Rol</th>
         </tr>
+        {% for usr in usuarios %}
         <tr>
-            <td>Diego García Aurelio</td>
-            <td>diegoga@gmail.com</td>
-            <td>Superusuario</td>
+            <td>{{usr.nombre}}</td>
+            <td>{{usr.email}}</td>
+            <td>{{usr.tipo}}</td>
         </tr>
+        {% endfor %}
     </table>
 </div>
 

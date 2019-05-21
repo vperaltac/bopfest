@@ -4,13 +4,16 @@
     <a href='principal'>Eventos</a>
     <a href='contacto'>Contacto</a>
     <a id="abrir-comentarios" class="btn-comentarios">Comentarios</a>
+
     {% if usuario == "none" %}
         <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
     {% else %}
         <a id="desconectar" data-usuario-id={{usuario.id_usuario}}>Desconectar</a>
         <a id="perfil" href="perfil">Mi perfil</a>
-        <a id="panel-control" href="panel-control">Panel de control</a>
-{% endif %}
+        {% if   (usuario.tipo == 'gestor') or (usuario.tipo == 'moderador') or (usuario.tipo == 'superusuario') %}
+            <a id="panel-control" href="panel-control">Panel de control</a>
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block comentarios %}
@@ -24,8 +27,10 @@
                     <div class="cuadro-usuario">
                         <img class="imagen-comentario" src="imgs/user.png" alt="usuario1">
                         <div class="datos-usuario">
+                            {% if (usuario.tipo == "moderador") or (usuario.tipo == "superusuario") %}
                             <img id="borrar-comentario" src="/imgs/iconos/round-delete-24px.svg" alt="">
                             <img id="editar-comentario" src="/imgs/iconos/round-create-24px.svg" alt="">
+                            {% endif %}
                             <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
                             <p class="fecha-usuario">{{comentario.fecha | date("d/m/Y H:i:s")}}</p>
                             <p class="comentario-usuario">{{comentario.texto}}</p>
@@ -42,16 +47,16 @@
             <div id="comentarios-dyn"></div>
         </section>
 
-        {% if (usuario.tipo == 'registrado') %}
+        {% if (usuario != 'none') %}
         <!--Formulario para añadir un comentario-->
         <form class="formulario">
             <div class="grupo-formulario">
                 <label>Nombre: </label>
-                <input type="text" name="nombre" id="nombre-form">
+                <input type="text" value="{{usuario.nombre}}" name="nombre" id="nombre-form">
             </div>
             <div class="grupo-formulario">
                 <label>Email: </label>
-                <input type="text" name="email" id="email-form">
+                <input type="text" value="{{usuario.email}}" name="email" id="email-form">
             </div>
             <div class="grupo-formulario">
                 <label>Mensaje: </label>
@@ -92,8 +97,10 @@
 
     <div class="formulario-inicio">
         <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}
+                {% if (usuario.tipo == "gestor") or (usuario.tipo == "superusuario") %}
                 <img id="editar-evento" src="/imgs/iconos/round-create-24px.svg" alt="">
                 <img id="guardar-evento" src="/imgs/iconos/round-done-24px.svg" alt="">
+                {% endif %}
         </h2>
         <div id="inTitulo" class="grupo-formulario">
             <input type="text" name="uname" value="{{evento.titulo}}" id="titulo-evento">

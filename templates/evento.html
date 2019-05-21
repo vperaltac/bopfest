@@ -8,6 +8,7 @@
         <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
     {% else %}
         <a id="desconectar" data-usuario-id={{usuario.id_usuario}}>Desconectar</a>
+        <a id="perfil" href="perfil">Mi perfil</a>
         <a id="panel-control" href="panel-control">Panel de control</a>
 {% endif %}
 {% endblock %}
@@ -63,6 +64,7 @@
     
 
     <script type="text/javascript" src="js/comentarios.js"></script>
+    <script type="text/javascript" src="js/editar_comentario.js"></script>
 {% endblock %}
 
 {% block content %}

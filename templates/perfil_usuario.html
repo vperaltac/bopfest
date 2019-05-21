@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 
-{% block menu %}
-    <a href='principal'>Eventos</a>
-    <a href='contacto'>Contacto</a>
-{% endblock %}
-
 {% block sidebar %}
 <p class="titulo-lateral">Ajustes</p>
 <div id="editar-informacion">
@@ -17,25 +12,25 @@
 {% block content %}
 <h2>Mi perfil</h2>
 <div class="formulario-inicio">
-    <p id="nombre">Nombre: Diego García Aurelio</p>
+    <p id="nombre">Nombre: {{usuario.nombre}}</p>
     <div class="grupo-formulario">
         <p id="editar-nombre">
             Nombre: 
-            <input type="text" name="uname" value="Diego García Aurelio" id="nombre-usuario">
+            <input type="text" name="uname" value="{{usuario.nombre}}" id="nombre-usuario">
             <input id="btn-cancelar-nombre" class="boton" type="submit" value="Cancelar" name="">
             <input class="boton" type="submit" value="Aceptar" name="">
         </p>
     </div>
-    <p id="email">Email: diegoga@correo.ugr.es</p>
+    <p id="email">Email: {{usuario.email}}</p>
     <div class="grupo-formulario">
         <p id="editar-email">
             Email: 
-            <input type="text" name="uname" value="diegoga@correo.ugr.es" id="email-usuario">
+            <input type="text" name="uname" value="{{usuario.email}}" id="email-usuario">
             <input id="btn-cancelar-email" class="boton" type="submit" value="Cancelar" name="">
             <input class="boton" type="submit" value="Aceptar" name="">
         </p>
     </div>
-    <p>Tipo de usuario: Registrado</p>
+    <p>Tipo de usuario: {{usuario.tipo}}</p>
 
     <div id="editar-pass" class="grupo-formulario">
         <p>

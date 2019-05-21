@@ -492,12 +492,10 @@ img.hover-shadow {
 
 /***********************************************************************/
 /*                         INICIO SESION/REGISTRO                      */
-#iniciar-sesion {
-  float: right;
-  cursor: pointer;
-}
-
-#desconectar{
+#iniciar-sesion,
+#desconectar,
+#perfil,
+#panel-control {
   float: right;
   cursor: pointer;
 }
@@ -640,6 +638,7 @@ td a {
 #editar-comentario,
 #borrar-comentario {
   float: right;
+  cursor: pointer;
 }
 
 #inTextoE {

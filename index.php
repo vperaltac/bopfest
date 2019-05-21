@@ -95,7 +95,7 @@ switch($dir){
     case 'iniciar-sesion':
         echo $twig->render('iniciar_sesion.html');    
     break;
-    case 'prueba':
+    case 'perfil':
         echo $twig->render('perfil_usuario.html', ['usuario' => $user]);    
     break;
     case 'panel-control':

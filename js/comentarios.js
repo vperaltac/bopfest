@@ -6,6 +6,10 @@ const nombreForm = document.getElementById("nombre-form");
 const emailForm  = document.getElementById("email-form");
 const mensajeForm = document.getElementById("mensaje-form");
 const idEvento = document.getElementsByClassName("titulo");
+const btnEditarC = document.getElementById("editar-comentario");
+const btnBorrarC = document.getElementById("borrar-comentario");
+const inTextoE = document.getElementById("inTextoE");
+const comentario = document.getElementsByClassName("comentario");
 
 var prohibidas;
 
@@ -178,4 +182,22 @@ if (sessionStorage.getItem("usuario") != null) {
   
 if (sessionStorage.getItem("correo") != null) {
     emailForm.value = sessionStorage.getItem("correo");
+}
+
+
+btnEditarC.onclick = function() {
+    inTextoE.style.display = "block";
+}
+
+btnBorrarC.onclick = function(){
+    id_comentario = comentario.dataset.idComentario;
+
+    let request = new XMLHttpRequest();
+    request.open('DELETE',"../peticiones.php?peticion=eliminarComentario");
+    request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+    request.send(JSON.stringify({
+                                "id_evento" : idEvento[0].id,
+                                "id_comentario": id_comentario
+    }));
+
 }

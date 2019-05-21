@@ -14,6 +14,11 @@ function enviarComentario($datos){
     addComentario($valores->id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
 }
 
+function eliminarComentario($datos){
+    $valores = json_decode($datos);
+    return pedirEliminarComentario($valores->id_evento,$valores->id_comentario);
+}
+
 switch($peticion){
     case 'palabras':
         echo palabras();
@@ -22,8 +27,9 @@ switch($peticion){
         $datos = file_get_contents('php://input');
         enviarComentario($datos);
         break;
-    case 'usuarios':
-        echo usuarios();
+    case 'eliminarComentario':
+        $datos = file_get_contents('php://input');
+        eliminarComentario($datos);
     default:
         http_response_code(404);
         break;

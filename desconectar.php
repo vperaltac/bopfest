@@ -4,9 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once 'modelo/iniciar_sesion.php';
+require_once 'modelo/desconectar.php';
 
 $datos = json_decode(file_get_contents('php://input'));
 
-// encriptar contraseña (Bcrypt)
-iniciarSesion($datos->correo,$datos->ip_usuario,$datos->password);
+desconectar($datos->id_usuario);

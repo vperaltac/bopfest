@@ -9,18 +9,30 @@ boton_inicio.addEventListener("click", (e) =>{
     let passwd = pwd_inicio.value;
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST',"../iniciar_sesion.php");
-    xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({
-                                "correo"  : correo,
-                                "password": passwd
-                            }));
-
+    xhr.open('GET','https://ipapi.co/json/');
+    xhr.send();
     xhr.onload = function(){
-        if(xhr.response == correo){
-            window.location.href = "principal/1";
+        let jsonip = JSON.parse(xhr.response);
+
+        let request = new XMLHttpRequest();
+        request.open('POST',"../iniciar_sesion.php");
+        request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+        request.send(JSON.stringify({
+                                    "correo"     : correo,
+                                    "ip_usuario" : jsonip.ip,
+                                    "password"   : passwd
+                                }));
+    
+        request.onload = function(){
+            if(request.response == correo){
+                window.location.href = "principal";
+            }
+            else{
+                console.log(request.response);
+            }
         }
-        console.log(xhr.response);
     }
+
+
 
 });

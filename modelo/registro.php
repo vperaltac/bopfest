@@ -21,8 +21,10 @@ function registrarUsuario($correo,$nombre,$hash){
         $sentencia = $mysqli->prepare("INSERT INTO usuarios (email,nombre,passwd,tipo) VALUES (?,?,?,?);");
         $sentencia->bind_param("ssss",$correo,$nombre,$hash,$tipo);
         $sentencia->execute();
+
+        echo "Correcto";
     }
     else{
-        echo "El usuario ya existe";
+        echo "Error: el usuario indicado ya existe";
     }
 }

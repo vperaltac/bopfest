@@ -16,6 +16,7 @@ $twig   = new \Twig\Environment($loader,[
  ]);
  $twig->addExtension(new \Twig\Extension\DebugExtension());
 
+pedirCerrarSesiones();
 
 // obtener datos sobre polaroids (pagina principal)
 function polaroids($etiqueta){
@@ -53,6 +54,7 @@ function galeria($id_evento){
 function usuario(){
     return pedirUsuario();
 }
+
 
 $template = $twig->load('principal.html');
 $user = usuario();

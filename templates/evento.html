@@ -4,7 +4,12 @@
     <a href='principal'>Eventos</a>
     <a href='contacto'>Contacto</a>
     <a id="abrir-comentarios" class="btn-comentarios">Comentarios</a>
-    <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
+    {% if usuario == "none" %}
+        <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
+    {% else %}
+        <a id="desconectar" data-usuario-id={{usuario.id_usuario}}>Desconectar</a>
+        <a id="panel-control" href="panel-control">Panel de control</a>
+{% endif %}
 {% endblock %}
 
 {% block comentarios %}

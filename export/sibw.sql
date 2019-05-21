@@ -43,7 +43,7 @@ CREATE TABLE `comentarios` (
 
 LOCK TABLES `comentarios` WRITE;
 /*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
-INSERT INTO `comentarios` VALUES (1,7,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:24:59','Me encanta SFDK, me muero de ganas de que llegue el día del concierto!',NULL,NULL),(1,8,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:25:45','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL,NULL),(2,9,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:28:00','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL,NULL),(2,10,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:28:00','Me encanta Ruth Lorenzo, me muero de ganas de que llegue el día del concierto!',NULL,NULL),(1,46,'Julian Cifuentes','julian@correo.ugr.es','2019-04-30 00:41:21','como mola la página!',NULL,NULL),(1,48,'Julio Ortega','julio@yahoo.es','2019-04-30 00:52:49','me parece que llego tarde.',NULL,NULL),(1,54,'María Delgado','mariadelg@gmail.com','2019-04-30 07:14:44','me ha parecido interesante','150.214.205.72',NULL),(3,56,'Pedro Villar','pedro@gmail.com','2019-04-30 13:04:54','Un festival muy épico!','150.214.205.72',NULL),(1,57,'lds,dpad','ch3rokee8@gmail.com','2019-05-07 14:19:59','dopwakdpowa','150.214.205.76',NULL),(1,58,'vcwda','victorcherokee@hotmail.com','2019-05-14 09:28:01','dwadwa','150.214.205.62',NULL);
+INSERT INTO `comentarios` VALUES (2,9,'Víctor Peralta','victorperalta@correo.ugr.es','2019-04-19 13:28:00','Yo asistí a su concierto en Barcelona durante la misma gira y fue una experiencia inolvidable, lo recomiendo 100%.',NULL,NULL),(2,10,'Diego García','diegogarcia.correo@gmail.com','2019-04-19 13:28:00','Me encanta Ruth Lorenzo, me muero de ganas de que llegue el día del concierto!',NULL,NULL),(3,56,'Pedro Villar','pedro@gmail.com','2019-04-30 13:04:54','Un festival muy épico!','150.214.205.72',NULL),(1,57,'lds,dpad','ch3rokee8@gmail.com','2019-05-07 14:19:59','dopwakdpowa','150.214.205.76',NULL),(1,58,'vcwda','victorcherokee@hotmail.com','2019-05-14 09:28:01','dwadwa','150.214.205.62',NULL);
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,6 @@ CREATE TABLE `conexiones` (
 
 LOCK TABLES `conexiones` WRITE;
 /*!40000 ALTER TABLE `conexiones` DISABLE KEYS */;
-INSERT INTO `conexiones` VALUES (15,'150.214.205.63',1),(19,'150.214.205.63',0);
 /*!40000 ALTER TABLE `conexiones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +271,7 @@ CREATE TABLE `usuarios` (
   `tipo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +280,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (15,'Victor Peralta','victo2@gmail.com','$2y$10$m5/GXb0hH2CEi9fZAEH7lu4LG4EwbocxqF7/GIxEjQIfrKThq0vDi','registrado'),(16,'Victor Peralta','vic@gmail.com','$2y$10$bns02ibfdSvhIgGEgif35.fqIYVrHiEcWu2sIY85KTCHRJZaDN8XS','registrado'),(17,'Victor Peralta','123efe','$2y$10$LE/21pwFgcHqc9fPdxoKluLjSU2K/L.xhk5EmqH3v9wE/ND1jQcfi','registrado'),(18,'Victor Peralta','vic2@gmail.com','$2y$10$FVmllh48p0UDg7bnmormP.DbP6WDPU9WCiRcZQPRim5UPp5diZNRC','registrado'),(19,'Diego García','diego@gmail.com','$2y$10$Cel6nIHZsT9qp2.i6iKcPOmXUWktlnG9eSOzyoI2.aHG.KPItmSce','superusuario'),(20,'Juan','123@hotmail.com','$2y$10$6qRHl4g407JsYZcK5BkIsOicc7ws1MCZwq.TwGom8uD8rbu3PMvJ6','registrado'),(21,'Cristina','1234@hotmail.com','$2y$10$QplOYGM75UJaleeEqCpV1uBj71GdsB13dcuMeTGWOIXWowt4wT65S','registrado'),(22,'12345','12345@hotmail.com','$2y$10$y9YB5ovTTQ7MAUB4dJjDr.JELuyXSIYGhuGM1SAikMvSNDGHRMoea','registrado');
+INSERT INTO `usuarios` VALUES (19,'Diego García','diego@gmail.com','$2y$10$Cel6nIHZsT9qp2.i6iKcPOmXUWktlnG9eSOzyoI2.aHG.KPItmSce','superusuario'),(24,'Victor Peralta','registrado@gmail.com','$2y$10$QOHfeijtIRnhBygH/tENj.5lowM8q/jHKaUJ0jr/Q55DwXqs9770u','registrado'),(25,'Julian Cifuentes','moderador@gmail.com','$2y$10$I0hsfSEpR4T97NqL8eJVge69OEYuNB864BKDkOPNm1iOfzhOZsu4e','moderador'),(26,'Claudia Caballero','gestor@gmail.com','$2y$10$x7TgRwBLusE4gVDOYJ.2tu1GCRG.AqLV2wPSYODEu8MPTEwKOs9CC','gestor');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -294,4 +293,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-21 10:01:24
+-- Dump completed on 2019-05-21 14:08:40

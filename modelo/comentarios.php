@@ -97,8 +97,8 @@ function pedirEliminarComentario($id_evento,$id_comentario){
     $id_evento = $mysqli->real_escape_string($id_evento);
     $id_comentario = $mysqli->real_escape_string($id_comentario);
 
-    $sentencia = $mysqli->prepare("DELETE FROM comentarios WHERE id_evento=$id_evento AND id_comentario=$id_comentario");
-    $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_evento,$id_comentario);
+    $sentencia = $mysqli->prepare("DELETE FROM comentarios WHERE id_evento=? AND id_comentario=?");
+    $sentencia->bind_param("ss",$id_evento,$id_comentario);
     $sentencia->execute();
 }
 

@@ -615,6 +615,10 @@ td a {
   text-decoration: none;
   color: #222;
 }
+
+.addEvento {
+  text-align: center;
+}
 /***********************************************************************/
 
 /***********************************************************************/
@@ -641,6 +645,11 @@ td a {
   cursor: pointer;
 }
 
-#inTextoE {
+#inTextoE,
+#guardar-comentario {
   display: none;
+}
+
+#textoE {
+  height: 100px;
 }

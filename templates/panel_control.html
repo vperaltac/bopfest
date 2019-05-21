@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block content %}
+{% if (usuario.tipo == "gestor") or (usuario.tipo == "superusuario") %}
 <div id="lista-eventos">
     <h2>Lista de eventos</h2>
     <!--Barra de busqueda-->
@@ -29,8 +30,31 @@
     </tr>
     {% endfor %}
     </table>
-</div>
 
+    <h3>Añadir un evento</h3>
+    <form id="addEvento" class="formulario">
+        <div class="grupo-formulario">
+            <label>Titulo: </label>
+            <input type="text" name="titulo">
+        </div>
+        <div class="grupo-formulario">
+            <label>Organizador: </label>
+            <input type="text" name="organizador">
+        </div>
+        <div class="grupo-formulario">
+            <label>Fecha: </label>
+            <input type="text" name="fecha">
+        </div>
+        <div class="grupo-formulario">
+            <label>Descripción: </label>
+            <textarea name="texto"></textarea>
+        </div>
+        <input class="boton" type="submit" value="Añadir evento" name="">
+    </form>
+</div>
+{% endif %}
+
+{% if (usuario.tipo == "moderador") or (usuario.tipo == "superusuario") %}
 <div id="lista-comentarios">
     <h2>Lista de comentarios</h2>
     <!--Busqueda-->
@@ -55,7 +79,9 @@
         {% endfor %}
     </table>
 </div>
+{% endif %}
 
+{% if usuario.tipo == "superusuario" %}
 <div id="lista-usuarios">
     <h2>Lista de usuarios</h2>
     <!--Busqueda-->
@@ -74,6 +100,7 @@
         </tr>
     </table>
 </div>
+{% endif %}
 
 <script type="text/javascript" src="js/panel_control.js"></script>
 {% endblock %}

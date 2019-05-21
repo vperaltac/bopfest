@@ -18,9 +18,14 @@
                     <div class="cuadro-usuario">
                         <img class="imagen-comentario" src="imgs/user.png" alt="usuario1">
                         <div class="datos-usuario">
+                            <img id="borrar-comentario" src="/imgs/iconos/round-delete-24px.svg" alt="">
+                            <img id="editar-comentario" src="/imgs/iconos/round-create-24px.svg" alt="">
                             <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
                             <p class="fecha-usuario">{{comentario.fecha | date("d/m/Y H:i:s")}}</p>
                             <p class="comentario-usuario">{{comentario.texto}}</p>
+                            <div id="inTextoE" class="grupo-formulario">
+                                <textarea name="texto-comentario" id="textoE">{{comentario.texto}}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,11 +64,11 @@
                 <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
                 <div class="texto-imagen">
                     <p>{{imagen.titulo}}</p>
-                    <div class="formulario-inicio grupo-formulario">
+                    <div id="inImgTitulo" class="formulario-inicio grupo-formulario">
                         <input type="text" name="uname" value="{{imagen.titulo}}" id="titulo-evento">
                     </div>
                     <p>{{imagen.creditos}}</p>
-                    <div class="formulario inicio grupo-formulario">
+                    <div id="inImgCreditos" class="formulario inicio grupo-formulario">
                         <input type="text" name="uname" value="{{imagen.creditos}}" id="titulo-evento">
                     </div>
                 </div>
@@ -78,20 +83,21 @@
     <div class="formulario-inicio">
         <h2 id={{evento.id_evento}} class="titulo">{{evento.titulo}}
                 <img id="editar-evento" src="/imgs/iconos/round-create-24px.svg" alt="">
+                <img id="guardar-evento" src="/imgs/iconos/round-done-24px.svg" alt="">
         </h2>
-        <div class="grupo-formulario">
+        <div id="inTitulo" class="grupo-formulario">
             <input type="text" name="uname" value="{{evento.titulo}}" id="titulo-evento">
         </div>
         <p class="organizador">{{evento.organizador}}</p>
-        <div class="grupo-formulario">
+        <div id="inOrganizador" class="grupo-formulario">
             <input type="text" name="uname" value="{{evento.organizador}}" id="organizador">
         </div>
         <p class="fecha">{{evento.fecha | date("d/m/Y")}}</p>
-        <div class="grupo-formulario">
+        <div id="inFecha" class="grupo-formulario">
             <input type="text" name="uname" value="{{evento.fecha | date("d/m/Y")}}" id="fecha-evento">
         </div>
         <p class="texto">{{evento.texto | nl2br}}</p>
-        <div class="grupo-formulario">
+        <div id="inTexto" class="grupo-formulario">
             <textarea name="texto-evento" id="texto-evento">{{evento.texto}}</textarea>
         </div>
 
@@ -99,6 +105,7 @@
             <h4>Fecha de publicación: {{evento.fecha_creacion | date("d/m/Y H:i:s")}}</h4>
             <h4>Fecha de última modificación: {{evento.fecha_modif | date("d/m/Y H:i:s")}}</h4>
         </div>
+        <script type="text/javascript" src="/js/editar-evento.js"></script>
     </div>
 
     {% block social %}
@@ -122,7 +129,7 @@
             </div>
         {% endfor %}
 
-        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript" src="/js/popup.js"></script>
     {% endblock %}
 
     <a id="btn-imprimir" href="evento/{{evento.id_evento}}/imprimir">

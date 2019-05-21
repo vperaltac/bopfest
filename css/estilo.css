@@ -612,3 +612,31 @@ td a {
   text-decoration: none;
   color: #222;
 }
+/***********************************************************************/
+
+/***********************************************************************/
+/*                         EDITAR EVENTO                               */
+
+#inTitulo,
+#inOrganizador,
+#inFecha,
+#inTexto,
+#inImgTitulo,
+#inImgCreditos,
+#guardar-evento {
+  display: none;
+}
+
+/***********************************************************************/
+
+/***********************************************************************/
+/*                         GESTION COMENTARIOS                         */
+
+#editar-comentario,
+#borrar-comentario {
+  float: right;
+}
+
+#inTextoE {
+  display: none;
+}

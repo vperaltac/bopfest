@@ -6,6 +6,9 @@ error_reporting(E_ALL);
 
 require_once 'modelo/desconectar.php';
 
-$datos = json_decode(file_get_contents('php://input'));
-
-desconectar($datos->id_usuario);
+switch($_SERVER['REQUEST_METHOD']){
+    case 'POST':
+        $datos = json_decode(file_get_contents('php://input'));
+        desconectar($datos->id_usuario);
+        break;
+}

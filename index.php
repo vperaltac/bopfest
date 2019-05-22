@@ -1,113 +1,56 @@
 <?php 
-require 'vendor/autoload.php';
-require_once 'modelo/comentarios.php';
-require_once 'modelo/eventos.php';
-require_once 'modelo/polaroids.php';
-require_once 'modelo/iniciar_sesion.php';
-require_once 'modelo/usuarios.php';
-
-// Routing
-$dir = 'principal';
-if (isset($_GET['dir']))
-    $dir = $_GET['dir'];
-
-$loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig   = new \Twig\Environment($loader,[
-    'debug' => 'true'
- ]);
- $twig->addExtension(new \Twig\Extension\DebugExtension());
-
-pedirCerrarSesiones();
-
-// obtener datos sobre polaroids (pagina principal)
-function polaroids($etiqueta){
-    return pedirPolaroids($etiqueta);
-}
-
-// obtener datos sobre comentarios
-function comentarios($id_evento){
-    if(!is_int($id_evento))
-        trigger_error("id de evento desconocido. ", E_USER_ERROR);
-
-    return pedirComentarios($id_evento);
-}
-
-function todosComentarios() {
-    return pedirTodosComentarios();
-}
-
-// obtener datos sobre eventos
-function evento($id_evento){
-    if(!is_int($id_evento))
-        trigger_error("id de evento desconocido. ", E_USER_ERROR);
-
-    return pedirEventos($id_evento);
-}
-
-function imagenes($id_evento){
-    return pedirImagenesEvento($id_evento);
-}
-
-function galeria($id_evento){
-    return pedirImagenesGaleria($id_evento);
-}
-
-function usuario(){
-    return pedirUsuario();
-}
-
-function usuarios(){
-    return pedirUsuarios();
-}
+require_once 'vendor/autoload.php';
+require_once 'principal.php';
+require_once 'eventos.php';
+require_once 'contacto.php';
+require_once 'inicio_sesion.php';
+require_once 'panel_control.php';
+require_once 'perfil.php';
 
 
+// Recibe la URI de htacces en formato "limpio"
+$uri = $_SERVER['REQUEST_URI'];
 
-$template = $twig->load('principal.html');
-$user = usuario();
+// Separar URI utilizando como delimitador "/" y guardar cada string en un array
+$array_uri = explode("/",$uri);
+//print_r($array_uri);
 
-switch($dir){
-    case 'principal':
-
-        echo $template->render(['polaroids' => polaroids('all'), 'usuario' => $user]);
+// llamar a cada archivo dependiendo del formato de la URI
+switch($array_uri[1]){
+    case "principal":
+        mostrarPrincipal();
         break;
-    case 'evento':
-        if(isset($_GET['evento']))
-            $evento = (int)$_GET['evento'];
-        else
-            http_response_code(404);
-        
-        if(isset($_GET['imprimir'])){
-            $imprimir = $_GET['imprimir'];
-
-            if($imprimir == 'imprimir')
-                echo $twig->render('imprimir_evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento), 'usuario' => $user]);
+    case "evento":
+        if(array_key_exists(2,$array_uri)){
+            if(array_key_exists(3,$array_uri) && $array_uri[3] == "imprimir")
+                mostrarEvento((int)$array_uri[2],TRUE);
             else
-                http_response_code(404);
+                mostrarEvento((int)$array_uri[2],FALSE);
         }
         else
-            echo $twig->render('evento.html', ['evento' => evento($evento),'imagenes' => imagenes($evento), 'comentarios' => comentarios($evento), 'galeria' => galeria($evento),'usuario' => $user]);    
-        break;
-    case 'filtro':
-        if(isset($_GET['etiqueta']))
-            $etiqueta = $_GET['etiqueta'];
-        else
             http_response_code(404);
-        
-        echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
         break;
-    case 'contacto':
-        echo $twig->render('contacto.html', ['usuario' => $user]);    
+    case "contacto":
+        mostrarContacto();
         break;
-    case 'iniciar-sesion':
-        echo $twig->render('iniciar_sesion.html');    
-    break;
-    case 'perfil':
-        echo $twig->render('perfil_usuario.html', ['usuario' => $user]);    
-    break;
-    case 'panel-control':
-        echo $twig->render('panel_control.html', ['polaroids' => polaroids('all'), 'comentarios' => todosComentarios(), 'usuario' => $user, 'usuarios' => usuarios()]);    
-    break;
-    default:
-        http_response_code(404);
+    case "iniciar-sesion":
+        mostrarInicioSesion();
+        break;
+    case "panel-control":
+        mostrarPanelControl();
+        break;
+    case "perfil":
+        mostrarPerfil();
         break;
 }
+
+// TODO: modificar llamada para aplicar filtros
+/* case 'filtro':
+if(isset($_GET['etiqueta']))
+    $etiqueta = $_GET['etiqueta'];
+else
+    http_response_code(404);
+
+echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
+break;
+ */

@@ -1,4 +1,4 @@
 RewriteEngine on
-RewriteRule ^([^/\.]+)/?$ index.php?dir=$1 [L]
-RewriteRule ^([-\w]+)/(\d+)$ index.php?dir=$1&evento=$2 [NC,L]
-RewriteRule ^([^/\.]+)/([0-9]+)/([^/]+)/?$ index.php?dir=$1&evento=$2&imprimir=$3 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /index.php [L,QSA]

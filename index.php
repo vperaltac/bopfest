@@ -5,6 +5,7 @@ require_once 'contacto.php';
 require_once 'inicio_sesion.php';
 require_once 'panel_control.php';
 require_once 'perfil.php';
+require_once 'usuarios.php';
 
 
 // Recibe la URI de htacces en formato "limpio"
@@ -49,15 +50,17 @@ switch($array_uri[1]){
     case "perfil":
         renderizarPerfil();
         break;
+    case "usuario":
+        if(array_key_exists(2,$array_uri) && $array_uri[2] == "desconectar"){
+            pedirDesconectar();
+        }
+        else
+            http_response_code(404);
+        break;
+    case "conectar":
+        pedirIniciarSesion();
+        break;
+    case "registrar":
+        pedirRegistrarUsuario();
+        break;
 }
-
-// TODO: modificar llamada para aplicar filtros
-/* case 'filtro':
-if(isset($_GET['etiqueta']))
-    $etiqueta = $_GET['etiqueta'];
-else
-    http_response_code(404);
-
-echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
-break;
- */

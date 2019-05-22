@@ -1,7 +1,5 @@
 <?php
-require_once 'modelo/registro.php';
-require_once 'modelo/iniciar_sesion.php';
-require_once 'modelo/desconectar.php';
+require_once 'modelo/usuarios.php';
 
 function pedirRegistrarUsuario(){
     $datos = json_decode(file_get_contents('php://input'));

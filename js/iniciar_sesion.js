@@ -15,7 +15,7 @@ boton_inicio.addEventListener("click", (e) =>{
         let jsonip = JSON.parse(xhr.response);
 
         let request = new XMLHttpRequest();
-        request.open('POST',"../iniciar_sesion.php");
+        request.open('POST',"conectar");
         request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
         request.send(JSON.stringify({
                                     "correo"     : correo,

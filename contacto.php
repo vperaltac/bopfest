@@ -2,7 +2,7 @@
 require_once 'vendor/autoload.php';
 require_once 'modelo/polaroids.php';
 
-function mostrarContacto(){
+function renderizarContacto(){
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig   = new \Twig\Environment($loader,[
         'debug' => 'true'

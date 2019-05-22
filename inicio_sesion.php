@@ -1,7 +1,7 @@
 <?php 
 require_once 'vendor/autoload.php';
 
-function mostrarInicioSesion(){
+function renderizarInicioSesion(){
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig   = new \Twig\Environment($loader,[
         'debug' => 'true'

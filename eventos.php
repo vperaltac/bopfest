@@ -4,9 +4,6 @@ require_once 'modelo/comentarios.php';
 require_once 'modelo/eventos.php';
 require_once 'modelo/usuarios.php';
 
-
-//$user = usuario();
-
 // obtener datos sobre comentarios
 function comentarios($id_evento){
     if(!is_int($id_evento))
@@ -35,7 +32,7 @@ function galeria($id_evento){
     return pedirImagenesGaleria($id_evento);
 }
 
-function mostrarEvento($id_evento,$imprimir){
+function renderizarEvento($id_evento,$imprimir){
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig   = new \Twig\Environment($loader,[
         'debug' => 'true'

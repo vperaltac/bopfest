@@ -37,7 +37,7 @@ function filtrar_por_etiqueta(filtro){
 
     // petición AJAX asíncrona 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET','../index.php?dir=filtro&etiqueta=' + filtro,true);
+    xhr.open('GET','principal/filtro/' + filtro,true);
     xhr.send();  
 
     // cuando se reciba la respuesta, modificar polaroids con el filtro

@@ -1,5 +1,4 @@
 <?php 
-require_once 'vendor/autoload.php';
 require_once 'principal.php';
 require_once 'eventos.php';
 require_once 'contacto.php';
@@ -18,29 +17,37 @@ $array_uri = explode("/",$uri);
 // llamar a cada archivo dependiendo del formato de la URI
 switch($array_uri[1]){
     case "principal":
-        mostrarPrincipal();
+        if(array_key_exists(2,$array_uri) && $array_uri[2] == "filtro"){
+            if(array_key_exists(3,$array_uri)){
+                aplicarFiltro($array_uri[3]);
+            }
+            else
+                http_response_code(404);
+        }
+        else
+            renderizarPrincipal();
         break;
     case "evento":
         if(array_key_exists(2,$array_uri)){
             if(array_key_exists(3,$array_uri) && $array_uri[3] == "imprimir")
-                mostrarEvento((int)$array_uri[2],TRUE);
+                renderizarEvento((int)$array_uri[2],TRUE);
             else
-                mostrarEvento((int)$array_uri[2],FALSE);
+                renderizarEvento((int)$array_uri[2],FALSE);
         }
         else
             http_response_code(404);
         break;
     case "contacto":
-        mostrarContacto();
+        renderizarContacto();
         break;
     case "iniciar-sesion":
-        mostrarInicioSesion();
+        renderizarInicioSesion();
         break;
     case "panel-control":
-        mostrarPanelControl();
+        renderizarPanelControl();
         break;
     case "perfil":
-        mostrarPerfil();
+        renderizarPerfil();
         break;
 }
 

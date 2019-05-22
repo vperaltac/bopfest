@@ -1,7 +1,7 @@
 <?php
 require_once 'utils.php';
 
-function mostrarPerfil(){
+function renderizarPerfil(){
     $loader = new \Twig\Loader\FilesystemLoader('templates');
     $twig   = new \Twig\Environment($loader,[
         'debug' => 'true'

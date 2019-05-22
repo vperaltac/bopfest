@@ -1,5 +1,5 @@
 <?php 
-require_once 'modelo/iniciar_sesion.php';
+require_once 'modelo/usuarios.php';
 
 function usuario(){
     return pedirUsuario();

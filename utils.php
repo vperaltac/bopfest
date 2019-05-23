@@ -8,3 +8,11 @@ function usuario(){
 function polaroids($etiqueta){
     return pedirPolaroids($etiqueta);
 }
+
+function todosComentarios() {
+    return pedirTodosComentarios();
+}
+
+function todosUsuarios(){
+    return pedirUsuarios();
+}

@@ -1,5 +1,5 @@
 <?php 
-require_once 'vendor/autoload.php';
+require_once "entorno.php";
 
 function renderizarInicioSesion(){
     $entorno = Entorno::getInstancia();

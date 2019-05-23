@@ -11,10 +11,6 @@ function comentarios($id_evento){
     return pedirComentarios($id_evento);
 }
 
-function todosComentarios() {
-    return pedirTodosComentarios();
-}
-
 // obtener datos sobre eventos
 function evento($id_evento){
     if(!is_int($id_evento))

@@ -8,7 +8,7 @@ require_once 'perfil.php';
 require_once 'usuarios.php';
 
 
-// Recibe la URI de htacces en formato "limpio"
+// Recibe la URI de htaccess en formato "limpio"
 $uri = $_SERVER['REQUEST_URI'];
 
 // Separar URI utilizando como delimitador "/" y guardar cada string en un array

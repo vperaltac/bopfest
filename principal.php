@@ -1,29 +1,24 @@
 <?php 
-require_once 'vendor/autoload.php';
 require_once 'modelo/polaroids.php';
 require_once 'modelo/usuarios.php';
 require_once 'utils.php';
+require_once 'entorno.php';
 
 function renderizarPrincipal(){
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig   = new \Twig\Environment($loader,[
-        'debug' => 'true'
-    ]);
+    $entorno = Entorno::getInstancia();
+    $variables = [
+        "polaroids" => polaroids("all"),
+        "usuario"   => usuario()
+    ];
 
-    $twig->addExtension(new \Twig\Extension\DebugExtension());
-    $template = $twig->load('principal.html');
-    
-    echo $template->render(['polaroids' => polaroids('all'), 'usuario' => usuario()]);
+    echo $entorno->renderizar("principal.html",$variables);
 }
 
 function aplicarFiltro($etiqueta){
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig   = new \Twig\Environment($loader,[
-        'debug' => 'true'
-    ]);
+    $entorno = Entorno::getInstancia();
+    $variables = [
+        "polaroids" => polaroids($etiqueta)
+    ];
 
-    $twig->addExtension(new \Twig\Extension\DebugExtension());
-    $template = $twig->load('principal.html');
-
-    echo $template->renderBlock('content',['polaroids' => polaroids($etiqueta)]);
+    echo $entorno->renderizarBloque("principal.html","content",$variables);
 }

@@ -1,5 +1,4 @@
 <?php 
-require_once 'vendor/autoload.php';
 require_once 'modelo/comentarios.php';
 require_once 'modelo/eventos.php';
 require_once 'modelo/usuarios.php';
@@ -33,24 +32,20 @@ function galeria($id_evento){
 }
 
 function renderizarEvento($id_evento,$imprimir){
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig   = new \Twig\Environment($loader,[
-        'debug' => 'true'
-    ]);
+    $entorno = Entorno::getInstancia();
 
-    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    $variables = [
+        'evento' => evento($id_evento),
+        'imagenes' => imagenes($id_evento), 
+        'comentarios' => comentarios($id_evento),
+        'usuario' => usuario()
+    ];
 
-    if(!$imprimir)
-        echo $twig->render('evento.html', 
-                           ['evento' => evento($id_evento),
-                           'imagenes' => imagenes($id_evento), 
-                           'comentarios' => comentarios($id_evento),
-                           'galeria' => galeria($id_evento),
-                           'usuario' => usuario()]);
-    else
-        echo $twig->render('imprimir_evento.html', 
-                            ['evento' => evento($id_evento),
-                            'imagenes' => imagenes($id_evento),
-                            'comentarios' => comentarios($id_evento),
-                            'usuario' => usuario()]);
+    if($imprimir){
+        echo $entorno->renderizar("imprimir_evento.html",$variables);
     }
+    else{
+        $variables["galeria"] = galeria($id_evento);
+        echo $entorno->renderizar("evento.html",$variables);
+    }
+}

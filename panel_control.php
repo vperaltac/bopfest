@@ -2,12 +2,11 @@
 require_once 'utils.php';
 
 function renderizarPanelControl(){
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig   = new \Twig\Environment($loader,[
-        'debug' => 'true'
-    ]);
-
-    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    $entorno = Entorno::getInstancia();
+    $variables = [
+        'polaroids' => polaroids('all'), 
+        'usuario' => usuario()
+    ];
     
-    echo $twig->render('panel_control.html',['polaroids' => polaroids('all'), 'usuario' => usuario()]);
+    echo $entorno->renderizar("panel_control.html",$variables);
 }

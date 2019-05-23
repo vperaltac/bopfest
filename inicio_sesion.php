@@ -2,12 +2,12 @@
 require_once 'vendor/autoload.php';
 
 function renderizarInicioSesion(){
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig   = new \Twig\Environment($loader,[
-        'debug' => 'true'
-    ]);
+    $entorno = Entorno::getInstancia();
 
-    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    $variables = [
+        "polaroids" => polaroids("all"),
+        "usuario"   => usuario()
+    ];
 
-    echo $twig->render('iniciar_sesion.html');
+    echo $entorno->renderizar('iniciar_sesion.html',$variables);
 }

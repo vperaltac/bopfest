@@ -2,12 +2,10 @@
 require_once 'utils.php';
 
 function renderizarPerfil(){
-    $loader = new \Twig\Loader\FilesystemLoader('templates');
-    $twig   = new \Twig\Environment($loader,[
-        'debug' => 'true'
-    ]);
-
-    $twig->addExtension(new \Twig\Extension\DebugExtension());
+    $entorno = Entorno::getInstancia();
+    $variables = [
+        'usuario' => usuario()
+    ];
     
-    echo $twig->render('perfil_usuario.html', ['usuario' => usuario()]);    
+    echo $entorno->renderizar('perfil_usuario.html',$variables);    
 }

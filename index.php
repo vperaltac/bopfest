@@ -30,8 +30,19 @@ switch($array_uri[1]){
         break;
     case "evento":
         if(array_key_exists(2,$array_uri)){
-            if(array_key_exists(3,$array_uri) && $array_uri[3] == "imprimir")
-                renderizarEvento((int)$array_uri[2],TRUE);
+            if(array_key_exists(3,$array_uri)){
+                if($array_uri[3] == "imprimir")
+                    renderizarEvento((int)$array_uri[2],TRUE);
+                else if($array_uri[3] == "comentario"){
+                    if(array_key_exists(4,$array_uri)){
+                        pedirEliminarComentario($array_uri[2],$array_uri[4]);
+                    }
+                    else
+                        http_response_code(404);
+                }
+                else
+                    http_response_code(404);
+            }
             else
                 renderizarEvento((int)$array_uri[2],FALSE);
         }

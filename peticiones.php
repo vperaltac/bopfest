@@ -14,11 +14,6 @@ function enviarComentario($datos){
     addComentario($valores->id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
 }
 
-function eliminarComentario($datos){
-    $valores = json_decode($datos);
-    pedirEliminarComentario($valores->id_evento,$valores->id_comentario);
-}
-
 switch($peticion){
     case 'palabras':
         echo palabras();

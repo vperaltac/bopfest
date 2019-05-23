@@ -196,12 +196,8 @@ for(var i=0; i<botonesBorrar.length; i++){
         let id_comentario = comentarios[posicion-1].dataset.idComentario;
 
         let request = new XMLHttpRequest();
-        request.open('DELETE',"../peticiones.php?peticion=eliminarComentario");
-        request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-        request.send(JSON.stringify({
-                                    "id_evento" : idEvento[0].id,
-                                    "id_comentario": id_comentario
-        }));
+        request.open('DELETE',"evento/" + idEvento[0].id + "/comentario/" + id_comentario + "/eliminar");
+        request.send(null);
 
         comentarios[posicion-1].remove();
     } 

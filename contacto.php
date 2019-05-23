@@ -1,5 +1,5 @@
 <?php 
-require_once 'modelo/polaroids.php';
+require_once 'utils.php';
 
 function renderizarContacto(){
     $entorno = Entorno::getInstancia();

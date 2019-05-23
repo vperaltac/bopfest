@@ -1,5 +1,7 @@
 <?php 
 require_once "entorno.php";
+require_once "utils.php";
+
 
 function renderizarInicioSesion(){
     $entorno = Entorno::getInstancia();

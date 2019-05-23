@@ -93,10 +93,9 @@ if(botonComentario){
                 let jsonip = JSON.parse(xhr.response);
 
                 let request = new XMLHttpRequest();
-                request.open('POST',"../peticiones.php?peticion=addComentario");
+                request.open('POST',"eventos/" + idEvento[0].id + "/comentarios/");
                 request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
                 request.send(JSON.stringify({
-                                            "id_evento" : idEvento[0].id,
                                             "ip_usuario": jsonip.ip,
                                             "nombre"    : nombreEnvio,
                                             "correo"    : correoEnvio,
@@ -144,7 +143,7 @@ function comprobarMensaje(texto){
     // solo realizar peticion AJAX al servidor si la variable prohibidas aún no está definida
     if(!prohibidas){
         let xhr = new XMLHttpRequest();
-        xhr.open('GET','../peticiones.php?peticion=palabras',true);
+        xhr.open('GET','palabras',true);
         xhr.send();
 
         xhr.onload = function(){
@@ -196,8 +195,11 @@ for(var i=0; i<botonesBorrar.length; i++){
         let id_comentario = comentarios[posicion-1].dataset.idComentario;
 
         let request = new XMLHttpRequest();
-        request.open('DELETE',"evento/" + idEvento[0].id + "/comentario/" + id_comentario + "/eliminar");
+        request.open('DELETE',"eventos/" + idEvento[0].id + "/comentarios/" + id_comentario);
         request.send(null);
+        request.onload = function(){
+            console.log(request.response);
+        }
 
         comentarios[posicion-1].remove();
     } 

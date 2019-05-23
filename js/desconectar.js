@@ -7,7 +7,7 @@ if(document.getElementById("desconectar")){
         id_usuario = boton_desconectar.dataset.usuarioId;
     
         let request = new XMLHttpRequest();
-        request.open('POST',"usuario/desconectar");
+        request.open('POST',"usuarios/1/desconectar");
         request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
         request.send(JSON.stringify({
                                     "id_usuario" : id_usuario

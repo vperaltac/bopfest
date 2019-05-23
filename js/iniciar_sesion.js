@@ -15,7 +15,7 @@ boton_inicio.addEventListener("click", (e) =>{
         let jsonip = JSON.parse(xhr.response);
 
         let request = new XMLHttpRequest();
-        request.open('POST',"conectar");
+        request.open('POST',"usuarios/1/conectar");
         request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
         request.send(JSON.stringify({
                                     "correo"     : correo,

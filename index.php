@@ -6,72 +6,189 @@ require_once 'inicio_sesion.php';
 require_once 'panel_control.php';
 require_once 'perfil.php';
 require_once 'usuarios.php';
-
+require_once 'modelo/comentarios.php';
 
 // Recibe la URI de htaccess en formato "limpio"
 $uri = $_SERVER['REQUEST_URI'];
 
 // Separar URI utilizando como delimitador "/" y guardar cada string en un array
 $array_uri = explode("/",$uri);
-//print_r($array_uri);
 
-// llamar a cada archivo dependiendo del formato de la URI
-switch($array_uri[1]){
-    case "principal":
-        if(array_key_exists(2,$array_uri) && $array_uri[2] == "filtro"){
-            if(array_key_exists(3,$array_uri)){
-                aplicarFiltro($array_uri[3]);
-            }
-            else
-                http_response_code(404);
-        }
-        else
-            renderizarPrincipal();
-        break;
-    case "evento":
-        if(array_key_exists(2,$array_uri)){
-            if(array_key_exists(3,$array_uri)){
-                if($array_uri[3] == "imprimir")
-                    renderizarEvento((int)$array_uri[2],TRUE);
-                else if($array_uri[3] == "comentario"){
-                    if(array_key_exists(4,$array_uri)){
-                        pedirEliminarComentario($array_uri[2],$array_uri[4]);
+switch($_SERVER['REQUEST_METHOD']){
+    //------------------------------------  GET  ------------------------------------------
+    case 'GET':
+        switch($array_uri[1]){
+            case 'principal':
+                if(array_key_exists(2,$array_uri) && $array_uri[2] == "filtro"){
+                    if(array_key_exists(3,$array_uri)){
+                        aplicarFiltro($array_uri[3]);
                     }
                     else
                         http_response_code(404);
                 }
                 else
+                    renderizarPrincipal();
+                break;
+
+            case 'evento':
+                if(array_key_exists(2,$array_uri)){
+                    if(array_key_exists(3,$array_uri) && $array_uri[3] == 'imprimir')
+                        renderizarEvento((int)$array_uri[2],TRUE);
+                    else
+                        renderizarEvento((int)$array_uri[2],FALSE);
+                }
+                else
                     http_response_code(404);
+                break;
+
+            case 'contacto':
+                renderizarContacto();
+                break;
+            
+            case 'iniciar-sesion':
+                renderizarInicioSesion();
+                break;
+
+            case 'panel-control':
+                renderizarPanelControl();
+                break;
+            
+            case 'perfil':
+                renderizarPerfil();
+                break;
+
+            case "palabras":
+                echo palabras();
+                break;
+            default:
+                http_response_code(404);
+                break;
+        }
+    //------------------------------------------------------------------------------------
+    
+    //------------------------------------  POST  ----------------------------------------
+    case 'POST':
+        switch($array_uri[1]){
+            case 'usuarios':
+                if(sizeof($array_uri) == 4){
+                    if($array_uri[3] == 'conectar')
+                        pedirIniciarSesion();
+                    else if($array_uri[3] == 'desconectar')
+                        pedirDesconectar();
+                    else
+                        http_response_code(404);
+                }
+                else if(sizeof($array_uri) == 2)
+                    pedirRegistrarUsuario();
+                else
+                    http_response_code(404);
+                break;
+
+            case 'eventos':
+                if(array_key_exists(4,$array_uri) && $array_uri[3] == 'etiquetas'){
+                    $id_evento = $array_uri[2];
+                    $etiqueta  = $array_uri[4];
+                    // enviar etiquetas
+                }
+                else
+                    http_response_code(404);
+                
+                if(array_key_exists(3,$array_uri)){
+                    if($array_uri[3] == 'comentarios'){
+                        $id_evento = $array_uri[2];
+                        $datos = file_get_contents('php://input');
+                        enviarComentario($id_evento,$datos);
+                    }
+                    else if($array_uri[3] == 'imagenes'){
+                        $id_evento = $array_uri[2];
+                        // enviar imagenes
+                    }
+                }
+                else if(sizeof($array_uri) == 2){
+                    $datos = file_get_contents('php://input');
+                    // enviar evento
+                }
+                else
+                    http_response_code(404);
+                break;
+        }
+        break;
+    //------------------------------------------------------------------------------------
+
+    //------------------------------------  PUT   ----------------------------------------
+    case 'PUT':
+        switch($array_uri[1]){
+            case 'eventos':
+                $id_evento = $array_uri[2];
+
+                if(sizeof($array_uri) == 5 && $array_uri[3] == 'comentarios'){
+                    $id_comentario = $array_uri[4];
+                    $datos = file_get_contents('php://input');
+                    // editar comentario
+                }
+                else if(sizeof($array_uri) == 2){
+                    $datos = file_get_contents('php://input');
+                    // editar evento
+                }
+                else
+                    http_response_code(404);
+                break;
+
+            case 'usuarios':
+                if(sizeof($array_uri) == 5){
+                    $id_usuario = $array_uri[2];
+
+                    if($array_uri[3] == 'nombre'){
+                        $datos = file_get_contents('php://input');
+                        // editar nombre
+                    }
+                    else if($array_uri[3] == 'correo'){
+                        $datos = file_get_contents('php://input');
+                        // editar correo
+                    }
+                    else if($array_uri[3] == 'passwd'){
+                        $datos = file_get_contents('php://input');
+                        // editar contraseña
+                    }
+                    else if($array_uri[3] == 'rol'){
+                        $datos = file_get_contents('php://input');
+                        // editar rol
+                    }
+                    else
+                        http_response_code(404);
+                }
+                break;
+        }
+        break;
+    //------------------------------------------------------------------------------------
+
+    //------------------------------------  DELETE  --------------------------------------
+    case 'DELETE':
+        if($array_uri[1] == 'eventos'){
+            $id_evento = $array_uri[2];
+
+            if(sizeof($array_uri) == 3){
+                //eliminar evento
+            }
+            else if(sizeof($array_uri) == 5){
+                if($array_uri[3] == 'etiquetas'){
+                    $etiqueta = $array_uri[4];
+                    // eliminar etiqueta
+                }
+                else if($array_uri[3] == 'imagenes'){
+                    $id_imagen = $array_uri[4];
+                    // eliminar imagen
+                }
+                else if($array_uri[3] == 'comentarios'){
+                    $id_comentario = $array_uri[4];
+                    pedirEliminarComentario($id_evento,$id_comentario);
+                }
             }
             else
-                renderizarEvento((int)$array_uri[2],FALSE);
+                http_response_code(404);
         }
         else
             http_response_code(404);
         break;
-    case "contacto":
-        renderizarContacto();
-        break;
-    case "iniciar-sesion":
-        renderizarInicioSesion();
-        break;
-    case "panel-control":
-        renderizarPanelControl();
-        break;
-    case "perfil":
-        renderizarPerfil();
-        break;
-    case "usuario":
-        if(array_key_exists(2,$array_uri) && $array_uri[2] == "desconectar"){
-            pedirDesconectar();
-        }
-        else
-            http_response_code(404);
-        break;
-    case "conectar":
-        pedirIniciarSesion();
-        break;
-    case "registrar":
-        pedirRegistrarUsuario();
-        break;
-}
+    //------------------------------------------------------------------------------------
+} // END switch($_SERVER['REQUEST_METHOD'])

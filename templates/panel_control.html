@@ -5,6 +5,7 @@
 <div id="editar-informacion">
     {% if (usuario.tipo == "gestor") or (usuario.tipo == "superusuario") %}
     <a id="btnEventos">Eventos</a>
+    <a id="btnAddEventos">Añadir Evento</a>
     {% endif %}
     {% if (usuario.tipo == "moderador") or (usuario.tipo == "superusuario") %}
     <a id="btnComentarios">Comentarios</a>
@@ -36,26 +37,45 @@
     </tr>
     {% endfor %}
     </table>
+</div>
 
-    <h3>Añadir un evento</h3>
+<div id="formEvento">
+    <h2>Añadir un evento</h2>
     <form id="addEvento" class="formulario">
         <div class="grupo-formulario">
-            <label>Titulo: </label>
-            <input type="text" name="titulo">
+            <p>Título: <input type="text" name="titulo" id="tituloE"></p>
+            <p>Organizador: <input type="text" name="organizador" id="organizadorE"></p>
+            <p>Fecha: <input type="text" name="fecha" id="fechaE"></p>
+            <p>Descripción: <textarea type="text" name="titulo" id="descripcionE"></textarea></p>
+            <p>Imagen principal: 
+                <form enctype="multipart/form-data">
+                    <input name="imgPrincipal" type="file" />
+                </form>
+            </p>
+            <div class="imgs">
+                <div class="img1">
+                    <p>Imagen 1: 
+                        <form enctype="multipart/form-data">
+                            <input name="img2" type="file" />
+                        </form>
+                    </p>
+                    <p>Título imagen 1: <input type="text" name="tituloImg1"></p>
+                    <p>Créditos imagen 1: <input type="text" name="credImg1"></p>
+                </div>
+                <div class="img2">
+                    <p>Imagen 2: 
+                        <form enctype="multipart/form-data">
+                            <input name="img2" type="file" />
+                        </form>
+                    </p>
+                    <p>Título imagen 2: <input type="text" name="tituloImg2"></p>
+                    <p>Créditos imagen 2: <input type="text" name="credImg2"></p>
+                </div>
+            </div>
+            
+
+            <input class="boton" type="submit" value="Añadir evento" name="" id="guardarEvento">
         </div>
-        <div class="grupo-formulario">
-            <label>Organizador: </label>
-            <input type="text" name="organizador">
-        </div>
-        <div class="grupo-formulario">
-            <label>Fecha: </label>
-            <input type="text" name="fecha">
-        </div>
-        <div class="grupo-formulario">
-            <label>Descripción: </label>
-            <textarea name="texto"></textarea>
-        </div>
-        <input class="boton" type="submit" value="Añadir evento" name="">
     </form>
 </div>
 {% endif %}

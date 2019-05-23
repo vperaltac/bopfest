@@ -1,5 +1,6 @@
 <?php 
 require_once 'modelo/comentarios.php';
+require_once 'modelo/eventos.php';
 
 // Routing
 if (isset($_GET['peticion']))
@@ -14,6 +15,11 @@ function enviarComentario($datos){
     addComentario($valores->id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
 }
 
+function addEvento($datos){
+    $valores = json_decode($datos);
+    addEvento($valores->titulo,$valores->organizador,$valores->descripción);
+}
+
 switch($peticion){
     case 'palabras':
         echo palabras();
@@ -25,6 +31,10 @@ switch($peticion){
     case 'eliminarComentario':
         $datos = file_get_contents('php://input');
         eliminarComentario($datos);
+    case 'addEveto':
+        $datos = file_get_contents('php://input');
+        addEvento($datos);
+        break;
     default:
         http_response_code(404);
         break;

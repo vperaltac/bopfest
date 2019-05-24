@@ -34,7 +34,7 @@ function renderizarEvento($id_evento,$imprimir){
         'evento' => evento($id_evento),
         'imagenes' => imagenes($id_evento), 
         'comentarios' => comentarios($id_evento),
-        'usuario' => usuario()
+        'usuario' => comprobarUsuario()
     ];
 
     if($imprimir){

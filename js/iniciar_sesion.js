@@ -24,7 +24,7 @@ boton_inicio.addEventListener("click", (e) =>{
                                 }));
     
         request.onload = function(){
-            if(request.response == correo){
+            if(request.response == "Login correcto"){
                 window.location.href = "principal";
             }
             else{

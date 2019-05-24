@@ -7,7 +7,7 @@ function renderizarPanelControl(){
         'polaroids' => polaroids('all'), 
         'comentarios' => todosComentarios(),
         'usuarios' => todosUsuarios(),
-        'usuario' => usuario()
+        'usuario' => comprobarUsuario()
     ];
     
     echo $entorno->renderizar("panel_control.html",$variables);

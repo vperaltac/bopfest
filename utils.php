@@ -5,6 +5,19 @@ function usuario(){
     return pedirUsuario();
 }
 
+function comprobarUsuario(){
+    // activar sesión
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    if(isset($_SESSION["usuario"])){
+        return $_SESSION["usuario"];
+    }
+    else
+        return "anonimo";
+}
+
 function polaroids($etiqueta){
     return pedirPolaroids($etiqueta);
 }

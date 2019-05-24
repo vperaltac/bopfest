@@ -8,7 +8,7 @@ function renderizarInicioSesion(){
 
     $variables = [
         "polaroids" => polaroids("all"),
-        "usuario"   => usuario()
+        "usuario"   => comprobarUsuario()
     ];
 
     echo $entorno->renderizar('iniciar_sesion.html',$variables);

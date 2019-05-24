@@ -8,7 +8,7 @@ function renderizarPrincipal(){
     $entorno = Entorno::getInstancia();
     $variables = [
         "polaroids" => polaroids("all"),
-        "usuario"   => usuario()
+        "usuario"   => comprobarUsuario()
     ];
 
     echo $entorno->renderizar("principal.html",$variables);

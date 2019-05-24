@@ -12,17 +12,34 @@ function pedirRegistrarUsuario(){
 function pedirIniciarSesion(){
     $datos = json_decode(file_get_contents('php://input'));
 
-    // encriptar contraseña (Bcrypt)
-    iniciarSesion($datos->correo,$datos->ip_usuario,$datos->password);
+    // comprobar usuario y contraseña en BD
+    $inicio = iniciarSesion($datos->correo,$datos->password);
+
+    if($inicio){
+        // activar sesión
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        // Store data in session variables
+        $_SESSION["conectado"] = true;
+        $_SESSION["usuario"] = $datos->correo;         
+    }
+    else
+        echo "Inicio de sesión incorrecto";
 }
 
 function pedirDesconectar(){
-    switch($_SERVER['REQUEST_METHOD']){
-        case 'POST':
-            $datos = json_decode(file_get_contents('php://input'));
-            desconectar($datos->id_usuario);
-            break;
+    // activar sesión
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
     }
+    
+    // Eliminar la sesión
+    session_destroy();
 }
 
+
+
+                   
 

@@ -11,8 +11,15 @@ function comprobarUsuario(){
         session_start();
     }
     
-    if(isset($_SESSION["usuario"])){
-        return $_SESSION["usuario"];
+    if(isset($_SESSION["email"])){
+        $usuario = array();
+        $usuario = [
+            "email" => $_SESSION["email"],
+            "tipo" => $_SESSION["tipo"],
+            "nombre" => $_SESSION["nombre"]
+        ];
+            
+        return $usuario;
     }
     else
         return "anonimo";

@@ -14,7 +14,6 @@ function pedirIniciarSesion(){
 
     // comprobar usuario y contraseña en BD
     $inicio = iniciarSesion($datos->correo,$datos->password);
-
     if($inicio){
         // activar sesión
         if (session_status() == PHP_SESSION_NONE) {
@@ -22,8 +21,9 @@ function pedirIniciarSesion(){
         }
         
         // Store data in session variables
-        $_SESSION["conectado"] = true;
-        $_SESSION["usuario"] = $datos->correo;         
+        $_SESSION["email"] = $inicio["email"];         
+        $_SESSION["tipo"]    = $inicio["tipo"];
+        $_SESSION["nombre"]  = $inicio["nombre"];
     }
     else
         echo "Inicio de sesión incorrecto";

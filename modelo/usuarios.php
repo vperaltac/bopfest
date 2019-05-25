@@ -48,7 +48,7 @@ function iniciarSesion($correo,$passwd){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
-    $peticion = $mysqli->query("SELECT id_usuario,passwd FROM usuarios WHERE email='$correo';");
+    $peticion = $mysqli->query("SELECT id_usuario,nombre,email,tipo,passwd FROM usuarios WHERE email='$correo';");
 
     if($peticion->num_rows === 0){
         echo "Usuario no existe";
@@ -59,7 +59,7 @@ function iniciarSesion($correo,$passwd){
 
         if(password_verify($passwd,$row['passwd'])){
             echo "Login correcto";
-            return true;
+            return $row;
         }
         else
             echo "Contraseña incorrecta";

@@ -90,10 +90,7 @@ switch($_SERVER['REQUEST_METHOD']){
                     $etiqueta  = $array_uri[4];
                     // enviar etiquetas
                 }
-                else
-                    http_response_code(404);
-                
-                if(array_key_exists(3,$array_uri)){
+                else if(array_key_exists(3,$array_uri)){
                     if($array_uri[3] == 'comentarios'){
                         $id_evento = $array_uri[2];
                         $datos = file_get_contents('php://input');

@@ -101,6 +101,9 @@ if(botonComentario){
                                             "correo"    : correoEnvio,
                                             "mensaje"   : mensajeEnvio
                                         }));
+                request.onload = function(){
+                    console.log(request.response);
+                }
             }
 
             mensajeForm.value = "";

@@ -41,7 +41,7 @@ function palabras(){
     return pedirPalabrasProhibidas();
 }
 
-function enviarComentario($datos){
+function enviarComentario($id_evento,$datos){
     $valores = json_decode($datos);
-    addComentario($valores->id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
+    addComentario($id_evento,$valores->ip_usuario,$valores->nombre,$valores->correo,$valores->mensaje);
 }

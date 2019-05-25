@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-{% if (usuario.tipo == "gestor") or (usuario.tipo == "superusuario") %}
+
 <div id="lista-eventos">
     <h2>Lista de eventos</h2>
     <!--Barra de busqueda-->
@@ -48,7 +48,7 @@
             <p>Fecha: <input type="text" name="fecha" id="fechaE"></p>
             <p>Descripción: <textarea type="text" name="titulo" id="descripcionE"></textarea></p>
             <p>Imagen principal: 
-                <form enctype="multipart/form-data">
+                <form action="" method="POST" nctype="multipart/form-data">
                     <input name="imgPrincipal" type="file" />
                 </form>
             </p>
@@ -56,7 +56,8 @@
                 <div class="img1">
                     <p>Imagen 1: 
                         <form enctype="multipart/form-data">
-                            <input name="img2" type="file" />
+                            <input name="img2" type="file" name="imagen" />
+                            <input type="submit" value="Upload">
                         </form>
                     </p>
                     <p>Título imagen 1: <input type="text" name="tituloImg1"></p>
@@ -78,7 +79,6 @@
         </div>
     </form>
 </div>
-{% endif %}
 
 {% if (usuario.tipo == "moderador") or (usuario.tipo == "superusuario") %}
 <div id="lista-comentarios">

@@ -7,12 +7,21 @@ require_once 'panel_control.php';
 require_once 'perfil.php';
 require_once 'usuarios.php';
 require_once 'modelo/comentarios.php';
+require_once 'modelo/eventos.php';
 
 // Recibe la URI de htaccess en formato "limpio"
 $uri = $_SERVER['REQUEST_URI'];
 
-// Separar URI utilizando como delimitador "/" y guardar cada string en un array
-$array_uri = explode("/",$uri);
+if($uri == "/"){
+    $array_uri = array(
+        0    => "",
+        1  => "principal"
+    );
+}
+else{
+    // Separar URI utilizando como delimitador "/" y guardar cada string en un array
+    $array_uri = explode("/",$uri);
+}
 
 switch($_SERVER['REQUEST_METHOD']){
     //------------------------------------  GET  ------------------------------------------
@@ -115,7 +124,7 @@ switch($_SERVER['REQUEST_METHOD']){
     //------------------------------------  PUT   ----------------------------------------
     case 'PUT':
         switch($array_uri[1]){
-            case 'eventos':
+            case 'evento':
                 $id_evento = $array_uri[2];
 
                 if(sizeof($array_uri) == 5 && $array_uri[3] == 'comentarios'){
@@ -123,9 +132,13 @@ switch($_SERVER['REQUEST_METHOD']){
                     $datos = file_get_contents('php://input');
                     // editar comentario
                 }
-                else if(sizeof($array_uri) == 2){
+                else if(sizeof($array_uri) == 3){
                     $datos = file_get_contents('php://input');
-                    // editar evento
+                    $valores = json_decode($datos);
+                    $fecha = str_replace('/', '-', $valores->fecha);
+                    $fecha = date('Y-m-d', strtotime($fecha));
+                    
+                    editarEvento($id_evento,$valores->titulo,$valores->organizador,$fecha,$valores->texto);
                 }
                 else
                     http_response_code(404);

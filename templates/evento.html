@@ -80,11 +80,11 @@
                 <div class="texto-imagen">
                     <p id="tituloImg">{{imagen.titulo}}</p>
                     <div id="inImgTitulo" class="formulario-inicio grupo-formulario">
-                        <input type="text" name="uname" value="{{imagen.titulo}}" id="titulo-evento">
+                        <input type="text" name="uname" value="{{imagen.titulo}}" id="editar-titulo-imagen">
                     </div>
                     <p id="creditosImg">{{imagen.creditos}}</p>
                     <div id="inImgCreditos" class="formulario inicio grupo-formulario">
-                        <input type="text" name="uname" value="{{imagen.creditos}}" id="titulo-evento">
+                        <input type="text" name="uname" value="{{imagen.creditos}}" id="editar-creditos-imagen">
                     </div>
                 </div>
             {% endfor %}
@@ -103,19 +103,19 @@
                 {% endif %}
         </h2>
         <div id="inTitulo" class="grupo-formulario">
-            <input type="text" name="uname" value="{{evento.titulo}}" id="titulo-evento">
+            <input type="text" name="uname" value="{{evento.titulo}}" id="editar-titulo-evento">
         </div>
         <p id="organizador" class="organizador">{{evento.organizador}}</p>
         <div id="inOrganizador" class="grupo-formulario">
-            <input type="text" name="uname" value="{{evento.organizador}}" id="organizador">
+            <input type="text" name="uname" value="{{evento.organizador}}" id="editar-organizador">
         </div>
         <p id="fecha" class="fecha">{{evento.fecha | date("d/m/Y")}}</p>
         <div id="inFecha" class="grupo-formulario">
-            <input type="text" name="uname" value="{{evento.fecha | date("d/m/Y")}}" id="fecha-evento">
+            <input type="text" name="uname" value="{{evento.fecha | date("d/m/Y")}}" id="editar-fecha-evento">
         </div>
         <p id="texto" class="texto">{{evento.texto | nl2br}}</p>
         <div id="inTexto" class="grupo-formulario">
-            <textarea name="texto-evento" id="texto-evento">{{evento.texto}}</textarea>
+            <textarea name="texto-evento" id="editar-texto-evento">{{evento.texto}}</textarea>
         </div>
 
         <div id="fechas">

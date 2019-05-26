@@ -124,21 +124,26 @@ function eliminarImagen($id_evento,$id_imagen){
 }
 
 
-function editarEvento($id_evento,$titulo,$organizador,$fecha,$texto,$url_video,$info_adicional){
+function editarEvento($id_evento,$titulo,$organizador,$fecha,$texto){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
     $id_evento = $mysqli->real_escape_string($id_evento);
     $titulo = $mysqli->real_escape_string($titulo);
     $organizador = $mysqli->real_escape_string($organizador);
-    $fecha = $mysqli->real_escape_string($fecha);
     $texto = $mysqli->real_escape_string($texto);
-    $url_video = $mysqli->real_escape_string($url_video);
-    $info_adicional = $mysqli->real_escape_string($info_adicional);
+    //$url_video = $mysqli->real_escape_string($url_video);
+    //$info_adicional = $mysqli->real_escape_string($info_adicional);
 
-    $sentencia = $mysqli->prepare("UPDATE eventos SET titulo=?,organizador=?,fecha=?,texto=?,url_video=?,info_adicional=? WHERE id_evento=?");
-    $sentencia->bind_param("ssssssi",$titulo,$organizador,$fecha,$texto,$url_video,$info_adicional,$id_evento);
+    $sentencia = $mysqli->prepare("UPDATE eventos SET titulo=?,organizador=?,fecha=?,texto=? WHERE id_evento=?");
+    $sentencia->bind_param("ssssi",$titulo,$organizador,$fecha,$texto,$id_evento);
     $sentencia->execute();
+
+    if($sentencia->error){
+        echo $sentencia->error;
+    }
+    else
+        echo "correcto";
 }
 
 function addEtiqueta($id_evento,$etiqueta){

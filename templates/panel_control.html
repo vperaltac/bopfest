@@ -105,6 +105,8 @@
 </div>
 {% endif %}
 
+{% set roles = ["registrado","moderador","gestor","superusuario"] %}
+
 {% if usuario.tipo == "superusuario" %}
 <div id="lista-usuarios">
     <h2>Lista de usuarios</h2>
@@ -121,7 +123,15 @@
         <tr>
             <td>{{usr.nombre}}</td>
             <td>{{usr.email}}</td>
-            <td>{{usr.tipo}}</td>
+            <td>  <select name="rol">
+                <option value="{{usr.tipo}}">{{usr.tipo}}</option>
+                {% for rol in roles %}
+                    {% if usr.tipo != rol %}
+                    <option value={{rol}}>{{rol}}</option>
+                    {% endif %}
+                {% endfor %}
+              </select>
+            </td>
         </tr>
         {% endfor %}
     </table>

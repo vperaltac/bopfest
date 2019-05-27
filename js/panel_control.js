@@ -194,7 +194,4 @@ function addEvento() {
       }
     }
   }
-  
-
-
 }

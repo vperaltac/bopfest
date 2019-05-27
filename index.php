@@ -135,7 +135,8 @@ switch($_SERVER['REQUEST_METHOD']){
                 if(sizeof($array_uri) == 5 && $array_uri[3] == 'comentarios'){
                     $id_comentario = $array_uri[4];
                     $datos = file_get_contents('php://input');
-                    // editar comentario
+                    $valores = json_decode($datos);
+                    editarComentario($id_evento,$id_comentario,$valores->mensaje,$valores->moderador);
                 }
                 else if(sizeof($array_uri) == 3){
                     $datos = file_get_contents('php://input');

@@ -666,3 +666,15 @@ td a {
 #textoE {
   height: 100px;
 }
+
+.boton-guardar {
+  background-color: #ffaa56;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}

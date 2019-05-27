@@ -11,6 +11,13 @@ const btnBorrarC = document.getElementById("borrar-comentario");
 const inTextoE = document.getElementById("inTextoE");
 const comentarios = document.getElementsByClassName("comentario");
 const botonesBorrar = document.getElementsByClassName("btn-comentario");
+const botonesEditar = document.getElementsByClassName("btn-editar");
+const textosE = document.getElementsByClassName("grupo-formulario");
+const botnesGuardar = document.getElementsByClassName("boton-guardar");
+const btnGuardarC = document.getElementById("guardar-comentario");
+const nuevosTextos = document.getElementsByClassName("nuevo-texto");
+const moderador = document.getElementById("nombre-edit");
+moderador.style.display = "none";
 
 var prohibidas;
 
@@ -198,7 +205,7 @@ for(var i=0; i<botonesBorrar.length; i++){
         let id_comentario = comentarios[posicion-1].dataset.idComentario;
 
         let request = new XMLHttpRequest();
-        request.open('DELETE',"eventos/" + idEvento[0].id + "/comentarios/" + id_comentario);
+        request.open('DELETE',"evento/" + idEvento[0].id + "/comentarios/" + id_comentario);
         request.send(null);
         request.onload = function(){
             console.log(request.response);
@@ -208,9 +215,34 @@ for(var i=0; i<botonesBorrar.length; i++){
     } 
 }
 
+for(var i=0; i<botonesEditar.length; i++){ 
+    botonesEditar[i].onclick = function(){ 
+        let posicion = btnEditarC.dataset.index;
+        let id_comentario = comentarios[posicion-1].dataset.idComentario;
+        let editarTexo = textosE[posicion];
+        let btnGuardar = botnesGuardar[posicion];
+        editarTexo.style.display = "block";
+        btnGuardar.style.display = "block";
+    
+        if(btnGuardar){
+            btnGuardar.onclick = function(){
+                let edit_mensaje = nuevosTextos[posicion].value;
+                let edit_moderador   = moderador.value;
+                let request = new XMLHttpRequest();
+                request.open('PUT',"evento/" + idEvento[0].id + "/comentarios/" + id_comentario);
+                request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+                request.send(JSON.stringify({
+                                            "mensaje"       : edit_mensaje,
+                                            "moderador"     : edit_moderador
+                                        }));
+                request.onload = function(){
+                    console.log(request.response);
+                }
 
-if(btnEditarC){    
-    btnEditarC.onclick = function() {
-        inTextoE.style.display = "block";
-    }
+                editarTexo.style.display = "none";
+                btnGuardar.style.display = "none";
+            }
+        }
+        
+    } 
 }

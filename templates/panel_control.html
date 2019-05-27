@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-
+{% if (usuario.tipo == "gestor") or (usuario.tipo == "superusuario") %}
 <div id="lista-eventos">
     <h2>Lista de eventos</h2>
     <!--Barra de busqueda-->
@@ -76,6 +76,7 @@
         </div>
     </form>
 </div>
+{% endif %}
 
 {% if (usuario.tipo == "moderador") or (usuario.tipo == "superusuario") %}
 <div id="lista-comentarios">

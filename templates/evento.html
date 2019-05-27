@@ -29,15 +29,19 @@
                         <div class="datos-usuario">
                             {% if (usuario.tipo == "moderador") or (usuario.tipo == "superusuario") %}
                             <img id="borrar-comentario" class="btn-comentario" data-index={{loop.index}} src="/imgs/iconos/round-delete-24px.svg" alt="">
-                            <img id="editar-comentario" src="/imgs/iconos/round-create-24px.svg" alt="">
+                            <img id="editar-comentario" class="btn-editar" data-index={{loop.index}} src="/imgs/iconos/round-create-24px.svg" alt="">
                             {% endif %}
                             <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
                             <p class="fecha-usuario">{{comentario.fecha | date("d/m/Y H:i:s")}}</p>
                             <p class="comentario-usuario">{{comentario.texto}}</p>
-                            <div id="inTextoE" class="grupo-formulario">
-                                <textarea name="texto-comentario" id="textoE">{{comentario.texto}}</textarea>
+                            {% if comentario.moderador %}
+                            <p>Mensaje editador por el moderador {{comentario.moderador}}</p>
+                            {% endif %}
+                            <div id="inTextoE" class="grupo-formulario" data-index={{loop.index}}>
+                                <textarea class="nuevo-texto" name="texto-comentario" id="textoE" data-index={{loop.index}}>{{comentario.texto}}</textarea>
+                                <input type="text" value="{{usuario.nombre}}" name="nombre" id="nombre-edit">
                             </div>
-                            <button id="guardar-comentario" class="boton-imagenes">Guardar</button>
+                            <button id="guardar-comentario" class="boton-guardar" data-index={{loop.index}}>Guardar</button>
                         </div>
                     </div>
                 </div>

@@ -85,7 +85,7 @@ function editarComentario($id_evento,$id_comentario,$nuevo_texto,$moderador){
     $nuevo_texto = $mysqli->real_escape_string($nuevo_texto);
     $moderador = $mysqli->real_escape_string($moderador);
 
-    $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=$nuevo_texto,editado=$moderador WHERE id_evento=$id_evento and id_comentario=$id_comentario");
+    $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=?,editado=? WHERE id_evento=? AND id_comentario=?");
     $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_evento,$id_comentario);
     $sentencia->execute();
 }

@@ -19,11 +19,25 @@ const imagenPrincipal = document.getElementById('imgPrincipal');
 const imagen1 = document.getElementById('img1');
 const imagen2 = document.getElementById('img2');
 
+function modificarRol(id_usuario){
+  let seleccion = document.getElementById("usuario-" + id_usuario + "-rol").value;
 
-console.log(tituloImg1);
-console.log(tituloImg2);
-console.log(creditosImg1);
-console.log(creditosImg2);
+  let request = new XMLHttpRequest();
+  request.open('PUT',"usuarios/" + id_usuario + "/rol");
+  request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+  request.send(JSON.stringify({
+                              "rol" : seleccion,
+                          }));
+  request.onload = function(){
+    if(request.response == "Rol cambiado." && seleccion=="superusuario"){
+      window.location.href = "panel-control";  
+    }
+    else if(request.response != "Rol cambiado."){
+      alert(request.response);
+      window.location.href = "panel-control";  
+    }
+  }
+}
 
 if(btnEventos){
   btnEventos.onclick = function() {

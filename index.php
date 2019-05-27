@@ -167,7 +167,7 @@ switch($_SERVER['REQUEST_METHOD']){
                     }
                     else if($array_uri[3] == 'rol'){
                         $datos = file_get_contents('php://input');
-                        // editar rol
+                        pedirEditarRol($id_usuario,$datos);
                     }
                     else
                         http_response_code(404);

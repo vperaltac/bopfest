@@ -2,6 +2,8 @@
 require_once 'modelo/comentarios.php';
 require_once 'modelo/eventos.php';
 require_once 'modelo/usuarios.php';
+require_once "subir_imagen.php";
+require_once "modelo/polaroids.php";
 
 // obtener datos sobre comentarios
 function comentarios($id_evento){
@@ -44,4 +46,13 @@ function renderizarEvento($id_evento,$imprimir){
         $variables["galeria"] = galeria($id_evento);
         echo $entorno->renderizar("evento.html",$variables);
     }
+}
+
+function pedirAddEvento($datos){
+    $valores = json_decode($datos);
+ 
+    $id_evento = addPolaroid($valores->dir_imagenP,$valores->titulo);
+    addImagen($id_evento,$valores->dir_imagen1,$valores->titulo_imagen1,$valores->creditos_imagen1);
+    addImagen($id_evento,$valores->dir_imagen2,$valores->titulo_imagen2,$valores->creditos_imagen2);
+    addEvento($valores->titulo,$valores->organizador,$valores->descripcion);
 }

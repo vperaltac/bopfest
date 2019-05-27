@@ -28,17 +28,23 @@ function pedirPolaroids($etiqueta){
 }
 
 // añade a la base de datos un nuevo polaroid
-function addPolaroid($imagen,$titulo,$enlace){
+function addPolaroid($imagen,$titulo){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
     // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
     $imagen = $mysqli->real_escape_string($imagen);
     $titulo = $mysqli->real_escape_string($titulo);
-    $enlace = $mysqli->real_escape_string($enlace);
+    $id_evento = 11;
 
     $sentencia = $mysqli->prepare("INSERT INTO polaroids VALUES(?,?,?)");
-    $sentencia->bind_param("sss",$imagen,$titulo,$enlace);
+    $sentencia->bind_param("ssi",$imagen,$titulo,$id_evento);
     $sentencia->execute();
+
+    $peticion = $mysqli->query("SELECT id_evento FROM polaroids WHERE imagen='$imagen';");
+    $row = $peticion->fetch_assoc();
+    $id  = $row['id_evento'];
+
+    return $id;
 }
 ?>

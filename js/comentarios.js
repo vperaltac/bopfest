@@ -209,6 +209,8 @@ for(var i=0; i<botonesBorrar.length; i++){
 }
 
 
-btnEditarC.onclick = function() {
-    inTextoE.style.display = "block";
+if(btnEditarC){    
+    btnEditarC.onclick = function() {
+        inTextoE.style.display = "block";
+    }
 }

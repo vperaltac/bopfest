@@ -8,6 +8,7 @@ require_once 'perfil.php';
 require_once 'usuarios.php';
 require_once 'modelo/comentarios.php';
 require_once 'modelo/eventos.php';
+require_once 'subir_imagen.php';
 
 // Recibe la URI de htaccess en formato "limpio"
 $uri = $_SERVER['REQUEST_URI'];
@@ -78,6 +79,10 @@ switch($_SERVER['REQUEST_METHOD']){
     //------------------------------------  POST  ----------------------------------------
     case 'POST':
         switch($array_uri[1]){
+            case 'subir-imagen':
+                $dir = subirImagen($array_uri[2]);
+                echo $dir;
+                break;
             case 'usuarios':
                 if(sizeof($array_uri) == 4){
                     if($array_uri[3] == 'conectar')
@@ -112,7 +117,7 @@ switch($_SERVER['REQUEST_METHOD']){
                 }
                 else if(sizeof($array_uri) == 2){
                     $datos = file_get_contents('php://input');
-                    // enviar evento
+                    pedirAddEvento($datos);
                 }
                 else
                     http_response_code(404);
@@ -137,7 +142,6 @@ switch($_SERVER['REQUEST_METHOD']){
                     $valores = json_decode($datos);
                     $fecha = str_replace('/', '-', $valores->fecha);
                     $fecha = date('Y-m-d', strtotime($fecha));
-                    
                     editarEvento($id_evento,$valores->titulo,$valores->organizador,$fecha,$valores->texto);
                 }
                 else

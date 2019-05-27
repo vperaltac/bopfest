@@ -107,7 +107,7 @@ function addImagen($id_evento,$imagen,$titulo,$creditos){
     $creditos = $mysqli->real_escape_string($creditos);
 
     $sentencia = $mysqli->prepare("INSERT INTO imagenes_eventos (id_evento,imagen,titulo,creditos) VALUES(?,?,?,?)");
-    $sentencia->bind_param("sssii",$imagen,$titulo,$creditos,$id_evento,$id_imagen);
+    $sentencia->bind_param("isss",$id_evento,$imagen,$titulo,$creditos);
     $sentencia->execute(); 
 }
 
@@ -131,7 +131,6 @@ function editarEvento($id_evento,$titulo,$organizador,$fecha,$texto){
     $id_evento = $mysqli->real_escape_string($id_evento);
     $titulo = $mysqli->real_escape_string($titulo);
     $organizador = $mysqli->real_escape_string($organizador);
-    $texto = $mysqli->real_escape_string($texto);
     //$url_video = $mysqli->real_escape_string($url_video);
     //$info_adicional = $mysqli->real_escape_string($info_adicional);
 

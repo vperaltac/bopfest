@@ -639,8 +639,10 @@ td a {
 #inOrganizador,
 #inFecha,
 #inTexto,
-#inImgTitulo,
-#inImgCreditos,
+#inImgTitulo1,
+#inImgTitulo2,
+#inImgCreditos1,
+#inImgCreditos2,
 #guardar-evento {
   display: none;
 }

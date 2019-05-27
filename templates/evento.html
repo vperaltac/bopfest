@@ -5,7 +5,7 @@
     <a href='contacto'>Contacto</a>
     <a id="abrir-comentarios" class="btn-comentarios">Comentarios</a>
 
-    {% if usuario == "none" %}
+    {% if usuario == "anonimo" %}
         <a id="iniciar-sesion" href="iniciar-sesion">Iniciar sesión</a>
     {% else %}
         <a id="desconectar" data-usuario-id={{usuario.id_usuario}}>Desconectar</a>
@@ -74,25 +74,36 @@
 
 {% block content %}
     {% block imagenesevento %}
-        <div class="imagenes-evento">
-            {% for imagen in imagenes %}
-                <img class="img-evento" src={{imagen.imagen}} alt="sfdkimg1"> 
+        {% if imagenes %}
+            <div class="imagenes-evento">  
+                <img class="img-evento" src={{imagenes[0].imagen}} alt="sfdkimg1"> 
                 <div class="texto-imagen">
-                    <p id="tituloImg">{{imagen.titulo}}</p>
-                    <div id="inImgTitulo" class="formulario-inicio grupo-formulario">
-                        <input type="text" name="uname" value="{{imagen.titulo}}" id="editar-titulo-imagen">
+                    <p id="tituloImg1">{{imagenes[0].titulo}}</p>
+                    <div id="inImgTitulo1" class="formulario-inicio grupo-formulario">
+                        <input type="text" name="uname" value="{{imagenes[0].titulo}}" id="editar-titulo-imagen1">
                     </div>
-                    <p id="creditosImg">{{imagen.creditos}}</p>
-                    <div id="inImgCreditos" class="formulario inicio grupo-formulario">
-                        <input type="text" name="uname" value="{{imagen.creditos}}" id="editar-creditos-imagen">
+                    <p id="creditosImg1">{{imagenes[0].creditos}}</p>
+                    <div id="inImgCreditos1" class="formulario inicio grupo-formulario">
+                        <input type="text" name="uname" value="{{imagenes[0].creditos}}" id="editar-creditos-imagen1">
                     </div>
                 </div>
-            {% endfor %}
-            
+
+                <img class="img-evento" src={{imagenes[1].imagen}} alt="sfdkimg1"> 
+                <div class="texto-imagen">
+                    <p id="tituloImg2">{{imagenes[1].titulo}}</p>
+                    <div id="inImgTitulo2" class="formulario-inicio grupo-formulario">
+                        <input type="text" name="uname" value="{{imagenes[1].titulo}}" id="editar-titulo-imagen2">
+                    </div>
+                    <p id="creditosImg2">{{imagenes[1].creditos}}</p>
+                    <div id="inImgCreditos2" class="formulario inicio grupo-formulario">
+                        <input type="text" name="uname" value="{{imagenes[1].creditos}}" id="editar-creditos-imagen2">
+                    </div>
+                </div>
             {% if galeria %}
                 <button id="abrir-galeria" class="boton-imagenes">Ver más fotos</button>
             {% endif %}
-        </div>
+            </div>
+        {% endif %}
     {% endblock %}
 
     <div class="formulario-inicio">

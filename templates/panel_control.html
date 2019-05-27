@@ -48,34 +48,31 @@
             <p>Fecha: <input type="text" name="fecha" id="fechaE"></p>
             <p>Descripción: <textarea type="text" name="titulo" id="descripcionE"></textarea></p>
             <p>Imagen principal: 
-                <form action="" method="POST" nctype="multipart/form-data">
-                    <input name="imgPrincipal" type="file" />
+                <form method="POST" enctype="multipart/form-data">
+                    <input name="imgPrincipal" type="file" id="imgPrincipal"/>
                 </form>
             </p>
             <div class="imgs">
                 <div class="img1">
                     <p>Imagen 1: 
                         <form enctype="multipart/form-data">
-                            <input name="img2" type="file" name="imagen" />
-                            <input type="submit" value="Upload">
+                            <input name="img1" type="file" id="img1"/>
                         </form>
                     </p>
-                    <p>Título imagen 1: <input type="text" name="tituloImg1"></p>
-                    <p>Créditos imagen 1: <input type="text" name="credImg1"></p>
+                    <p>Título imagen 1: <input type="text" name="tituloImg1" id="tituloImg1"></p>
+                    <p>Créditos imagen 1: <input type="text" name="credImg1" id="credImg1"></p>
                 </div>
                 <div class="img2">
                     <p>Imagen 2: 
                         <form enctype="multipart/form-data">
-                            <input name="img2" type="file" />
+                            <input name="img2" type="file" id="img2"/>
                         </form>
                     </p>
-                    <p>Título imagen 2: <input type="text" name="tituloImg2"></p>
-                    <p>Créditos imagen 2: <input type="text" name="credImg2"></p>
+                    <p>Título imagen 2: <input type="text" name="tituloImg2" id="tituloImg2"></p>
+                    <p>Créditos imagen 2: <input type="text" name="credImg2" id="credImg2"></p>
                 </div>
             </div>
-            
-
-            <input class="boton" type="submit" value="Añadir evento" name="" id="guardarEvento">
+            <input class="boton" type="button" value="Añadir evento" name="guardarEvento" id="guardarEvento">
         </div>
     </form>
 </div>

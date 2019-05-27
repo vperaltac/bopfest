@@ -11,14 +11,14 @@
 
 {% block content %}
 <h2>Mi perfil</h2>
-<div class="formulario-inicio">
+<div class="formulario-inicio" id="formulario-inicio" data-email={{usuario.email}} data-id={{usuario.id_usuario}}>
     <p id="nombre">Nombre: {{usuario.nombre}}</p>
     <div class="grupo-formulario">
         <p id="editar-nombre">
             Nombre: 
             <input type="text" name="uname" value="{{usuario.nombre}}" id="nombre-usuario">
             <input id="btn-cancelar-nombre" class="boton" type="submit" value="Cancelar" name="">
-            <input class="boton" type="submit" value="Aceptar" name="">
+            <input class="boton" type="submit" value="Aceptar" id="aceptar-nombre">
         </p>
     </div>
     <p id="email">Email: {{usuario.email}}</p>
@@ -27,7 +27,7 @@
             Email: 
             <input type="text" name="uname" value="{{usuario.email}}" id="email-usuario">
             <input id="btn-cancelar-email" class="boton" type="submit" value="Cancelar" name="">
-            <input class="boton" type="submit" value="Aceptar" name="">
+            <input class="boton" type="submit" value="Aceptar" id="aceptar-email">
         </p>
     </div>
     <p>Tipo de usuario: {{usuario.tipo}}</p>
@@ -46,7 +46,7 @@
             <input type="password" name="psw" id="pwd-nueva2">
         </p>
         <input id="btn-cancelar-pass" class="boton" type="submit" value="Cancelar" name="">
-        <input class="boton" type="submit" value="Aceptar" name="">
+        <input class="boton" type="submit" value="Aceptar" id="aceptar-passwd">
     </div>
 </div>
 

@@ -24,6 +24,7 @@ function pedirIniciarSesion(){
         $_SESSION["email"] = $inicio["email"];         
         $_SESSION["tipo"]    = $inicio["tipo"];
         $_SESSION["nombre"]  = $inicio["nombre"];
+        $_SESSION["id_usuario"] = $inicio["id_usuario"];
     }
     else
         echo "Inicio de sesión incorrecto";
@@ -39,7 +40,32 @@ function pedirDesconectar(){
     session_destroy();
 }
 
+function pedirEditarNombre($id_usuario,$datos){
+    $valores = json_decode($datos);
 
+    editarNombre($id_usuario,$valores->nombre);
 
-                   
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    $_SESSION["nombre"] = $valores->nombre;
+}
 
+function pedirEditarEmail($id_usuario,$datos){
+    $valores = json_decode($datos);
+
+    editarEmail($id_usuario,$valores->email);
+
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    $_SESSION["email"] = $valores->email;
+
+}
+
+function pedirEditarPasswd($id_usuario,$datos){
+    $valores = json_decode($datos);
+
+    $hash = password_hash($valores->password,PASSWORD_DEFAULT);
+    editarPasswd($id_usuario,$hash);
+}

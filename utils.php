@@ -16,9 +16,10 @@ function comprobarUsuario(){
         $usuario = [
             "email" => $_SESSION["email"],
             "tipo" => $_SESSION["tipo"],
-            "nombre" => $_SESSION["nombre"]
+            "nombre" => $_SESSION["nombre"],
+            "id_usuario" => $_SESSION["id_usuario"]
         ];
-            
+                    
         return $usuario;
     }
     else

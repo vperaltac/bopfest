@@ -150,20 +150,20 @@ switch($_SERVER['REQUEST_METHOD']){
                 break;
 
             case 'usuarios':
-                if(sizeof($array_uri) == 5){
+                if(sizeof($array_uri) == 4){
                     $id_usuario = $array_uri[2];
 
                     if($array_uri[3] == 'nombre'){
                         $datos = file_get_contents('php://input');
-                        // editar nombre
+                        pedirEditarNombre($id_usuario,$datos);
                     }
                     else if($array_uri[3] == 'correo'){
                         $datos = file_get_contents('php://input');
-                        // editar correo
+                        pedirEditarEmail($id_usuario,$datos);
                     }
                     else if($array_uri[3] == 'passwd'){
                         $datos = file_get_contents('php://input');
-                        // editar contraseña
+                        pedirEditarPasswd($id_usuario,$datos);
                     }
                     else if($array_uri[3] == 'rol'){
                         $datos = file_get_contents('php://input');

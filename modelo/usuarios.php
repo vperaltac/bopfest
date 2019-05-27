@@ -69,3 +69,30 @@ function iniciarSesion($correo,$passwd){
 
     return false;
 }
+
+function editarNombre($id_usuario,$nuevo_nombre){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $sentencia = $mysqli->prepare("UPDATE usuarios SET nombre=? WHERE id_usuario=?;");
+    $sentencia->bind_param("si",$nuevo_nombre,$id_usuario);
+    $sentencia->execute();
+}
+
+function editarEmail($id_usuario,$email){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $sentencia = $mysqli->prepare("UPDATE usuarios SET email=? WHERE id_usuario=?;");
+    $sentencia->bind_param("si",$email,$id_usuario);
+    $sentencia->execute();
+}
+
+function editarPasswd($id_usuario,$hash){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $sentencia = $mysqli->prepare("UPDATE usuarios SET passwd=? WHERE id_usuario=?;");
+    $sentencia->bind_param("si",$hash,$id_usuario);
+    $sentencia->execute();
+}

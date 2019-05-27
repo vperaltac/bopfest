@@ -63,11 +63,16 @@ function addEvento($titulo,$organizador,$texto){
     // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
     $titulo = $mysqli->real_escape_string($titulo);
     $organizador = $mysqli->real_escape_string($organizador);
-    $texto = $mysqli->real_escape_string($texto);
 
     $sentencia = $mysqli->prepare("INSERT INTO eventos (titulo,organizador,fecha,texto) VALUES(?,?,NOW(),?)");
     $sentencia->bind_param("sss",$titulo,$organizador,$texto);
     $sentencia->execute();
+
+    $peticion = $mysqli->query("SELECT id_evento FROM eventos WHERE titulo='$titulo';");
+    $row = $peticion->fetch_assoc();
+    $id  = $row['id_evento'];
+
+    return $id;
 }
 
 

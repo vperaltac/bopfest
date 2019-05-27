@@ -50,9 +50,11 @@ function renderizarEvento($id_evento,$imprimir){
 
 function pedirAddEvento($datos){
     $valores = json_decode($datos);
- 
-    $id_evento = addPolaroid($valores->dir_imagenP,$valores->titulo);
+
+    // primero crear evento para generar id_evento
+    $id_evento = addEvento($valores->titulo,$valores->organizador,$valores->descripcion);
+
+    addPolaroid($id_evento,$valores->dir_imagenP,$valores->titulo);
     addImagen($id_evento,$valores->dir_imagen1,$valores->titulo_imagen1,$valores->creditos_imagen1);
     addImagen($id_evento,$valores->dir_imagen2,$valores->titulo_imagen2,$valores->creditos_imagen2);
-    addEvento($valores->titulo,$valores->organizador,$valores->descripcion);
 }

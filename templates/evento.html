@@ -80,7 +80,11 @@
     {% block imagenesevento %}
         {% if imagenes %}
             <div class="imagenes-evento">  
-                <img class="img-evento" src={{imagenes[0].imagen}} alt="sfdkimg1"> 
+                <img class="img-evento" id="img1-evento" src={{imagenes[0].imagen}} alt="sfdkimg1" data-id-imagen={{imagenes[0].id_imagen}}> 
+                <form id="form-img1" enctype="multipart/form-data">
+                    <input name="img1" type="file" id="img1"/>
+                </form>
+
                 <div class="texto-imagen">
                     <p id="tituloImg1">{{imagenes[0].titulo}}</p>
                     <div id="inImgTitulo1" class="formulario-inicio grupo-formulario">
@@ -92,14 +96,18 @@
                     </div>
                 </div>
 
-                <img class="img-evento" src={{imagenes[1].imagen}} alt="sfdkimg1"> 
+                <img class="img-evento" id="img2-evento" src={{imagenes[1].imagen}} alt="sfdkimg1" data-id-imagen={{imagenes[1].id_imagen}}> 
+                <form id="form-img2" enctype="multipart/form-data">
+                    <input name="img2" type="file" id="img2"/>
+                </form>
+
                 <div class="texto-imagen">
                     <p id="tituloImg2">{{imagenes[1].titulo}}</p>
                     <div id="inImgTitulo2" class="formulario-inicio grupo-formulario">
                         <input type="text" name="uname" value="{{imagenes[1].titulo}}" id="editar-titulo-imagen2">
                     </div>
                     <p id="creditosImg2">{{imagenes[1].creditos}}</p>
-                    <div id="inImgCreditos2" class="formulario inicio grupo-formulario">
+                    <div id="inImgCreditos2" class="formulario-inicio grupo-formulario">
                         <input type="text" name="uname" value="{{imagenes[1].creditos}}" id="editar-creditos-imagen2">
                     </div>
                 </div>

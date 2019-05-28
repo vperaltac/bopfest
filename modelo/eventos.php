@@ -127,8 +127,22 @@ function cambiarImagen($id_evento,$id_imagen,$imagen,$titulo,$creditos){
     $titulo = $mysqli->real_escape_string($titulo);
     $creditos = $mysqli->real_escape_string($creditos);
 
-    $sentencia = $mysqli->prepare("UPDATE imagenes_eventos SET imagen=?,titulo=?,creditos=? WHERE id_evento=? AND id_imagen=$id_imagen");
+    $sentencia = $mysqli->prepare("UPDATE imagenes_eventos SET imagen=?,titulo=?,creditos=? WHERE id_evento=? AND id_imagen=?");
     $sentencia->bind_param("sssii",$imagen,$titulo,$creditos,$id_evento,$id_imagen);
+    $sentencia->execute();
+}
+
+function cambiarPieImagen($id_evento,$id_imagen,$titulo,$creditos){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $id_evento = $mysqli->real_escape_string($id_evento);
+    $id_imagen = $mysqli->real_escape_string($id_imagen);
+    $titulo = $mysqli->real_escape_string($titulo);
+    $creditos = $mysqli->real_escape_string($creditos);
+
+    $sentencia = $mysqli->prepare("UPDATE imagenes_eventos SET titulo=?,creditos=? WHERE id_evento=? AND id_imagen=?");
+    $sentencia->bind_param("ssii",$titulo,$creditos,$id_evento,$id_imagen);
     $sentencia->execute();
 }
 

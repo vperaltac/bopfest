@@ -150,6 +150,18 @@ switch($_SERVER['REQUEST_METHOD']){
                     $fecha = str_replace('/', '-', $valores->fecha);
                     $fecha = date('Y-m-d', strtotime($fecha));
                     editarEvento($id_evento,$valores->titulo,$valores->organizador,$fecha,$valores->texto);
+
+                    if(isset($valores->dir_img1)){
+                        cambiarImagen($id_evento,$valores->id_imagen1,$valores->dir_img1,$valores->titulo_imagen1,$valores->creditos_imagen1);
+                    }
+                    else
+                        cambiarPieImagen($id_evento,$valores->id_imagen1,$valores->titulo_imagen1,$valores->creditos_imagen1);
+
+                    if(isset($valores->dir_img2)){
+                        cambiarImagen($id_evento,$valores->id_imagen2,$valores->dir_img2,$valores->titulo_imagen2,$valores->creditos_imagen2);
+                    }
+                    else
+                        cambiarPieImagen($id_evento,$valores->id_imagen2,$valores->titulo_imagen2,$valores->creditos_imagen2);
                 }
                 else
                     http_response_code(404);

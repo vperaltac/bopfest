@@ -226,27 +226,6 @@ for(var i=0; i<botonesEditar.length; i++){
         editarTexo.style.display = "block";
         btnGuardar.style.display = "block";
     
-<<<<<<< HEAD
-        if(btnGuardar){
-            btnGuardar.onclick = function(){
-                let edit_mensaje = nuevosTextos[posicion].value;
-                let edit_moderador   = moderador.value;
-                let request = new XMLHttpRequest();
-                request.open('PUT',"evento/" + idEvento[0].id + "/comentarios/" + id_comentario);
-                request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
-                request.send(JSON.stringify({
-                                            "mensaje"       : edit_mensaje,
-                                            "moderador"     : edit_moderador
-                                        }));
-                request.onload = function(){
-                    if(request.response == "Comentario cambiado"){
-                        window.location.href = "evento/"+idEvento[0].id;  
-                    }
-                }
-
-                editarTexo.style.display = "none";
-                btnGuardar.style.display = "none";
-=======
         btnGuardar.onclick = function(){
             let edit_mensaje = nuevosTextos[posicion-1].value;
             let edit_moderador   = moderador.value;
@@ -259,7 +238,6 @@ for(var i=0; i<botonesEditar.length; i++){
                                     }));
             request.onload = function(){
                 window.location.href = "evento/"+ idEvento[0].id;
->>>>>>> b82fbbb3b5fb4b57a70bfb98d7000f1de427385e
             }
 
             editarTexo.style.display = "none";

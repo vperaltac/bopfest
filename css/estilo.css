@@ -568,6 +568,8 @@ img.hover-shadow {
 
 #editar-nombre,
 #editar-email,
+#form-img2,
+#form-img1,
 #editar-pass {
   display: none;
 }

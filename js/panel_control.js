@@ -45,7 +45,7 @@ if(btnEventos){
     listaComentarios.style.display = "none";
     listaUsuarios.style.display  = "none";
     formEvento.style.display = "none";
-}
+  }
 }
 
 if(btnComentarios){
@@ -54,7 +54,7 @@ if(btnComentarios){
     listaComentarios.style.display = "block";
     listaUsuarios.style.display  = "none";
     formEvento.style.display = "none";
-}
+  }
 }
 
 if(btnUsuarios){
@@ -63,7 +63,7 @@ if(btnUsuarios){
     listaComentarios.style.display = "none";
     listaUsuarios.style.display  = "block";
     formEvento.style.display = "none";
-}
+  }
 }
 
 if(btnAddE){
@@ -167,23 +167,23 @@ function addEvento() {
   enviarImgP.open('POST',"subir-imagen/imgPrincipal");
   enviarImgP.send(formData);
   enviarImgP.onload = function(){
-    var dir_imgP = enviarImgP.response;
+    let dir_imgP = enviarImgP.response;
 
-    var formImg1 = new FormData();
+    let formImg1 = new FormData();
     formImg1.append('img1',img1);
     let enviarImg1 = new XMLHttpRequest();
     enviarImg1.open('POST',"subir-imagen/img1");
     enviarImg1.send(formImg1);
     enviarImg1.onload = function(){
-      var dir_img1 = enviarImg1.response;
+      let dir_img1 = enviarImg1.response;
 
-      var formImg2 = new FormData();
+      let formImg2 = new FormData();
       formImg2.append('img2',img2);
       let enviarImg2 = new XMLHttpRequest();
       enviarImg2.open('POST',"subir-imagen/img2");
       enviarImg2.send(formImg2);
       enviarImg2.onload = function(){
-        var dir_img2 = enviarImg2.response;
+        let dir_img2 = enviarImg2.response;
 
         let request = new XMLHttpRequest();
         request.open('POST',"eventos");

@@ -231,3 +231,13 @@ function addEvento() {
     }
   }
 }
+
+function eliminarEvento(id_evento){
+  let request = new XMLHttpRequest();
+  request.open('DELETE',"eventos/" + id_evento);
+  request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+  request.send(null);
+  request.onload = function(){
+    window.location.href = "panel-control";
+  }
+}

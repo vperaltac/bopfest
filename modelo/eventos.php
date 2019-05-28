@@ -112,6 +112,13 @@ function eliminarEvento($id_evento){
 
     $id_evento = $mysqli->real_escape_string($id_evento);
 
+    $mysqli->query("DELETE FROM comentarios WHERE id_evento='$id_evento';");
+    $mysqli->query("DELETE FROM polaroids WHERE id_evento='$id_evento';");
+    $mysqli->query("DELETE FROM imagenes_eventos WHERE id_evento='$id_evento';");
+    $mysqli->query("DELETE FROM polaroids WHERE id_evento='$id_evento';");
+    $mysqli->query("DELETE FROM etiquetas_eventos WHERE id_evento='$id_evento';");
+
+
     $sentencia = $mysqli->prepare("DELETE FROM eventos WHERE id_evento=?");
     $sentencia->bind_param("i",$id_evento);
     $sentencia->execute();

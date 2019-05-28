@@ -235,4 +235,19 @@ function buscarEventos($consulta){
 
     return $eventos;
 }
+
+function editarPublicacion($id_evento, $publicado){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT publicado FROM eventos WHERE id_evento='$id_evento';");
+    $row = $peticion->fetch_assoc();
+    $antiguo_estado  = $row['publicado'];
+
+    $sentencia = $mysqli->prepare("UPDATE eventos SET publicado=? WHERE id_evento=?;");
+    $sentencia->bind_param("si",$publicado,$id_evento);
+    $sentencia->execute();
+
+    echo "Cambiado el estado del evento";
+}
 ?>

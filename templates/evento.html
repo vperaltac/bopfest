@@ -51,7 +51,7 @@
             <div id="comentarios-dyn"></div>
         </section>
 
-        {% if (usuario != 'none') %}
+        {% if usuario.tipo == 'registrado' or usuario.tipo == 'moderador' or usuario.tipo == 'gestor' or usuario.tipo == 'superusuario' %}
         <!--Formulario para añadir un comentario-->
         <form class="formulario">
             <div class="grupo-formulario">

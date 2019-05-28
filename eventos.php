@@ -58,3 +58,9 @@ function pedirAddEvento($datos){
     addImagen($id_evento,$valores->dir_imagen1,$valores->titulo_imagen1,$valores->creditos_imagen1);
     addImagen($id_evento,$valores->dir_imagen2,$valores->titulo_imagen2,$valores->creditos_imagen2);
 }
+
+function pedirEditarPublicacion($id_usuario,$datos){
+    $valores = json_decode($datos);
+
+    editarPublicacion($id_usuario,$valores->publicado);
+}

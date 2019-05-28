@@ -41,19 +41,21 @@ function modificarRol(id_usuario){
 
 function modificarPublicado(id_evento){
   let seleccion = document.getElementById(id_evento + "-publicado").value;
+  if(seleccion == "Si"){
+    seleccion = true;
+  }
+  else if(seleccion == "No"){
+    seleccion = false;
+  }
 
   let request = new XMLHttpRequest();
   request.open('PUT',"evento/" + id_evento + "/publicado");
   request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
   request.send(JSON.stringify({
-                              "rol" : seleccion,
+                              "publicado" : seleccion,
                           }));
   request.onload = function(){
-    if(request.response == "Rol cambiado." && seleccion=="superusuario"){
-      window.location.href = "panel-control";  
-    }
-    else if(request.response != "Rol cambiado."){
-      alert(request.response);
+    if(request.response == "Cambiado el estado del evento"){
       window.location.href = "panel-control";  
     }
   }

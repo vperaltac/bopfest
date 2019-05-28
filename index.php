@@ -144,6 +144,10 @@ switch($_SERVER['REQUEST_METHOD']){
                     $valores = json_decode($datos);
                     editarComentario($id_evento,$id_comentario,$valores->mensaje,$valores->moderador);
                 }
+                else if($array_uri[3] == 'publicado'){
+                    $datos = file_get_contents('php://input');
+                    pedirEditarPublicacion($id_evento,$datos);
+                }
                 else if(sizeof($array_uri) == 3){
                     $datos = file_get_contents('php://input');
                     $valores = json_decode($datos);

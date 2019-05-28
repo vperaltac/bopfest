@@ -97,25 +97,27 @@ if(btnAddE){
   }
 }
 
-
-busquedaE.onkeyup = function() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("busquedaE");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tablaE");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
+if(busquedaE){
+  busquedaE.onkeyup = function() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("busquedaE");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("tablaE");
+    tr = table.getElementsByTagName("tr");
+  
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
   }
+  
 }
 
 if(busquedaC){
@@ -224,7 +226,7 @@ function addEvento() {
                                     "dir_imagen2"      : dir_img2,
                                 }));
         request.onload = function(){
-              console.log(request.response);
+              window.location.href = "panel-control";
         }
     
       }
@@ -240,4 +242,29 @@ function eliminarEvento(id_evento){
   request.onload = function(){
     window.location.href = "panel-control";
   }
+}
+
+function addEtiqueta(id_evento){
+  let seleccion = document.getElementById("evento-" + id_evento + "-addEtiqueta").value;
+
+  let request = new XMLHttpRequest();
+  request.open('POST',"eventos/" + id_evento + "/etiquetas/" + seleccion);
+  request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+  request.send(null);
+  request.onload = function(){
+    window.location.href = "panel-control";
+  }
+}
+
+function borrarEtiqueta(id_evento){
+  let seleccion = document.getElementById("evento-" + id_evento + "-borrarEtiqueta").value;
+
+  let request = new XMLHttpRequest();
+  request.open('DELETE',"eventos/" + id_evento + "/etiquetas/" + seleccion);
+  request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+  request.send(null);
+  request.onload = function(){
+    window.location.href = "panel-control";
+  }
+
 }

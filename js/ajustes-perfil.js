@@ -89,8 +89,7 @@ aceptarPasswd.onclick = function(){
                                     "password"     : pwd_nueva.value
                                 }));
         request.onload = function(){
-            console.log(request.response);
-            //window.location.href = "perfil";
+            window.location.href = "perfil";
         }    
     }
 

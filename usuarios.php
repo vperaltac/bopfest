@@ -26,8 +26,6 @@ function pedirIniciarSesion(){
         $_SESSION["nombre"]  = $inicio["nombre"];
         $_SESSION["id_usuario"] = $inicio["id_usuario"];
     }
-    else
-        echo "Inicio de sesión incorrecto";
 }
 
 function pedirDesconectar(){

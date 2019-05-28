@@ -111,7 +111,7 @@ if(botonComentario){
                                             "mensaje"   : mensajeEnvio
                                         }));
                 request.onload = function(){
-                    console.log(request.response);
+                    window.location.href = "evento/" + idEvento[0].id;
                 }
             }
 

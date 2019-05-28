@@ -26,7 +26,7 @@ botonRegistro.addEventListener("click", (e) =>{
 
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST',"../registro.php?registro=1");
+    xhr.open('POST',"../usuarios");
     xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");
     xhr.send(JSON.stringify({
                                 "correo"  : correo,

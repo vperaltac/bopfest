@@ -28,7 +28,7 @@ boton_inicio.addEventListener("click", (e) =>{
                 window.location.href = "principal";
             }
             else{
-                console.log(request.response);
+                alert(request.response);
             }
         }
     }

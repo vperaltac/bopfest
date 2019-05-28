@@ -106,7 +106,8 @@ switch($_SERVER['REQUEST_METHOD']){
                 if(array_key_exists(4,$array_uri) && $array_uri[3] == 'etiquetas'){
                     $id_evento = $array_uri[2];
                     $etiqueta  = $array_uri[4];
-                    // enviar etiquetas
+                    var_dump($etiqueta);
+                    addEtiqueta($id_evento,$etiqueta);
                 }
                 else if(array_key_exists(3,$array_uri)){
                     if($array_uri[3] == 'comentarios'){
@@ -149,7 +150,7 @@ switch($_SERVER['REQUEST_METHOD']){
                     $valores = json_decode($datos);
                     editarComentario($id_evento,$id_comentario,$valores->mensaje,$valores->moderador);
                 }
-                else if($array_uri[3] == 'publicado'){
+                else if(array_key_exists(3,$array_uri) && $array_uri[3] == 'publicado'){
                     $datos = file_get_contents('php://input');
                     pedirEditarPublicacion($id_evento,$datos);
                 }
@@ -215,7 +216,7 @@ switch($_SERVER['REQUEST_METHOD']){
             else if(sizeof($array_uri) == 5){
                 if($array_uri[3] == 'etiquetas'){
                     $etiqueta = $array_uri[4];
-                    // eliminar etiqueta
+                    eliminarEtiqueta($id_evento,$etiqueta);
                 }
                 else if($array_uri[3] == 'imagenes'){
                     $id_imagen = $array_uri[4];

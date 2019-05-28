@@ -31,8 +31,6 @@ function busqueda(consulta) {
             titulo.appendChild(enlace);
             fila.appendChild(titulo);
             resultado.appendChild(fila);
-
-            console.log(respuesta);
         }
     }
 }

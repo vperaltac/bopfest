@@ -222,7 +222,7 @@ function eliminarEtiqueta($id_evento,$etiqueta){
     $etiqueta = $mysqli->real_escape_string($etiqueta);
 
 
-    $sentencia = $mysqli->prepare("DELETE FROM etiquetas_eventos WHERE id_evento=$id_evento AND etiqueta=$etiqueta");
+    $sentencia = $mysqli->prepare("DELETE FROM etiquetas_eventos WHERE id_evento=? AND etiqueta=?");
     $sentencia->bind_param("is",$id_evento,$etiqueta);
     $sentencia->execute();
 }

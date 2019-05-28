@@ -23,11 +23,6 @@ const imagen2 = document.getElementById('img2');
 const img1_evento = document.getElementById('img1-evento');
 const img2_evento = document.getElementById('img2-evento');
 
-
-console.log(formImg1);
-console.log(formImg2);
-
-
 if(btnEditar){
     btnEditar.onclick = function(){
         formImg1.style.display = "block";

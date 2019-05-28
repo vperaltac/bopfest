@@ -94,8 +94,10 @@ function addEvento($titulo,$organizador,$texto){
     $titulo = $mysqli->real_escape_string($titulo);
     $organizador = $mysqli->real_escape_string($organizador);
 
-    $sentencia = $mysqli->prepare("INSERT INTO eventos (titulo,organizador,fecha,texto) VALUES(?,?,NOW(),?)");
-    $sentencia->bind_param("sss",$titulo,$organizador,$texto);
+    $publicado = 0;
+
+    $sentencia = $mysqli->prepare("INSERT INTO eventos (titulo,organizador,fecha,texto,publicado) VALUES(?,?,NOW(),?,?)");
+    $sentencia->bind_param("sssi",$titulo,$organizador,$texto,$publicado);
     $sentencia->execute();
 
     $peticion = $mysqli->query("SELECT id_evento FROM eventos WHERE titulo='$titulo';");

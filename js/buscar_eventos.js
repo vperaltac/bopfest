@@ -9,7 +9,10 @@ function busqueda(consulta) {
                                 "consulta"   : consulta,
                             }));
     request.onload = function(){
-        console.log(request.response);
+        let respuesta = JSON.parse(request.response);
+        for(var i=0; i<respuesta.length; i++){
+            console.log(respuesta[i].titulo);
+        }
     }
 }
 

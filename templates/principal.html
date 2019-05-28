@@ -11,11 +11,18 @@
 {% endblock %}
 
 {% block etiquetas %}
+    <input type="text" id="busqueda" class="busqueda-tabla" placeholder="Buscar evento..." title="Buscar eventos">
+    <div id="resultado">
+
+    </div>
+
     <div class="etiquetas">
         <button id="pop"  class = "etiqueta">#Pop</button>
         <button id="rap"  class = "etiqueta">#Rap</button>
         <button id="fest" class = "etiqueta">#Festivales</button>
     </div>
+
+    <script type="text/javascript" src="js/buscar_eventos.js"></script>
 {% endblock %}
 
 {% block content %}

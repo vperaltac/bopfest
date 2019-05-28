@@ -667,6 +667,10 @@ td a {
   height: 100px;
 }
 
+.editado {
+  font-style: italic;
+}
+
 .boton-guardar {
   background-color: #ffaa56;
   border: none;

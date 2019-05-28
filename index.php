@@ -122,6 +122,12 @@ switch($_SERVER['REQUEST_METHOD']){
                 else
                     http_response_code(404);
                 break;
+            case 'consulta':
+                $datos = file_get_contents('php://input');
+                $valores = json_decode($datos);
+                $respuesta = buscarEventos($valores->consulta);
+                echo $respuesta;
+                break;
         }
         break;
     //------------------------------------------------------------------------------------

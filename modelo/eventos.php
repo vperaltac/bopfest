@@ -173,4 +173,22 @@ function eliminarEtiqueta($id_evento,$etiqueta){
     $sentencia->bind_param("is",$id_evento,$etiqueta);
     $sentencia->execute();
 }
+
+function buscarEventos($consulta){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
+    $consulta = $mysqli->real_escape_string($consulta);
+
+    $peticion = $mysqli->query("SELECT titulo,texto FROM eventos WHERE titulo LIKE '%$consulta%' OR '%$consulta';");
+    $eventos = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $eventos[$i] = $fila;
+        $i++;
+    }
+
+    return $eventos;
+}
 ?>

@@ -34,8 +34,8 @@
                             <h3 class="nombre-usuario">{{comentario.nombre}}</h3>
                             <p class="fecha-usuario">{{comentario.fecha | date("d/m/Y H:i:s")}}</p>
                             <p class="comentario-usuario">{{comentario.texto}}</p>
-                            {% if comentario.moderador %}
-                            <p>Mensaje editador por el moderador {{comentario.moderador}}</p>
+                            {% if comentario.editado %}
+                            <p class="editado">Mensaje editador por el moderador {{comentario.editado}}</p>
                             {% endif %}
                             <div id="inTextoE" class="grupo-formulario" data-index={{loop.index}}>
                                 <textarea class="nuevo-texto" name="texto-comentario" id="textoE" data-index={{loop.index}}>{{comentario.texto}}</textarea>

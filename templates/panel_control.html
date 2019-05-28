@@ -123,7 +123,7 @@
         <tr>
             <td>{{usr.nombre}}</td>
             <td>{{usr.email}}</td>
-            <td>  <select name="rol">
+            <td>  <select name="rol" onchange="modificarRol('{{usr.id_usuario}}')" id="usuario-{{usr.id_usuario}}-rol" data-id={{usr.id_usuario}}>
                 <option value="{{usr.tipo}}">{{usr.tipo}}</option>
                 {% for rol in roles %}
                     {% if usr.tipo != rol %}

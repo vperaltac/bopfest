@@ -69,3 +69,9 @@ function pedirEditarPasswd($id_usuario,$datos){
     $hash = password_hash($valores->password,PASSWORD_DEFAULT);
     editarPasswd($id_usuario,$hash);
 }
+
+function pedirEditarRol($id_usuario,$datos){
+    $valores = json_decode($datos);
+
+    editarRol($id_usuario,$valores->rol);
+}

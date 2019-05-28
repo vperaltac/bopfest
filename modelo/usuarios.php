@@ -96,3 +96,29 @@ function editarPasswd($id_usuario,$hash){
     $sentencia->bind_param("si",$hash,$id_usuario);
     $sentencia->execute();
 }
+
+function editarRol($id_usuario,$rol){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT tipo FROM usuarios WHERE id_usuario='$id_usuario';");
+    $row = $peticion->fetch_assoc();
+    $antiguo_rol  = $row['tipo'];
+
+    if($antiguo_rol != 'superusuario'){
+        if($rol == 'superusuario'){
+            $buscar_superusuario = $mysqli->query("UPDATE usuarios SET tipo='registrado' WHERE tipo='superusuario';");
+        }
+    
+        $sentencia = $mysqli->prepare("UPDATE usuarios SET tipo=? WHERE id_usuario=?;");
+        $sentencia->bind_param("si",$rol,$id_usuario);
+        $sentencia->execute();
+
+        echo "Rol cambiado.";
+    }
+    else{
+        echo "Error. No debe quedar la plataforma nunca sin al menos un superusuario.";
+    }
+
+
+}

@@ -70,6 +70,10 @@ switch($_SERVER['REQUEST_METHOD']){
             case "palabras":
                 echo palabras();
                 break;
+
+            case "favicon.ico":
+                echo "imgs/favicon.png";
+                break;
             default:
                 http_response_code(404);
                 break;
@@ -218,6 +222,7 @@ switch($_SERVER['REQUEST_METHOD']){
                     // eliminar imagen
                 }
                 else if($array_uri[3] == 'comentarios'){
+                    echo "eliminar comentario";
                     $id_comentario = $array_uri[4];
                     pedirEliminarComentario($id_evento,$id_comentario);
                 }

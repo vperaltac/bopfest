@@ -17,7 +17,9 @@ const botnesGuardar = document.getElementsByClassName("boton-guardar");
 const btnGuardarC = document.getElementById("guardar-comentario");
 const nuevosTextos = document.getElementsByClassName("nuevo-texto");
 const moderador = document.getElementById("nombre-edit");
-moderador.style.display = "none";
+
+if(moderador)
+    moderador.style.display = "none";
 
 var prohibidas;
 
@@ -200,15 +202,15 @@ function incluirFecha() {
 
 
 for(var i=0; i<botonesBorrar.length; i++){ 
-    botonesBorrar[i].onclick = function(){ 
-        let posicion = btnBorrarC.dataset.index;
+    botonesBorrar[i].onclick = function(e){ 
+        let posicion = e.path[0].dataset.index;
         let id_comentario = comentarios[posicion-1].dataset.idComentario;
 
         let request = new XMLHttpRequest();
-        request.open('DELETE',"evento/" + idEvento[0].id + "/comentarios/" + id_comentario);
+        request.open('DELETE',"eventos/" + idEvento[0].id + "/comentarios/" + id_comentario);
         request.send(null);
         request.onload = function(){
-            console.log(request.response);
+            window.location.href = "evento/"+ idEvento[0].id;
         }
 
         comentarios[posicion-1].remove();
@@ -216,14 +218,15 @@ for(var i=0; i<botonesBorrar.length; i++){
 }
 
 for(var i=0; i<botonesEditar.length; i++){ 
-    botonesEditar[i].onclick = function(){ 
-        let posicion = btnEditarC.dataset.index;
-        let id_comentario = comentarios[posicion].dataset.idComentario;
-        let editarTexo = textosE[posicion];
-        let btnGuardar = botnesGuardar[posicion];
+    botonesEditar[i].onclick = function(e){ 
+        let posicion = e.path[0].dataset.index;
+        let id_comentario = comentarios[posicion-1].dataset.idComentario;
+        let editarTexo = textosE[posicion-1];
+        let btnGuardar = botnesGuardar[posicion-1];
         editarTexo.style.display = "block";
         btnGuardar.style.display = "block";
     
+<<<<<<< HEAD
         if(btnGuardar){
             btnGuardar.onclick = function(){
                 let edit_mensaje = nuevosTextos[posicion].value;
@@ -243,8 +246,24 @@ for(var i=0; i<botonesEditar.length; i++){
 
                 editarTexo.style.display = "none";
                 btnGuardar.style.display = "none";
+=======
+        btnGuardar.onclick = function(){
+            let edit_mensaje = nuevosTextos[posicion-1].value;
+            let edit_moderador   = moderador.value;
+            let request = new XMLHttpRequest();
+            request.open('PUT',"evento/" + idEvento[0].id + "/comentarios/" + id_comentario);
+            request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+            request.send(JSON.stringify({
+                                        "mensaje"       : edit_mensaje,
+                                        "moderador"     : edit_moderador
+                                    }));
+            request.onload = function(){
+                window.location.href = "evento/"+ idEvento[0].id;
+>>>>>>> b82fbbb3b5fb4b57a70bfb98d7000f1de427385e
             }
-        }
-        
+
+            editarTexo.style.display = "none";
+            btnGuardar.style.display = "none";
+        }        
     } 
 }

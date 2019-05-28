@@ -189,8 +189,6 @@ function editarEvento($id_evento,$titulo,$organizador,$fecha,$texto){
     $id_evento = $mysqli->real_escape_string($id_evento);
     $titulo = $mysqli->real_escape_string($titulo);
     $organizador = $mysqli->real_escape_string($organizador);
-    //$url_video = $mysqli->real_escape_string($url_video);
-    //$info_adicional = $mysqli->real_escape_string($info_adicional);
 
     $sentencia = $mysqli->prepare("UPDATE eventos SET titulo=?,organizador=?,fecha=?,texto=? WHERE id_evento=?");
     $sentencia->bind_param("ssssi",$titulo,$organizador,$fecha,$texto,$id_evento);

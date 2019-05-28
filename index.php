@@ -201,7 +201,7 @@ switch($_SERVER['REQUEST_METHOD']){
             $id_evento = $array_uri[2];
 
             if(sizeof($array_uri) == 3){
-                //eliminar evento
+                eliminarEvento($id_evento);
             }
             else if(sizeof($array_uri) == 5){
                 if($array_uri[3] == 'etiquetas'){

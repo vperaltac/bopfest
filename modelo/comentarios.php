@@ -88,6 +88,7 @@ function editarComentario($id_evento,$id_comentario,$nuevo_texto,$moderador){
     $sentencia = $mysqli->prepare("UPDATE comentarios SET texto=?,editado=? WHERE id_evento=? AND id_comentario=?");
     $sentencia->bind_param("ssii",$nuevo_texto,$moderador,$id_evento,$id_comentario);
     $sentencia->execute();
+    echo "Comentario cambiado";
 }
 
 function pedirEliminarComentario($id_evento,$id_comentario){

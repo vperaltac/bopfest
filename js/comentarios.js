@@ -236,7 +236,9 @@ for(var i=0; i<botonesEditar.length; i++){
                                             "moderador"     : edit_moderador
                                         }));
                 request.onload = function(){
-                    console.log(request.response);
+                    if(request.response == "Comentario cambiado"){
+                        window.location.href = "evento/"+idEvento[0].id;  
+                    }
                 }
 
                 editarTexo.style.display = "none";

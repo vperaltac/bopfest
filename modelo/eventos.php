@@ -18,6 +18,36 @@ function pedirEventos($id_evento){
     return $peticion->fetch_assoc();
 }
 
+function pedirTodosEventos(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT id_evento,titulo,publicado FROM eventos;");
+    $eventos = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $eventos[$i] = $fila;
+        $i++;
+    }
+
+    return $eventos;
+}
+
+function pedirEtiquetasEventos(){
+    $db = Database::getInstancia();
+    $mysqli = $db->getConexion();
+
+    $peticion = $mysqli->query("SELECT * FROM etiquetas_eventos;");
+    $etiquetas = array();
+    $i=0;
+    while($fila = $peticion->fetch_assoc()){
+        $etiquetas[$i] = $fila;
+        $i++;
+    }
+
+    return $etiquetas;
+}
+
 
 function pedirImagenesEvento($id_evento){
     $db = Database::getInstancia();

@@ -4,7 +4,8 @@ require_once 'utils.php';
 function renderizarPanelControl(){
     $entorno = Entorno::getInstancia();
     $variables = [
-        'polaroids' => polaroids('all'), 
+        'eventos' => todosEventos(), 
+        'etiquetas' => etiquetas(),
         'comentarios' => todosComentarios(),
         'usuarios' => todosUsuarios(),
         'usuario' => comprobarUsuario()

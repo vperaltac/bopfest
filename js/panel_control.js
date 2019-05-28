@@ -39,6 +39,26 @@ function modificarRol(id_usuario){
   }
 }
 
+function modificarPublicado(id_evento){
+  let seleccion = document.getElementById(id_evento + "-publicado").value;
+
+  let request = new XMLHttpRequest();
+  request.open('PUT',"evento/" + id_evento + "/publicado");
+  request.setRequestHeader("Content-Type","application/json;charset=UTF-8");
+  request.send(JSON.stringify({
+                              "rol" : seleccion,
+                          }));
+  request.onload = function(){
+    if(request.response == "Rol cambiado." && seleccion=="superusuario"){
+      window.location.href = "panel-control";  
+    }
+    else if(request.response != "Rol cambiado."){
+      alert(request.response);
+      window.location.href = "panel-control";  
+    }
+  }
+}
+
 if(btnEventos){
   btnEventos.onclick = function() {
     listaEventos.style.display = "block";

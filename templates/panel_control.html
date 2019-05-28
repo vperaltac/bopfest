@@ -28,12 +28,34 @@
         <th>#</th>
         <th>Título de evento</th>
         <th>Etiquetas</th>
+        <th>Publicado</th>
+        <th></th>
     </tr>
-    {% for polaroid in polaroids %}
+    {% set publicaciones = ["1", "0"] %}
+    {% for evento in eventos %}
     <tr>
-        <td><a href="evento/{{polaroid.id_evento}}">{{polaroid.id_evento}}</a></td>
-        <td><a href="evento/{{polaroid.id_evento}}">{{polaroid.titulo}}</a></td>
-        <td>{{polaroid.etiqueta}}</td>
+        <td><a href="evento/{{evento.id_evento}}">{{evento.id_evento}}</a></td>
+        <td><a href="evento/{{evento.id_evento}}">{{evento.titulo}}</a></td>
+        <td>{% for etiqueta in etiquetas %} 
+                {% if etiqueta.id_evento == evento.id_evento %}
+                {{etiqueta.etiqueta}}
+                {% endif %}
+            {% endfor %}
+        </td>
+        <td>
+            <select name="publicado" onchange="modificarPublicado('{{evento.id_evento}}')" id="{{evento.id_evento}}-publicado" data-id={{evento.id_evento}}>
+                <option value="{{evento.publicado}}">{% if evento.publicado == 1%} Sí {% else %} No {% endif %}</option>
+                {% for pub in publicaciones %}
+                {% if pub != evento.publicado%}
+                <option value={{pub}}>{% if pub == 1 %} Sí {% else %} No {% endif %}</option>
+                {% endif %}
+                {% endfor %}
+                
+            </select>
+        </td>
+        <td>
+            <button class="btn-eliminar">Eliminar</button>
+        </td>
     </tr>
     {% endfor %}
     </table>

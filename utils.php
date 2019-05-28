@@ -34,6 +34,14 @@ function todosComentarios() {
     return pedirTodosComentarios();
 }
 
+function todosEventos(){
+    return pedirTodosEventos();
+}
+
+function etiquetas(){
+    return pedirEtiquetasEventos();
+}
+
 function todosUsuarios(){
     return pedirUsuarios();
 }

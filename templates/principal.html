@@ -11,10 +11,10 @@
 {% endblock %}
 
 {% block etiquetas %}
-    <input type="text" id="busqueda" class="busqueda-tabla" placeholder="Buscar evento..." title="Buscar eventos">
-    <div id="resultado">
+    <input type="text" id="busqueda" class="busqueda-tabla" placeholder="Buscar evento..." title="Buscar eventos" data-tipo-usuario={{usuario.tipo}}>
+    <table id="resultado" class="tabla">
 
-    </div>
+    </table>
 
     <div class="etiquetas">
         <button id="pop"  class = "etiqueta">#Pop</button>

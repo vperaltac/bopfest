@@ -129,7 +129,7 @@ switch($_SERVER['REQUEST_METHOD']){
             case 'consulta':
                 $datos = file_get_contents('php://input');
                 $valores = json_decode($datos);
-                $respuesta = buscarEventos($valores->consulta);
+                $respuesta = buscarEventos($valores->consulta,$valores->tipo);
                 $eventos = json_encode($respuesta);
                 echo $eventos;
                 break;

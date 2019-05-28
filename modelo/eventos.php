@@ -225,14 +225,19 @@ function eliminarEtiqueta($id_evento,$etiqueta){
     $sentencia->execute();
 }
 
-function buscarEventos($consulta){
+function buscarEventos($consulta,$tipo){
     $db = Database::getInstancia();
     $mysqli = $db->getConexion();
 
     // real_escape_string añade \ junto a caracteres potencialmente peligrosos (\x00,\n,\r,\,'," y \x1a.)
     $consulta = $mysqli->real_escape_string($consulta);
 
-    $peticion = $mysqli->query("SELECT titulo,texto FROM eventos WHERE titulo LIKE '%$consulta%' OR '%$consulta';");
+    if($tipo == "gestor" || $tipo == "superusuario")
+        $peticion = $mysqli->query("SELECT id_evento,titulo,texto FROM eventos WHERE titulo LIKE '%$consulta%' OR texto LIKE '%$consulta%';");
+    else
+        $peticion = $mysqli->query("SELECT id_evento,titulo,texto FROM eventos WHERE publicado=1 AND (titulo LIKE '%$consulta%' OR texto LIKE '%$consulta%');");
+    
+
     $eventos = array();
     $i=0;
     while($fila = $peticion->fetch_assoc()){
@@ -241,6 +246,7 @@ function buscarEventos($consulta){
     }
 
     return $eventos;
+
 }
 
 function editarPublicacion($id_evento, $publicado){

@@ -3,10 +3,10 @@
 
 Lenguajes utilizados:
 
-	* HTML
-	* CSS
-	* Javascript
-	* PHP
+* HTML
+* CSS
+* Javascript
+* PHP
 
 Tecnologías utilizadas:
 

@@ -3,10 +3,10 @@
 
 Lenguajes utilizados:
 
-	- HTML
-	- CSS
-	- Javascript
-	- PHP
+	* HTML
+	* CSS
+	* Javascript
+	* PHP
 
 Tecnologías utilizadas:
 
@@ -57,5 +57,6 @@ La base de datos utilizada en MySQL tiene la siguiente estructura:
 
 
 Práctica realizada por:
+
 	- Víctor Peralta Cámara @victorperalta93
 	- Diego García Aurelio @diegogaraur

@@ -58,5 +58,5 @@ La base de datos utilizada en MySQL tiene la siguiente estructura:
 
 Práctica realizada por:
 
-	- Víctor Peralta Cámara @victorperalta93
-	- Diego García Aurelio @diegogaraur
+- Víctor Peralta Cámara @victorperalta93
+- Diego García Aurelio @diegogaraur

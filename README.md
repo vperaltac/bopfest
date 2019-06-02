@@ -10,9 +10,9 @@ Lenguajes utilizados:
 
 Tecnologías utilizadas:
 
-	- Sistema de plantillas [Twig](https://twig.symfony.com/)
-	- Base de datos: MySQL
-	- llamadas asíncronas AJAX con vanilla javascript (XMLHTTPRequest)
+- Sistema de plantillas [Twig](https://twig.symfony.com/)
+- Base de datos: MySQL
+- llamadas asíncronas AJAX con vanilla javascript (XMLHTTPRequest)
 
 
 Este proyecto ha sido desarrollado utilizando el patrón Modelo Vista Controlador (MVC)
@@ -20,16 +20,16 @@ Este proyecto ha sido desarrollado utilizando el patrón Modelo Vista Controlado
 
 Principales características implementadas:
 
-	- Sistema de conexión de usuarios ( con diferentes privilegios para acceder o no a las funcionalidades de la web)
-	- Eventos:
-		- Es posible añadir eventos nuevos mediante un formulario.
-		- Es posible editar un evento en tiempo real en su página de evento.
-		- Es posible eliminar eventos desde el panel de control (sólo usuarios con dicho privilegio).
-	- Sistema de comentarios para cada evento
-		- Los usuarios moderadores pueden eliminar y/o editar comentarios.
-	- Sistema de etiquetas para eventos, posibilidad de filtrar en tiempo real por etiquetas.
-	- Sistema de palabras prohibidas para sustituir por asteriscos (*) en tiempo real al escribir un comentario.
-	- Galería: cada evento tiene su propia galería de imágenes
+- Sistema de conexión de usuarios ( con diferentes privilegios para acceder o no a las funcionalidades de la web)
+- Eventos:
+	- Es posible añadir eventos nuevos mediante un formulario.
+	- Es posible editar un evento en tiempo real en su página de evento.
+	- Es posible eliminar eventos desde el panel de control (sólo usuarios con dicho privilegio).
+- Sistema de comentarios para cada evento
+	- Los usuarios moderadores pueden eliminar y/o editar comentarios.
+- Sistema de etiquetas para eventos, posibilidad de filtrar en tiempo real por etiquetas.
+- Sistema de palabras prohibidas para sustituir por asteriscos (*) en tiempo real al escribir un comentario.
+- Galería: cada evento tiene su propia galería de imágenes
 
 
 Todas las peticiones HTTP han sido implementadas siguiendo el estilo de arquitectura software RESTful.

@@ -1,14 +1,14 @@
 # bopfest
-### Proyecto de prácticas de Sistemas de Información Basados en Web (SIBW) - Ingeniería del Software.
+## Proyecto de prácticas de Sistemas de Información Basados en Web (SIBW) - Ingeniería del Software.
 
-Lenguajes utilizados:
+### Lenguajes utilizados:
 
 * HTML
 * CSS
 * Javascript
 * PHP
 
-Tecnologías utilizadas:
+### Tecnologías utilizadas:
 
 - Sistema de plantillas [Twig](https://twig.symfony.com/)
 - Base de datos: MySQL
@@ -18,7 +18,7 @@ Tecnologías utilizadas:
 Este proyecto ha sido desarrollado utilizando el patrón Modelo Vista Controlador (MVC)
 
 
-Principales características implementadas:
+### Principales características implementadas:
 
 - Sistema de conexión de usuarios ( con diferentes privilegios para acceder o no a las funcionalidades de la web)
 - Eventos:
